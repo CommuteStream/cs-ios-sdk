@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
+		7FF398BC191552D000C8114E /* CommuteStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
+		7FF398BE191552D000C8114E /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
+		7FF398C5191552D100C8114E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398C4191552D100C8114E /* XCTest.framework */; };
+		7FF398C6191552D100C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
+		7FF398C8191552D100C8114E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398C7191552D100C8114E /* UIKit.framework */; };
+		7FF398CB191552D100C8114E /* libCommuteStream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B3191552D000C8114E /* libCommuteStream.a */; };
+		7FF398D1191552D100C8114E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FF398CF191552D100C8114E /* InfoPlist.strings */; };
+		7FF398D3191552D100C8114E /* CommuteStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398D2191552D100C8114E /* CommuteStreamTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FF398C9191552D100C8114E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FF398AB191552D000C8114E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FF398B2191552D000C8114E;
+			remoteInfo = CommuteStream;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7FF398B1191552D000C8114E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				7FF398BC191552D000C8114E /* CommuteStream.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7FF398B3191552D000C8114E /* libCommuteStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommuteStream.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FF398B6191552D000C8114E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7FF398BA191552D000C8114E /* CommuteStream-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CommuteStream-Prefix.pch"; sourceTree = "<group>"; };
+		7FF398BB191552D000C8114E /* CommuteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommuteStream.h; sourceTree = "<group>"; };
+		7FF398BD191552D000C8114E /* CommuteStream.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommuteStream.m; sourceTree = "<group>"; };
+		7FF398C3191552D100C8114E /* CommuteStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommuteStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FF398C4191552D100C8114E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7FF398C7191552D100C8114E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		7FF398CE191552D100C8114E /* CommuteStreamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CommuteStreamTests-Info.plist"; sourceTree = "<group>"; };
+		7FF398D0191552D100C8114E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7FF398D2191552D100C8114E /* CommuteStreamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommuteStreamTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7FF398B0191552D000C8114E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF398C0191552D100C8114E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF398C5191552D100C8114E /* XCTest.framework in Frameworks */,
+				7FF398C8191552D100C8114E /* UIKit.framework in Frameworks */,
+				7FF398CB191552D100C8114E /* libCommuteStream.a in Frameworks */,
+				7FF398C6191552D100C8114E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7FF398AA191552D000C8114E = {
+			isa = PBXGroup;
+			children = (
+				7FF398B8191552D000C8114E /* CommuteStream */,
+				7FF398CC191552D100C8114E /* CommuteStreamTests */,
+				7FF398B5191552D000C8114E /* Frameworks */,
+				7FF398B4191552D000C8114E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7FF398B4191552D000C8114E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7FF398B3191552D000C8114E /* libCommuteStream.a */,
+				7FF398C3191552D100C8114E /* CommuteStreamTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7FF398B5191552D000C8114E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FF398B6191552D000C8114E /* Foundation.framework */,
+				7FF398C4191552D100C8114E /* XCTest.framework */,
+				7FF398C7191552D100C8114E /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FF398B8191552D000C8114E /* CommuteStream */ = {
+			isa = PBXGroup;
+			children = (
+				7FF398BB191552D000C8114E /* CommuteStream.h */,
+				7FF398BD191552D000C8114E /* CommuteStream.m */,
+				7FF398B9191552D000C8114E /* Supporting Files */,
+			);
+			path = CommuteStream;
+			sourceTree = "<group>";
+		};
+		7FF398B9191552D000C8114E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FF398BA191552D000C8114E /* CommuteStream-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7FF398CC191552D100C8114E /* CommuteStreamTests */ = {
+			isa = PBXGroup;
+			children = (
+				7FF398D2191552D100C8114E /* CommuteStreamTests.m */,
+				7FF398CD191552D100C8114E /* Supporting Files */,
+			);
+			path = CommuteStreamTests;
+			sourceTree = "<group>";
+		};
+		7FF398CD191552D100C8114E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FF398CE191552D100C8114E /* CommuteStreamTests-Info.plist */,
+				7FF398CF191552D100C8114E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7FF398B2191552D000C8114E /* CommuteStream */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FF398D6191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStream" */;
+			buildPhases = (
+				7FF398AF191552D000C8114E /* Sources */,
+				7FF398B0191552D000C8114E /* Frameworks */,
+				7FF398B1191552D000C8114E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommuteStream;
+			productName = CommuteStream;
+			productReference = 7FF398B3191552D000C8114E /* libCommuteStream.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7FF398C2191552D100C8114E /* CommuteStreamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FF398D9191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStreamTests" */;
+			buildPhases = (
+				7FF398BF191552D100C8114E /* Sources */,
+				7FF398C0191552D100C8114E /* Frameworks */,
+				7FF398C1191552D100C8114E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FF398CA191552D100C8114E /* PBXTargetDependency */,
+			);
+			name = CommuteStreamTests;
+			productName = CommuteStreamTests;
+			productReference = 7FF398C3191552D100C8114E /* CommuteStreamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7FF398AB191552D000C8114E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = CommuteStream;
+			};
+			buildConfigurationList = 7FF398AE191552D000C8114E /* Build configuration list for PBXProject "CommuteStream" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7FF398AA191552D000C8114E;
+			productRefGroup = 7FF398B4191552D000C8114E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7FF398B2191552D000C8114E /* CommuteStream */,
+				7FF398C2191552D100C8114E /* CommuteStreamTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7FF398C1191552D100C8114E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF398D1191552D100C8114E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7FF398AF191552D000C8114E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF398BE191552D000C8114E /* CommuteStream.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF398BF191552D100C8114E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF398D3191552D100C8114E /* CommuteStreamTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FF398CA191552D100C8114E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FF398B2191552D000C8114E /* CommuteStream */;
+			targetProxy = 7FF398C9191552D100C8114E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7FF398CF191552D100C8114E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7FF398D0191552D100C8114E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7FF398D4191552D100C8114E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7FF398D5191552D100C8114E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7FF398D7191552D100C8114E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CommuteStream.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7FF398D8191552D100C8114E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CommuteStream.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7FF398DA191552D100C8114E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CommuteStreamTests/CommuteStreamTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7FF398DB191552D100C8114E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
+				INFOPLIST_FILE = "CommuteStreamTests/CommuteStreamTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7FF398AE191552D000C8114E /* Build configuration list for PBXProject "CommuteStream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FF398D4191552D100C8114E /* Debug */,
+				7FF398D5191552D100C8114E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FF398D6191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FF398D7191552D100C8114E /* Debug */,
+				7FF398D8191552D100C8114E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7FF398D9191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStreamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FF398DA191552D100C8114E /* Debug */,
+				7FF398DB191552D100C8114E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7FF398AB191552D000C8114E /* Project object */;
+}
