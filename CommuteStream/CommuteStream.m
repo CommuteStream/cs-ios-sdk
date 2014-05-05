@@ -64,7 +64,6 @@
         
         [self.httpParams setObject:@"true" forKey:@"skip_fetch"];
         
-        NSLog(@"Params SENT = %@", [[CommuteStream open] httpParams]);
         
         __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
         
