@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 CommuteStream. All rights reserved.
 //
 
-#import "CommuteStream.h"
+#import "CommuteStreamRename.h"
 #import "CSNetworkEngine.h"
 
 @implementation CommuteStream
