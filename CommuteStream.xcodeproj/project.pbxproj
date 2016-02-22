@@ -11,7 +11,6 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 7F7DFABD1C77879000FE1581 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
 			buildPhases = (
-				7F7DFAC01C7787A400FE1581 /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -22,6 +21,7 @@
 
 /* Begin PBXBuildFile section */
 		7F1CE18FEFCCE98A9C7C7BF7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85018C201ED70FA7C08D5411 /* libPods.a */; };
+		7F29ACB61C7B890F0084B70F /* CommuteStream.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7F29ACB51C7B890F0084B70F /* CommuteStream.podspec */; };
 		7FBBB7381C77A43700F1DBED /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBBB7371C77A43700F1DBED /* CommuteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FBBB73F1C77A43700F1DBED /* CommuteStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBBB7351C77A43700F1DBED /* CommuteStream.framework */; };
 		7FBBB7441C77A43700F1DBED /* CommuteStreamSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBBB7431C77A43700F1DBED /* CommuteStreamSDKTests.m */; };
@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F29ACB51C7B890F0084B70F /* CommuteStream.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommuteStream.podspec; sourceTree = "<group>"; };
 		7F7DFAB31C7785CD00FE1581 /* UniversalLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniversalLib.h; sourceTree = "<group>"; };
 		7F7DFAB51C7785CD00FE1581 /* UniversalLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UniversalLib.m; sourceTree = "<group>"; };
 		7FBBB7351C77A43700F1DBED /* CommuteStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommuteStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +142,7 @@
 		7FF398AA191552D000C8114E = {
 			isa = PBXGroup;
 			children = (
+				7F29ACB51C7B890F0084B70F /* CommuteStream.podspec */,
 				7F7DFAB21C7785CD00FE1581 /* UniversalLib */,
 				7FBBB7361C77A43700F1DBED /* CommuteStream */,
 				7FBBB7421C77A43700F1DBED /* CommuteStreamTests */,
@@ -278,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F29ACB61C7B890F0084B70F /* CommuteStream.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,19 +308,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		7F7DFAC01C7787A400FE1581 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target CommuteStream ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target CommuteStream -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
 		};
 		7FBBB75A1C77AAFF00F1DBED /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
