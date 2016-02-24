@@ -1,18 +1,9 @@
-//
-//  CommuteStream.h
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
+@import Foundation;
+@import CoreLocation;
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import "CSNetworkEngine.h"
 
 @interface CommuteStream : NSObject {
-    
-    
     NSString *ad_unit_uuid;
 	NSString *banner_height;
 	NSString *banner_width;
@@ -20,15 +11,12 @@
 	NSString *app_name;
 	NSString *sdk_ver;
 	NSString *app_ver;
-	//NSString *agency_id;
-	//NSString *stop_id;
-	//NSString *route_id;
 	NSString *latitude;
 	NSString *longitude;
 	NSString *acc;
 	NSString *fix_time;
-    
-	NSMutableArray *agency_interest;
+
+	NSMutableSet *agency_interest;
     
 	NSString *idfa_sha;
 	NSString *mac_addr_sha;
@@ -45,15 +33,15 @@
     
     CSNetworkEngine *networkEngine;
     
-    BOOL initialized;
+    bool initialized;
     NSString *agencyStringToSend;
 }
 
 + (CommuteStream *)open;
 
-- (BOOL)isInitialized;
+- (bool)isInitialized;
 
--(void)reportSuccessfulGet;
+- (void)reportSuccessfulGet;
 
 - (NSString *)adUnitUUID;
 
@@ -68,13 +56,7 @@
 - (NSString *)sdkVer;
 
 - (NSString *)appVer;
-/*
- - (NSString *)agencyID;
- 
- - (NSString *)stopID;
- 
- - (NSString *)routeID;
- */
+
 - (NSString *)latitude;
 
 - (NSString *)longitude;
@@ -95,11 +77,11 @@
 
 - (NSMutableDictionary *)httpParams;
 
--(NSDate *)lastServerRequestTime;
+- (NSDate *)lastServerRequestTime;
 
--(NSDate *)lastParameterChange;
+- (NSDate *)lastParameterChange;
 
--(NSString *)agencyStringToSend;
+- (NSString *)agencyStringToSend;
 
 
 
@@ -118,13 +100,7 @@
 - (void)setSdkVer:(NSString *)sdkVer;
 
 - (void)setAppVer:(NSString *)appVer;
-/*
- - (void)setAgencyID:(NSString *)agencyID;
- 
- - (void)setStopID:(NSString *)stopID;
- 
- - (void)setRouteID:(NSString *)routeID;
- */
+
 - (void)setLatitude:(NSString *)thisLatitude;
 
 - (void)setLongitude:(NSString *)thisLongitude;

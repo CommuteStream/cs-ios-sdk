@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 CommuteStream. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #import "CSNetworkEngine.h"
 #import "CommuteStream.h"
@@ -18,16 +18,7 @@
 #include <net/if_dl.h>
 #include <ifaddrs.h>
 
-@import GoogleMobileAds;
 
-@interface CSCustomBanner : NSObject <GADCustomEventBanner, GADBannerViewDelegate, UIGestureRecognizerDelegate> {
-    GADBannerView *bannerView_;
-}
--(void)buildWebView:(NSMutableDictionary*)dict;
-+ (NSString *)getSha;
-+ (NSString *)getMacSha:(NSString *)deviceAddress;
-//static char* getMacAddress(char* macAddress, char* ifName);
-@end
 
 
 #define SDK_VERSION @"0.0.2"
@@ -155,7 +146,7 @@ NSString *bannerUrl;
     
     NSLog(@"Params SENT = %@", [[CommuteStream open] httpParams]);
     
-    __weak MKNetworkOperation *request = [networkEngine getBanner:[[CommuteStream open] httpParams]];
+    __weak AFHTTPRequestOperation *request = [networkEngine getBanner:[[CommuteStream open] httpParams]];
     
     
     

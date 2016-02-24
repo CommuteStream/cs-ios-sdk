@@ -6,31 +6,18 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		7F7DFABC1C77879000FE1581 /* UniversalLib */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 7F7DFABD1C77879000FE1581 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = UniversalLib;
-			productName = UniversalLib;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
+		1BC1A3C91C7E20CC00A06DC9 /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC1A3C31C7E20CC00A06DC9 /* CommuteStream.h */; };
+		1BC1A3CA1C7E20CC00A06DC9 /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1A3C41C7E20CC00A06DC9 /* CommuteStream.m */; };
+		1BC1A3CB1C7E20CC00A06DC9 /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC1A3C51C7E20CC00A06DC9 /* CSCustomBanner.h */; };
+		1BC1A3CC1C7E20CC00A06DC9 /* CSCustomBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1A3C61C7E20CC00A06DC9 /* CSCustomBanner.m */; };
+		1BC1A3CD1C7E20CC00A06DC9 /* CSNetworkEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC1A3C71C7E20CC00A06DC9 /* CSNetworkEngine.h */; };
+		1BC1A3CE1C7E20CC00A06DC9 /* CSNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1A3C81C7E20CC00A06DC9 /* CSNetworkEngine.m */; };
+		1BC1A3D21C7E21AD00A06DC9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398C4191552D100C8114E /* XCTest.framework */; };
+		1BC1A3D31C7E21FA00A06DC9 /* CommuteStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1A3D01C7E20E800A06DC9 /* CommuteStreamTests.m */; };
 		7F1CE18FEFCCE98A9C7C7BF7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85018C201ED70FA7C08D5411 /* libPods.a */; };
 		7F29ACB61C7B890F0084B70F /* CommuteStream.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7F29ACB51C7B890F0084B70F /* CommuteStream.podspec */; };
-		7FBBB7381C77A43700F1DBED /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBBB7371C77A43700F1DBED /* CommuteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FBBB73F1C77A43700F1DBED /* CommuteStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBBB7351C77A43700F1DBED /* CommuteStream.framework */; };
-		7FBBB7441C77A43700F1DBED /* CommuteStreamSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBBB7431C77A43700F1DBED /* CommuteStreamSDKTests.m */; };
-		7FBBB7541C77A88600F1DBED /* CommuteStreamRename.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBBB74E1C77A88600F1DBED /* CommuteStreamRename.h */; };
-		7FBBB7551C77A88600F1DBED /* CommuteStreamRename.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBBB74F1C77A88600F1DBED /* CommuteStreamRename.m */; };
-		7FBBB7561C77A88600F1DBED /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBBB7501C77A88600F1DBED /* CSCustomBanner.h */; };
-		7FBBB7571C77A88600F1DBED /* CSCustomBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBBB7511C77A88600F1DBED /* CSCustomBanner.m */; };
-		7FBBB7581C77A88600F1DBED /* CSNetworkEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FBBB7521C77A88600F1DBED /* CSNetworkEngine.h */; };
-		7FBBB7591C77A88600F1DBED /* CSNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBBB7531C77A88600F1DBED /* CSNetworkEngine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,21 +31,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BC1A3C31C7E20CC00A06DC9 /* CommuteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommuteStream.h; path = CommuteStream/CommuteStream.h; sourceTree = "<group>"; };
+		1BC1A3C41C7E20CC00A06DC9 /* CommuteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommuteStream.m; path = CommuteStream/CommuteStream.m; sourceTree = "<group>"; };
+		1BC1A3C51C7E20CC00A06DC9 /* CSCustomBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCustomBanner.h; path = CommuteStream/CSCustomBanner.h; sourceTree = "<group>"; };
+		1BC1A3C61C7E20CC00A06DC9 /* CSCustomBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCustomBanner.m; path = CommuteStream/CSCustomBanner.m; sourceTree = "<group>"; };
+		1BC1A3C71C7E20CC00A06DC9 /* CSNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSNetworkEngine.h; path = CommuteStream/CSNetworkEngine.h; sourceTree = "<group>"; };
+		1BC1A3C81C7E20CC00A06DC9 /* CSNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSNetworkEngine.m; path = CommuteStream/CSNetworkEngine.m; sourceTree = "<group>"; };
+		1BC1A3D01C7E20E800A06DC9 /* CommuteStreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommuteStreamTests.m; path = CommuteStreamTests/CommuteStreamTests.m; sourceTree = "<group>"; };
 		7F29ACB51C7B890F0084B70F /* CommuteStream.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommuteStream.podspec; sourceTree = "<group>"; };
-		7F7DFAB31C7785CD00FE1581 /* UniversalLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniversalLib.h; sourceTree = "<group>"; };
-		7F7DFAB51C7785CD00FE1581 /* UniversalLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UniversalLib.m; sourceTree = "<group>"; };
 		7FBBB7351C77A43700F1DBED /* CommuteStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommuteStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FBBB7371C77A43700F1DBED /* CommuteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommuteStream.h; sourceTree = "<group>"; };
-		7FBBB7391C77A43700F1DBED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FBBB73E1C77A43700F1DBED /* CommuteStreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommuteStreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FBBB7431C77A43700F1DBED /* CommuteStreamSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommuteStreamSDKTests.m; sourceTree = "<group>"; };
-		7FBBB7451C77A43700F1DBED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FBBB74E1C77A88600F1DBED /* CommuteStreamRename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommuteStreamRename.h; sourceTree = "<group>"; };
-		7FBBB74F1C77A88600F1DBED /* CommuteStreamRename.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommuteStreamRename.m; sourceTree = "<group>"; };
-		7FBBB7501C77A88600F1DBED /* CSCustomBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCustomBanner.h; sourceTree = "<group>"; };
-		7FBBB7511C77A88600F1DBED /* CSCustomBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSCustomBanner.m; sourceTree = "<group>"; };
-		7FBBB7521C77A88600F1DBED /* CSNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSNetworkEngine.h; sourceTree = "<group>"; };
-		7FBBB7531C77A88600F1DBED /* CSNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSNetworkEngine.m; sourceTree = "<group>"; };
 		7FF398B6191552D000C8114E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FF398C4191552D100C8114E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7FF398C7191552D100C8114E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -89,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FBBB73F1C77A43700F1DBED /* CommuteStream.framework in Frameworks */,
+				1BC1A3D21C7E21AD00A06DC9 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,48 +87,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		7F7DFAB21C7785CD00FE1581 /* UniversalLib */ = {
+		1BC1A3C21C7E20BD00A06DC9 /* CommuteStream */ = {
 			isa = PBXGroup;
 			children = (
-				7F7DFAB31C7785CD00FE1581 /* UniversalLib.h */,
-				7F7DFAB51C7785CD00FE1581 /* UniversalLib.m */,
-			);
-			path = UniversalLib;
-			sourceTree = "<group>";
-		};
-		7FBBB7361C77A43700F1DBED /* CommuteStream */ = {
-			isa = PBXGroup;
-			children = (
-				7FBBB74E1C77A88600F1DBED /* CommuteStreamRename.h */,
-				7FBBB74F1C77A88600F1DBED /* CommuteStreamRename.m */,
-				7FBBB7501C77A88600F1DBED /* CSCustomBanner.h */,
-				7FBBB7511C77A88600F1DBED /* CSCustomBanner.m */,
-				7FBBB7521C77A88600F1DBED /* CSNetworkEngine.h */,
-				7FBBB7531C77A88600F1DBED /* CSNetworkEngine.m */,
-				7FBBB7371C77A43700F1DBED /* CommuteStream.h */,
-				7FBBB7391C77A43700F1DBED /* Info.plist */,
+				1BC1A3C31C7E20CC00A06DC9 /* CommuteStream.h */,
+				1BC1A3C41C7E20CC00A06DC9 /* CommuteStream.m */,
+				1BC1A3C51C7E20CC00A06DC9 /* CSCustomBanner.h */,
+				1BC1A3C61C7E20CC00A06DC9 /* CSCustomBanner.m */,
+				1BC1A3C71C7E20CC00A06DC9 /* CSNetworkEngine.h */,
+				1BC1A3C81C7E20CC00A06DC9 /* CSNetworkEngine.m */,
 			);
 			name = CommuteStream;
-			path = CommuteStreamSDK;
 			sourceTree = "<group>";
 		};
-		7FBBB7421C77A43700F1DBED /* CommuteStreamTests */ = {
+		1BC1A3CF1C7E20D100A06DC9 /* CommuteStreamTests */ = {
 			isa = PBXGroup;
 			children = (
-				7FBBB7431C77A43700F1DBED /* CommuteStreamSDKTests.m */,
-				7FBBB7451C77A43700F1DBED /* Info.plist */,
+				1BC1A3D01C7E20E800A06DC9 /* CommuteStreamTests.m */,
 			);
 			name = CommuteStreamTests;
-			path = CommuteStreamSDKTests;
 			sourceTree = "<group>";
 		};
 		7FF398AA191552D000C8114E = {
 			isa = PBXGroup;
 			children = (
+				1BC1A3CF1C7E20D100A06DC9 /* CommuteStreamTests */,
+				1BC1A3C21C7E20BD00A06DC9 /* CommuteStream */,
 				7F29ACB51C7B890F0084B70F /* CommuteStream.podspec */,
-				7F7DFAB21C7785CD00FE1581 /* UniversalLib */,
-				7FBBB7361C77A43700F1DBED /* CommuteStream */,
-				7FBBB7421C77A43700F1DBED /* CommuteStreamTests */,
 				7FF398B5191552D000C8114E /* Frameworks */,
 				7FF398B4191552D000C8114E /* Products */,
 				038DB8B49B995A4BFE69AB39 /* Pods */,
@@ -187,10 +155,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FBBB7561C77A88600F1DBED /* CSCustomBanner.h in Headers */,
-				7FBBB7581C77A88600F1DBED /* CSNetworkEngine.h in Headers */,
-				7FBBB7381C77A43700F1DBED /* CommuteStream.h in Headers */,
-				7FBBB7541C77A88600F1DBED /* CommuteStreamRename.h in Headers */,
+				1BC1A3CD1C7E20CC00A06DC9 /* CSNetworkEngine.h in Headers */,
+				1BC1A3C91C7E20CC00A06DC9 /* CommuteStream.h in Headers */,
+				1BC1A3CB1C7E20CC00A06DC9 /* CSCustomBanner.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,9 +212,6 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CommuteStream;
 				TargetAttributes = {
-					7F7DFABC1C77879000FE1581 = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
 					7FBBB7341C77A43700F1DBED = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -268,7 +232,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7F7DFABC1C77879000FE1581 /* UniversalLib */,
 				7FBBB7341C77A43700F1DBED /* CommuteStream */,
 				7FBBB73D1C77A43700F1DBED /* CommuteStreamTests */,
 			);
@@ -344,9 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FBBB7591C77A88600F1DBED /* CSNetworkEngine.m in Sources */,
-				7FBBB7571C77A88600F1DBED /* CSCustomBanner.m in Sources */,
-				7FBBB7551C77A88600F1DBED /* CommuteStreamRename.m in Sources */,
+				1BC1A3CE1C7E20CC00A06DC9 /* CSNetworkEngine.m in Sources */,
+				1BC1A3CC1C7E20CC00A06DC9 /* CSCustomBanner.m in Sources */,
+				1BC1A3CA1C7E20CC00A06DC9 /* CommuteStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FBBB7441C77A43700F1DBED /* CommuteStreamSDKTests.m in Sources */,
+				1BC1A3D31C7E21FA00A06DC9 /* CommuteStreamTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,20 +332,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		7F7DFABE1C77879000FE1581 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		7F7DFABF1C77879000FE1581 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		7FBBB7461C77A43700F1DBED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80E48364474BFE42670FB89A /* Pods.debug.xcconfig */;
@@ -397,12 +346,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = CommuteStreamSDK/Info.plist;
+				INFOPLIST_FILE = CommuteStream/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.commutestream.CommuteStreamSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.commutestream.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -426,12 +375,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = CommuteStreamSDK/Info.plist;
+				INFOPLIST_FILE = CommuteStream/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.commutestream.CommuteStreamSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.commutestream.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -549,15 +498,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7F7DFABD1C77879000FE1581 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7F7DFABE1C77879000FE1581 /* Debug */,
-				7F7DFABF1C77879000FE1581 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7FBBB74A1C77A43700F1DBED /* Build configuration list for PBXNativeTarget "CommuteStream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

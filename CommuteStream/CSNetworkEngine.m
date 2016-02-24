@@ -1,31 +1,22 @@
-//
-//  CSNetworkEngine.m
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
+@import Foundation;
 
 #import "CSNetworkEngine.h"
 
 @implementation CSNetworkEngine
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams {
+- (void) initWithHostName:(NSString *)hostName {
+    self.hostName = hostName;
+}
+
+- (void) getBanner:(NSMutableDictionary *)callParams {
     
-    MKNetworkOperation *op = [self operationWithPath:@"banner" params:callParams httpMethod:@"GET" ssl:YES];
-    
-    [op addCompletionHandler:^(MKNetworkOperation *completedOperation){
-        //NSLog(@"---->completed");
-        
-    }errorHandler:^(MKNetworkOperation *completedOperation, NSError *error){
-        //NSLog(@"---->errored");
+    NSURL *url = [NSURL URLWithString:@"https://api.commutestream.com:3000/banner"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:url.absoluteString parameters:callParams progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
-    
-    
-    [self enqueueOperation:op];
-    
-    return op;
-    
 }
 
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 CommuteStream. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+@import XCTest;
 
 @interface CommuteStreamTests : XCTestCase
 

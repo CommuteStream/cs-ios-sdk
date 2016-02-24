@@ -1,16 +1,12 @@
-//
-//  CSNetworkEngine.h
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
+#import <AFNetworking/AFNetworking.h>
 
-#import "MKNetworkEngine.h"
+@interface CSNetworkEngine : NSObject
 
-@interface CSNetworkEngine : MKNetworkEngine
+@property NSString *hostName;
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams;
+- (void) initWithHostName:(NSString *)hostName;
+
+- (void) getBanner:(NSMutableDictionary *)callParams;
 
 
 @end
