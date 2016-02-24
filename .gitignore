@@ -166,3 +166,4 @@ Pods
 Podfile.lock
 UniversalLib
 CommuteStream.xcworkspace
+*.un~
