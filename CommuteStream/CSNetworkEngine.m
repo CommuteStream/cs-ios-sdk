@@ -14,11 +14,11 @@
     
     MKNetworkOperation *op = [self operationWithPath:@"banner" params:callParams httpMethod:@"GET" ssl:YES];
     
-    [op addCompletionHandler:^(MKNetworkOperation *completedOperation){
-        //NSLog(@"---->completed");
+    [op addCompletionHandler:^(MKNetworkOperation *operation){
+        NSLog(@"CS_SDK: Call to banner server successful");
         
-    }errorHandler:^(MKNetworkOperation *completedOperation, NSError *error){
-        //NSLog(@"---->errored");
+    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
+        NSLog(@"CS_SDK: Error from banner server - %@", error);
     }];
     
     

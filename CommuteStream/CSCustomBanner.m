@@ -66,7 +66,7 @@ static char* getMacAddress(char* macAddress, char* ifName) {
 @implementation CSCustomBanner
 
 // Will be set by the AdMob SDK.
-@synthesize delegate;
+@synthesize delegate, csNetworkEngine;
 
 - (void)dealloc {
     bannerView_.delegate = nil;
@@ -83,8 +83,7 @@ GADBannerView *testView;
 UIWebView *webView;
 NSString *appVersion;
 NSString *appName;
-int bannerWidthInt;
-int bannerHeightInt;
+CGSize myAdSize;
 NSString *bannerUrl;
 
 
@@ -92,18 +91,13 @@ NSString *bannerUrl;
               parameter:(NSString *)serverParameter
                   label:(NSString *)serverLabel
                 request:(GADCustomEventRequest *)customEventRequest  {
+
     
-    
-    
-    
-    
-    //[bannerView_ setDelegate:self];
-    
-    
+    NSLog(@"CS_SDK: AdMob requesting ad.");
     
     
     if (![[CommuteStream open] isInitialized]) {
-        
+        NSLog(@"CS_SDK: Retrieving Info.");
         
         appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
         
@@ -116,9 +110,12 @@ NSString *bannerUrl;
         [[CommuteStream open] setAppName:appName];
         
         
+        
+        
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+            
             [CSCustomBanner getSha];
-        }else {
+        }else{
             NSString *deviceMacAddress = [[NSString alloc] initWithUTF8String:getMacAddress(macAddress, ifName)];
             [CSCustomBanner getMacSha:deviceMacAddress];
             
@@ -128,21 +125,29 @@ NSString *bannerUrl;
     }
     
     //get banner width and height
-    bannerWidthInt = (int)(adSize.size.width);
-    bannerHeightInt = (int)(adSize.size.height);
+    myAdSize = CGSizeFromGADAdSize(adSize);
+    NSLog(@"Banner %f width, %f height", adSize.size.width, adSize.size.height);
     
     //Store Banner Width and height and skip_fetch false
-    [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", bannerWidthInt]];
-    [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", bannerHeightInt]];
+    [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", (int) myAdSize.width]];
+    [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) myAdSize.height]];
     [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
     
-    NSString *appHostUrl = @"api.commutestreamdev.com:3000";
-    CSNetworkEngine *networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
+    if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
+        
+        NSLog(@"Advertising tracking disabled.");
+        [[CommuteStream open] setIOSLimitAdTracking:@"true"];
+    }else {
+        NSLog(@"Advertising tracking enabled.");
+    }
+    
+    NSString *appHostUrl = @"api.commutestream.com";
+    csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
+    int portNumber = 3000;
+    [csNetworkEngine setPortNumber: portNumber];
     
     
-    NSLog(@"Params SENT = %@", [[CommuteStream open] httpParams]);
-    
-    __weak MKNetworkOperation *request = [networkEngine getBanner:[[CommuteStream open] httpParams]];
+    __weak MKNetworkOperation *request = [csNetworkEngine getBanner:[[CommuteStream open] httpParams]];
     
     
     
@@ -150,16 +155,13 @@ NSString *bannerUrl;
         
         [[CommuteStream open] reportSuccessfulGet];
         
-        NSLog(@"RESPONSE = %@", request.responseJSON);
-        
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
-        
-        NSLog(@"item_returned = %@", [[dict objectForKey:@"item_returned"] class]);
         
         
         if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
             [self performSelectorOnMainThread:@selector(buildWebView:) withObject:dict waitUntilDone:NO];
         }else{
+            NSLog(@"CS_SDK: Failed to receive ad. Sending request to AdMob.");
             [self.delegate customEventBanner:self didFailAd:request.error];
         }
         
@@ -175,7 +177,9 @@ NSString *bannerUrl;
 }
 
 -(void)buildWebView:(NSMutableDictionary*)dict {
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, bannerWidthInt, bannerHeightInt)];
+    NSLog(@"CS_SDK: Generating UIWebView for ad display.");
+    NSLog(@"Web View %f width, %f height", myAdSize.width, myAdSize.height);
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, myAdSize.width, myAdSize.height)];
     NSString *htmlString = [dict objectForKey:@"html"];
     bannerUrl = [dict objectForKey:@"url"];
     
@@ -192,11 +196,12 @@ NSString *bannerUrl;
     
     
     
+    
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)sender
 {
-    NSLog(@"%@", bannerUrl);
+    //NSLog(@"%@", bannerUrl);
     
     NSURL *url = [NSURL URLWithString:bannerUrl];
     [[UIApplication sharedApplication] openURL:url];
@@ -296,7 +301,7 @@ NSString *bannerUrl;
 }
 
 - (void)adViewWillPresentScreen:(GADBannerView *)adView {
-    //[self.delegate customEventBanner:self clickDidOccurInAd:adView];
+    [self.delegate customEventBanner:self clickDidOccurInAd:adView];
     //[self.delegate customEventBannerWillPresentModal:self];
     
 }

@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CSNetworkEngine.h"
 
+
 @interface CommuteStream : NSObject {
     
     
@@ -20,19 +21,18 @@
 	NSString *app_name;
 	NSString *sdk_ver;
 	NSString *app_ver;
-	//NSString *agency_id;
-	//NSString *stop_id;
-	//NSString *route_id;
 	NSString *latitude;
 	NSString *longitude;
 	NSString *acc;
 	NSString *fix_time;
+    NSString *theme;
     
 	NSMutableArray *agency_interest;
     
 	NSString *idfa_sha;
 	NSString *mac_addr_sha;
 	NSString *testing;
+    NSString *limit_tracking;
     
 	CLLocation *location;
     
@@ -68,13 +68,7 @@
 - (NSString *)sdkVer;
 
 - (NSString *)appVer;
-/*
- - (NSString *)agencyID;
- 
- - (NSString *)stopID;
- 
- - (NSString *)routeID;
- */
+
 - (NSString *)latitude;
 
 - (NSString *)longitude;
@@ -101,6 +95,12 @@
 
 -(NSString *)agencyStringToSend;
 
+-(NSString *)theme;
+
+-(NSString *)iOSLimitAdTracking;
+
+- (void)setIOSLimitAdTracking:(NSString *)value;
+
 
 
 - (void)setIsInitialized:(BOOL)value;
@@ -118,13 +118,7 @@
 - (void)setSdkVer:(NSString *)sdkVer;
 
 - (void)setAppVer:(NSString *)appVer;
-/*
- - (void)setAgencyID:(NSString *)agencyID;
- 
- - (void)setStopID:(NSString *)stopID;
- 
- - (void)setRouteID:(NSString *)routeID;
- */
+
 - (void)setLatitude:(NSString *)thisLatitude;
 
 - (void)setLongitude:(NSString *)thisLongitude;
@@ -139,7 +133,7 @@
 
 - (void)setMacAddrSha:(NSString *)string;
 
-- (void)setTesting:(NSString *)thisTesting;
+- (void)setTesting;
 
 - (void)setLocation:(CLLocation *)thisLocation;
 
@@ -150,6 +144,8 @@
 -(void)setLastParameterChange:(NSDate *)time;
 
 -(void)setAgencyStringToSend:(NSString *)string;
+
+-(void)setTheme:(NSString *)themeString;
 
 - (void)trackingDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
 

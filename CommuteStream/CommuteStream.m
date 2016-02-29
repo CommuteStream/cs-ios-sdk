@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 CommuteStream. All rights reserved.
 //
 
-#import "CommuteStream.h"
 #import "CSNetworkEngine.h"
+#import "CommuteStream.h"
+#import "GADBannerViewDelegate.h"
+
 
 @implementation CommuteStream
 
@@ -31,6 +33,8 @@
     self = [super init];
     if (self) {
         
+        NSLog(@"CS_SDK: Initialized CS");
+        
         http_params = [[NSMutableDictionary alloc] init];
         
         agency_interest = [[NSMutableArray alloc] init];
@@ -38,8 +42,10 @@
         lastServerRequestTime = [NSDate date];
         lastParameterChange = [NSDate date];
         
-        NSString *appHostUrl = @"api.commutestreamdev.com:3000";
+        NSString *appHostUrl = @"api.commutestream.com";
         networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
+        int portNumber = 3000;
+        [networkEngine setPortNumber: portNumber];
         
         parameterCheckTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(onParameterCheckTimer:) userInfo:nil repeats:YES];
         
@@ -51,18 +57,24 @@
 
 
 -(void)onParameterCheckTimer:(NSTimer *)paramTimer {
+    NSLog(@"CS_SDK: Timer Fired");
     
-    NSLog(@"Last Server Request Time = %@", [self lastServerRequestTime]);
-    
-    NSLog(@"Last Parameter Change Time = %@", [self lastParameterChange]);
     
     if ([self isInitialized] && [self lastParameterChange] > [self lastServerRequestTime]) {
         
-        
-        
-        
+        NSLog(@"CS_SDK: Updating the server.");
         
         [self.httpParams setObject:@"true" forKey:@"skip_fetch"];
+        
+        if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
+            
+            NSLog(@"Advertising tracking disabled.");
+            [[CommuteStream open] setIOSLimitAdTracking:@"true"];
+        }else {
+            NSLog(@"Advertising tracking enabled.");
+        }
+        
+        
         
         
         __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
@@ -85,19 +97,16 @@
     
     [self setLastServerRequestTime:[NSDate date]];
     
-    //NSLog(@"Params = %@", self.httpParams);
+    NSLog(@"CS_SDK: Reported success to CommuteStream.");
     
     [self.httpParams removeObjectForKey:@"lat"];
     [self.httpParams removeObjectForKey:@"lon"];
     [self.httpParams removeObjectForKey:@"acc"];
     [self.httpParams removeObjectForKey:@"fix_time"];
     [self.httpParams removeObjectForKey:@"agency_interest"];
-    
-    
+    [self.httpParams removeObjectForKey:@"limit_tracking"];
     
     [(NSMutableArray *)[self agencyInterest] removeAllObjects];
-    
-    //NSLog(@"Params = %@", self.httpParams);
     
 }
 
@@ -132,19 +141,7 @@
 - (NSString *)appVer {
     return app_ver;
 }
-/*
- - (NSString *)agencyID {
- return agency_id;
- }
- 
- - (NSString *)stopID {
- return stop_id;
- }
- 
- - (NSString *)routeID {
- return route_id;
- }
- */
+
 - (NSString *)latitude {
     return latitude;
 }
@@ -197,6 +194,10 @@
     return agencyStringToSend;
 }
 
+-(NSString *)theme {
+    return theme;
+}
+
 //SETTERS
 
 
@@ -236,19 +237,14 @@
     [self.httpParams setObject:appVer forKey:@"app_ver"];
     
 }
-/*
- - (void)setAgencyID:(NSString *)agencyID{
- agency_id = agencyID;
- }
- 
- - (void)setStopID:(NSString *)stopID {
- stop_id = stopID;
- }
- 
- - (void)setRouteID:(NSString *)routeID {
- route_id = routeID;
- }
- */
+
+- (void)setTheme:(NSString *)themeString {
+    theme = themeString;
+    [self.httpParams setObject:themeString forKey:@"theme"];
+    
+}
+
+
 - (void)setLatitude:(NSString *)thisLatitude {
     latitude = thisLatitude;
 }
@@ -266,6 +262,17 @@
 }
 
 
+-(NSString *)iOSLimitAdTracking {
+    return limit_tracking;
+}
+
+- (void)setIOSLimitAdTracking:(NSString *)value {
+    limit_tracking = value;
+    
+    [self.httpParams setObject:value forKey:@"limit_tracking"];
+}
+
+
 
 - (void)setIdfaSha:(NSString *)idfaSha {
     idfa_sha = idfaSha;
@@ -279,9 +286,8 @@
     [self.httpParams setObject:string forKey:@"mac_addr_sha"];
 }
 
-- (void)setTesting:(NSString *)thisTesting {
-    testing = thisTesting;
-    [self.httpParams setObject:thisTesting forKey:@"testing"];
+- (void)setTesting {
+    [self.httpParams setObject:@"true" forKey:@"testing"];
 }
 
 - (void)setLocation:(CLLocation *)thisLocation {
@@ -349,26 +355,38 @@
 
 - (void)trackingDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
     [self setAgencyInterest:@"TRACKING_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    
+    NSLog(@"CS_SDK: Tracking interest added to CommuteStream parameters.");
 }
 
 - (void)alertDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
     [self setAgencyInterest:@"ALERT_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    
+    NSLog(@"CS_SDK: Alert interest added to CommuteStream parameters.");
 }
 
 - (void)mapDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
     [self setAgencyInterest:@"MAP_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    
+    NSLog(@"CS_SDK: Map interest added to CommuteStream parameters.");
 }
 
 - (void)favoriteAdded:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
     [self setAgencyInterest:@"FAVORITE_ADDED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    
+    NSLog(@"CS_SDK: Favorite added to CommuteStream parameters.");
 }
 
 - (void)tripPlanningPointA:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
     [self setAgencyInterest:@"TRIP_PLANNING_POINT_A" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    
+    NSLog(@"CS_SDK: Trip Planning interest added to CommuteStream parameters.");
 }
 
 - (void)tripPlanningPointB:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
     [self setAgencyInterest:@"TRIP_PLANNING_POINT_B" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    
+    NSLog(@"CS_SDK: Trip Planning interest added to CommuteStream parameters.");
 }
 
 @end

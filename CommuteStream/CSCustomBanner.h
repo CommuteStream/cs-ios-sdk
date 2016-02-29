@@ -11,12 +11,14 @@
 #import "GADCustomEventBannerDelegate.h"
 #import "GADBannerView.h"
 #import "GADBannerViewDelegate.h"
+#import "CSNetworkEngine.h"
 
 @interface CSCustomBanner : NSObject <GADCustomEventBanner, GADBannerViewDelegate, UIGestureRecognizerDelegate> {
     GADBannerView *bannerView_;
 }
+
+@property (nonatomic, strong) CSNetworkEngine *csNetworkEngine;
 -(void)buildWebView:(NSMutableDictionary*)dict;
 + (NSString *)getSha;
 + (NSString *)getMacSha:(NSString *)deviceAddress;
-//static char* getMacAddress(char* macAddress, char* ifName);
 @end
