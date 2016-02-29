@@ -1,16 +1,14 @@
-//
-//  CSNetworkEngine.h
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
+#import "AFNetworking/AFNetworking.h"
 
-#import "MKNetworkEngine.h"
+typedef void (^CSNetworkSuccess)(NSURLSessionTask *task, id responseObject);
+typedef void (^CSNetworkFailure)(NSURLSessionTask *task, NSError *error);
 
-@interface CSNetworkEngine : MKNetworkEngine
+@interface CSNetworkEngine : NSObject
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams;
+@property NSString *hostName;
 
+-(CSNetworkEngine *) initWithHostName:(NSString *)hostName;
+
+-(void) getBanner:(NSMutableDictionary *)callParams withSuccess:(CSNetworkSuccess)success withFailure:(CSNetworkFailure)failure;
 
 @end

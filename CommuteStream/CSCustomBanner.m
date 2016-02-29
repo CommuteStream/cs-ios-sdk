@@ -130,18 +130,20 @@ NSString *bannerUrl;
     //get banner width and height
     bannerWidthInt = (int)(adSize.size.width);
     bannerHeightInt = (int)(adSize.size.height);
+    NSLog(@"Banner %d width, %d height", bannerWidthInt, bannerHeightInt);
     
     //Store Banner Width and height and skip_fetch false
     [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", bannerWidthInt]];
     [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", bannerHeightInt]];
     [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
     
-    NSString *appHostUrl = @"api.commutestreamdev.com:3000";
-    CSNetworkEngine *networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
+    //NSString *appHostUrl = @"api.commutestreamdev.com:3000";
+    //CSNetworkEngine *networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
     
     
     NSLog(@"Params SENT = %@", [[CommuteStream open] httpParams]);
     
+    /*
     __weak MKNetworkOperation *request = [networkEngine getBanner:[[CommuteStream open] httpParams]];
     
     
@@ -167,7 +169,7 @@ NSString *bannerUrl;
         
         
     }];
-    
+    */
     
     
     
@@ -175,6 +177,7 @@ NSString *bannerUrl;
 }
 
 -(void)buildWebView:(NSMutableDictionary*)dict {
+    NSLog(@"Web View %d width, %d height", bannerWidthInt, bannerHeightInt);
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, bannerWidthInt, bannerHeightInt)];
     NSString *htmlString = [dict objectForKey:@"html"];
     bannerUrl = [dict objectForKey:@"url"];

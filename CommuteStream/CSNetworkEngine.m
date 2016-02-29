@@ -8,23 +8,15 @@
 
 #import "CSNetworkEngine.h"
 
+
 @implementation CSNetworkEngine
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams {
-    
-    MKNetworkOperation *op = [self operationWithPath:@"banner" params:callParams httpMethod:@"GET" ssl:YES];
-    
-    [op addCompletionHandler:^(MKNetworkOperation *completedOperation){
-        //NSLog(@"---->completed");
-        
-    }errorHandler:^(MKNetworkOperation *completedOperation, NSError *error){
-        //NSLog(@"---->errored");
-    }];
-    
-    
-    [self enqueueOperation:op];
-    
-    return op;
+-(CSNetworkEngine *) initWithHostName:(NSString *)hostName {
+    self.hostName = hostName;
+    return self;
+}
+
+-(void) getBanner:(NSMutableDictionary *)callParams withSuccess:(CSNetworkSuccess)success withFailure:(CSNetworkFailure)failure {
     
 }
 

@@ -7,10 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GADCustomEventBanner.h"
-#import "GADCustomEventBannerDelegate.h"
-#import "GADBannerView.h"
-#import "GADBannerViewDelegate.h"
+#import "GoogleMobileAds/GADCustomEventBanner.h"
+#import "GoogleMobileAds/GADBannerViewDelegate.h"
 
 @interface CSCustomBanner : NSObject <GADCustomEventBanner, GADBannerViewDelegate, UIGestureRecognizerDelegate> {
     GADBannerView *bannerView_;
