@@ -9,6 +9,7 @@
 #import "CSNetworkEngine.h"
 #import "CommuteStream.h"
 #import "GADBannerViewDelegate.h"
+#import <AdSupport/ASIdentifierManager.h>
 
 
 @implementation CommuteStream

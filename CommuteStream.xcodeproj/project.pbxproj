@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1B7395181C875EF200606647 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7395171C875EF200606647 /* ImageIO.framework */; };
 		7F1880631915A76500BE18B5 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398F21915538600C8114E /* Reachability.h */; };
 		7F18806C1915A7AF00BE18B5 /* NSAlert+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398DE1915538600C8114E /* NSAlert+MKNetworkKitAdditions.h */; };
 		7F18806D1915A7AF00BE18B5 /* NSData+MKBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E01915538600C8114E /* NSData+MKBase64.h */; };
@@ -130,6 +131,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B7395171C875EF200606647 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1B7395191C875EF800606647 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		7F9BFD7D19225D2200DF667C /* GADAdMobExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
 		7F9BFD7E19225D2200DF667C /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		7F9BFD7F19225D2200DF667C /* GADAdSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B7395181C875EF200606647 /* ImageIO.framework in Frameworks */,
 				7FF399171915703400C8114E /* AdSupport.framework in Frameworks */,
 				7FF399181915703400C8114E /* AudioToolbox.framework in Frameworks */,
 				7FF399191915703400C8114E /* AVFoundation.framework in Frameworks */,
@@ -272,6 +276,8 @@
 		7FF398B5191552D000C8114E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B7395191C875EF800606647 /* CoreImage.framework */,
+				1B7395171C875EF200606647 /* ImageIO.framework */,
 				7FF3990F1915703400C8114E /* AdSupport.framework */,
 				7FF399101915703400C8114E /* AudioToolbox.framework */,
 				7FF399111915703400C8114E /* AVFoundation.framework */,
@@ -533,6 +539,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_MODULES_AUTOLINK = YES;
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
@@ -545,6 +553,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 x86_64 i386 armv7s";
@@ -624,8 +635,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/CommuteStream.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -644,8 +659,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/CommuteStream.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (

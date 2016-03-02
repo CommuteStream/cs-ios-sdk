@@ -17,8 +17,9 @@
 #include <sys/socket.h>
 #include <net/if_dl.h>
 #include <ifaddrs.h>
+#import <AdSupport/ASIdentifierManager.h>
 
-#define SDK_VERSION @"0.0.2"
+#define SDK_VERSION @"0.2.3"
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 
