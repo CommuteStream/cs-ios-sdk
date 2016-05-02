@@ -115,7 +115,7 @@ NSString *bannerUrl;
         
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
             
-            [CSCustomBanner getSha];
+            [CSCustomBanner getIdfa];
         }else{
             NSString *deviceMacAddress = [[NSString alloc] initWithUTF8String:getMacAddress(macAddress, ifName)];
             [CSCustomBanner getMacSha:deviceMacAddress];
@@ -158,23 +158,13 @@ NSString *bannerUrl;
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
         
-        
         if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
             [self performSelectorOnMainThread:@selector(buildWebView:) withObject:dict waitUntilDone:NO];
         }else{
             NSLog(@"CS_SDK: Failed to receive ad. Sending request to AdMob.");
             [self.delegate customEventBanner:self didFailAd:request.error];
         }
-        
-        
-        
-        
     }];
-    
-    
-    
-    
-    
 }
 
 -(void)buildWebView:(NSMutableDictionary*)dict {
@@ -194,10 +184,6 @@ NSString *bannerUrl;
     [webView addGestureRecognizer:webViewTapped];
     webView.scrollView.scrollEnabled = NO;
     webView.scrollView.bounces = NO;
-    
-    
-    
-    
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)sender
@@ -209,10 +195,7 @@ NSString *bannerUrl;
 }
 
 
-
-
-
-+ (NSString *)getSha {
++ (NSString *)getIdfa {
 #ifndef PRE_6
     Class asIDManagerClass = NSClassFromString(@"ASIdentifierManager");
     if (asIDManagerClass) {
@@ -255,11 +238,10 @@ NSString *bannerUrl;
         
         for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
             [sha1 appendFormat:@"%02x", digest[i]];
+        NSString *adIdSha = [NSString stringWithFormat:@"%@",sha1];
         
-        adId = [NSString stringWithFormat:@"%@",sha1];
-        //mmh_MD5_SHA1
-        
-        [[CommuteStream open] setIdfaSha:adId];
+        [[CommuteStream open] setIdfaSha:adIdSha];
+        [[CommuteStream open] setIdfa:adId];
         
         return adId;
     }

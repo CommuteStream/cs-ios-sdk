@@ -30,6 +30,7 @@
 	NSMutableArray *agency_interest;
     
 	NSString *idfa_sha;
+    NSString *idfa;
 	NSString *mac_addr_sha;
 	NSString *testing;
     NSString *limit_tracking;
@@ -53,7 +54,7 @@
 
 - (BOOL)isInitialized;
 
--(void)reportSuccessfulGet;
+- (void)reportSuccessfulGet;
 
 - (NSString *)adUnitUUID;
 
@@ -89,15 +90,15 @@
 
 - (NSMutableDictionary *)httpParams;
 
--(NSDate *)lastServerRequestTime;
+- (NSDate *)lastServerRequestTime;
 
--(NSDate *)lastParameterChange;
+- (NSDate *)lastParameterChange;
 
--(NSString *)agencyStringToSend;
+- (NSString *)agencyStringToSend;
 
--(NSString *)theme;
+- (NSString *)theme;
 
--(NSString *)iOSLimitAdTracking;
+- (NSString *)iOSLimitAdTracking;
 
 - (void)setIOSLimitAdTracking:(NSString *)value;
 
@@ -129,6 +130,8 @@
 
 - (void)setAgencyInterest:(NSString *)typeString agencyID:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
 
+- (void)setIdfa:(NSString *)idfa;
+
 - (void)setIdfaSha:(NSString *)idfaSha;
 
 - (void)setMacAddrSha:(NSString *)string;
@@ -139,13 +142,13 @@
 
 - (void)setHttpParams:(NSMutableDictionary *)httpParams;
 
--(void)setLastServerRequestTime:(NSDate *)time;
+- (void)setLastServerRequestTime:(NSDate *)time;
 
--(void)setLastParameterChange:(NSDate *)time;
+- (void)setLastParameterChange:(NSDate *)time;
 
--(void)setAgencyStringToSend:(NSString *)string;
+- (void)setAgencyStringToSend:(NSString *)string;
 
--(void)setTheme:(NSString *)themeString;
+- (void)setTheme:(NSString *)themeString;
 
 - (void)trackingDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
 

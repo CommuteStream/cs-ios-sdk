@@ -273,13 +273,14 @@
     [self.httpParams setObject:value forKey:@"limit_tracking"];
 }
 
-
+- (void)setIdfa:(NSString *)thisIdfa {
+    idfa = thisIdfa;
+    [self.httpParams setObject:idfa forKey:@"idfa"];
+}
 
 - (void)setIdfaSha:(NSString *)idfaSha {
     idfa_sha = idfaSha;
     [self.httpParams setObject:idfaSha forKey:@"idfa_sha"];
-    
-    
 }
 
 - (void)setMacAddrSha:(NSString *)string {
