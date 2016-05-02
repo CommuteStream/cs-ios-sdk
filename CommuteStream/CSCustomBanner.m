@@ -161,7 +161,7 @@ NSString *bannerUrl;
         if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
             [self performSelectorOnMainThread:@selector(buildWebView:) withObject:dict waitUntilDone:NO];
         }else{
-            NSLog(@"CS_SDK: Failed to receive ad. Sending request to AdMob.");
+            NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
             [self.delegate customEventBanner:self didFailAd:request.error];
         }
     }];

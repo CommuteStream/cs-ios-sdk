@@ -58,38 +58,24 @@
 
 
 -(void)onParameterCheckTimer:(NSTimer *)paramTimer {
-    NSLog(@"CS_SDK: Timer Fired");
-    
-    
     if ([self isInitialized] && [self lastParameterChange] > [self lastServerRequestTime]) {
         
-        NSLog(@"CS_SDK: Updating the server.");
+        NSLog(@"CS_SDK: Sending client updates");
         
         [self.httpParams setObject:@"true" forKey:@"skip_fetch"];
         
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
-            
             NSLog(@"Advertising tracking disabled.");
             [[CommuteStream open] setIOSLimitAdTracking:@"true"];
         }else {
             NSLog(@"Advertising tracking enabled.");
         }
-        
-        
-        
-        
+
         __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
         
-        
         [request setCompletionBlock:^{
-            
             [self reportSuccessfulGet];
-            
             [agency_interest removeAllObjects];
-            
-            
-            
-            
         }];
     }
 }
