@@ -1,12 +1,3 @@
-//
-//  CSCustomBanner.m
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
-
-
 #import "CSCustomBanner.h"
 #import "CSNetworkEngine.h"
 #import "CommuteStream.h"
@@ -19,7 +10,7 @@
 #include <ifaddrs.h>
 #import <AdSupport/ASIdentifierManager.h>
 
-#define SDK_VERSION @"0.2.3"
+#define SDK_VERSION @"0.3.1"
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 
