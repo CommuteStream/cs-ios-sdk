@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		1B67178D1D0F3A9B006D51F8 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1B67178E1D0F3A9B006D51F8 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				1B6717931D0F3AB5006D51F8 /* ShellScript */,
+			);
+			dependencies = (
+				1B6717921D0F3AAA006D51F8 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
 		7F3CD5FA192CBB2000237DF3 /* UniversalLib */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 7F3CD5FD192CBB2000237DF3 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
@@ -21,6 +33,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B7395181C875EF200606647 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7395171C875EF200606647 /* ImageIO.framework */; };
 		7F1880631915A76500BE18B5 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398F21915538600C8114E /* Reachability.h */; };
 		7F18806C1915A7AF00BE18B5 /* NSAlert+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398DE1915538600C8114E /* NSAlert+MKNetworkKitAdditions.h */; };
@@ -31,7 +44,7 @@
 		7F1880711915A7AF00BE18B5 /* UIAlertView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E81915538600C8114E /* UIAlertView+MKNetworkKitAdditions.h */; };
 		7F1880721915A7AF00BE18B5 /* UIImageView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EA1915538600C8114E /* UIImageView+MKNetworkKitAdditions.h */; };
 		7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
-		7FF398BC191552D000C8114E /* CommuteStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
+		7FF398BC191552D000C8114E /* CommuteStream.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
 		7FF398BE191552D000C8114E /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
 		7FF398C5191552D100C8114E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398C4191552D100C8114E /* XCTest.framework */; };
 		7FF398C6191552D100C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
@@ -59,11 +72,11 @@
 		7FF3991C1915703400C8114E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF399141915703400C8114E /* MessageUI.framework */; };
 		7FF3991D1915703400C8114E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF399151915703400C8114E /* StoreKit.framework */; };
 		7FF3991E1915703400C8114E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF399161915703400C8114E /* SystemConfiguration.framework */; };
-		7FF399251915711E00C8114E /* CSCustomBanner.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; };
-		7FF3996C191573FB00C8114E /* CSNetworkEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398FE191553C300C8114E /* CSNetworkEngine.h */; };
-		7FF3996D1915748000C8114E /* MKNetworkEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EC1915538600C8114E /* MKNetworkEngine.h */; };
-		7FF3996F1915748000C8114E /* MKNetworkKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EE1915538600C8114E /* MKNetworkKit.h */; };
-		7FF399701915748000C8114E /* MKNetworkOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EF1915538600C8114E /* MKNetworkOperation.h */; };
+		7FF399251915711E00C8114E /* CSCustomBanner.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; };
+		7FF3996C191573FB00C8114E /* CSNetworkEngine.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398FE191553C300C8114E /* CSNetworkEngine.h */; };
+		7FF3996D1915748000C8114E /* MKNetworkEngine.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398EC1915538600C8114E /* MKNetworkEngine.h */; };
+		7FF3996F1915748000C8114E /* MKNetworkKit.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398EE1915538600C8114E /* MKNetworkKit.h */; };
+		7FF399701915748000C8114E /* MKNetworkOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398EF1915538600C8114E /* MKNetworkOperation.h */; };
 		7FF399B91915818500C8114E /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398DF1915538600C8114E /* NSAlert+MKNetworkKitAdditions.m */; };
 		7FF399BA1915818500C8114E /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398E11915538600C8114E /* NSData+MKBase64.m */; };
 		7FF399BB1915818500C8114E /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398E31915538600C8114E /* NSDate+RFC1123.m */; };
@@ -77,6 +90,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1B6717911D0F3AAA006D51F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7FF398AB191552D000C8114E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7FF398B2191552D000C8114E;
+			remoteInfo = CommuteStream;
+		};
 		7FF398C9191552D100C8114E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7FF398AB191552D000C8114E /* Project object */;
@@ -113,19 +133,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7FF398B1191552D000C8114E /* CopyFiles */ = {
+		7FF398B1191552D000C8114E /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				7FF3996D1915748000C8114E /* MKNetworkEngine.h in CopyFiles */,
-				7FF3996F1915748000C8114E /* MKNetworkKit.h in CopyFiles */,
-				7FF399701915748000C8114E /* MKNetworkOperation.h in CopyFiles */,
-				7FF3996C191573FB00C8114E /* CSNetworkEngine.h in CopyFiles */,
-				7FF399251915711E00C8114E /* CSCustomBanner.h in CopyFiles */,
-				7FF398BC191552D000C8114E /* CommuteStream.h in CopyFiles */,
+				7FF3996D1915748000C8114E /* MKNetworkEngine.h in Copy Files */,
+				7FF3996F1915748000C8114E /* MKNetworkKit.h in Copy Files */,
+				7FF399701915748000C8114E /* MKNetworkOperation.h in Copy Files */,
+				7FF3996C191573FB00C8114E /* CSNetworkEngine.h in Copy Files */,
+				7FF399251915711E00C8114E /* CSCustomBanner.h in Copy Files */,
+				7FF398BC191552D000C8114E /* CommuteStream.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -381,6 +402,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1B67178B1D0F38BB006D51F8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		7FF398B2191552D000C8114E /* CommuteStream */ = {
 			isa = PBXNativeTarget;
@@ -388,9 +420,11 @@
 			buildPhases = (
 				7FF398AF191552D000C8114E /* Sources */,
 				7FF398B0191552D000C8114E /* Frameworks */,
-				7FF398B1191552D000C8114E /* CopyFiles */,
+				7FF398B1191552D000C8114E /* Copy Files */,
 				7F1880611915A6E600BE18B5 /* CopyFiles */,
 				7F1880641915A76F00BE18B5 /* CopyFiles */,
+				1B67178B1D0F38BB006D51F8 /* Headers */,
+				1B6717751D0F3675006D51F8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -427,6 +461,12 @@
 			attributes = {
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CommuteStream;
+				TargetAttributes = {
+					1B67178D1D0F3A9B006D51F8 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TF5BTLR683;
+					};
+				};
 			};
 			buildConfigurationList = 7FF398AE191552D000C8114E /* Build configuration list for PBXProject "CommuteStream" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -443,6 +483,7 @@
 				7FF398B2191552D000C8114E /* CommuteStream */,
 				7FF398C2191552D100C8114E /* CommuteStreamTests */,
 				7F3CD5FA192CBB2000237DF3 /* UniversalLib */,
+				1B67178D1D0F3A9B006D51F8 /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -459,6 +500,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B6717751D0F3675006D51F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		1B6717931D0F3AB5006D51F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
+		};
 		7F3CD5FE192CBB4200237DF3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,6 +583,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1B6717921D0F3AAA006D51F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7FF398B2191552D000C8114E /* CommuteStream */;
+			targetProxy = 1B6717911D0F3AAA006D51F8 /* PBXContainerItemProxy */;
+		};
 		7FF398CA191552D100C8114E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7FF398B2191552D000C8114E /* CommuteStream */;
@@ -535,6 +607,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1B67178F1D0F3A9B006D51F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1B6717901D0F3A9B006D51F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7F3CD5FB192CBB2000237DF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -595,8 +681,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 			};
 			name = Debug;
 		};
@@ -616,7 +704,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -627,6 +715,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = debugging;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -650,7 +740,10 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SEPARATE_STRIP = NO;
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
@@ -662,6 +755,7 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_MODULES_AUTOLINK = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/CommuteStream.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -673,7 +767,10 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SEPARATE_STRIP = NO;
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Release;
@@ -719,6 +816,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1B67178E1D0F3A9B006D51F8 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B67178F1D0F3A9B006D51F8 /* Debug */,
+				1B6717901D0F3A9B006D51F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7F3CD5FD192CBB2000237DF3 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
