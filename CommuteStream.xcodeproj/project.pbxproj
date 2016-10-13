@@ -43,6 +43,24 @@
 		7F1880701915A7AF00BE18B5 /* NSString+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E61915538600C8114E /* NSString+MKNetworkKitAdditions.h */; };
 		7F1880711915A7AF00BE18B5 /* UIAlertView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E81915538600C8114E /* UIAlertView+MKNetworkKitAdditions.h */; };
 		7F1880721915A7AF00BE18B5 /* UIImageView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EA1915538600C8114E /* UIImageView+MKNetworkKitAdditions.h */; };
+		7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */; };
+		7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */; };
+		7FC68B251DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */; };
+		7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */; };
+		7FC68B2B1DAECE2600DBFD9B /* CSMRAIDResizeProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */; };
+		7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */; };
+		7FC68B2F1DAECEB100DBFD9B /* CSMRAIDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */; };
+		7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B301DAECF5400DBFD9B /* CSLogger.h */; };
+		7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B311DAECF5400DBFD9B /* CSLogger.m */; };
+		7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */; };
+		7FC68B371DAED0D900DBFD9B /* CSMRAIDModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */; };
+		7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */; };
+		7FC68B3C1DAED20700DBFD9B /* CSMRAIDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */; };
+		7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */; };
+		7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */; };
+		7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; };
+		7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; };
 		7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
 		7FF398BC191552D000C8114E /* CommuteStream.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
 		7FF398BE191552D000C8114E /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
@@ -172,6 +190,26 @@
 		7F9BFD8C19225D3700DF667C /* GADCustomEventInterstitial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitial.h; sourceTree = "<group>"; };
 		7F9BFD8D19225D3700DF667C /* GADCustomEventInterstitialDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitialDelegate.h; sourceTree = "<group>"; };
 		7F9BFD8E19225D3700DF667C /* GADCustomEventRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADCustomEventRequest.h; sourceTree = "<group>"; };
+		7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDView.h; path = CommuteStream/CSMRAIDView.h; sourceTree = "<group>"; };
+		7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDView.m; path = CommuteStream/CSMRAIDView.m; sourceTree = "<group>"; };
+		7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDOrientationProperties.h; path = CommuteStream/CSMRAIDOrientationProperties.h; sourceTree = "<group>"; };
+		7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDOrientationProperties.m; path = CommuteStream/CSMRAIDOrientationProperties.m; sourceTree = "<group>"; };
+		7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDResizeProperties.h; path = CommuteStream/CSMRAIDResizeProperties.h; sourceTree = "<group>"; };
+		7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDResizeProperties.m; path = CommuteStream/CSMRAIDResizeProperties.m; sourceTree = "<group>"; };
+		7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDParser.h; path = CommuteStream/CSMRAIDParser.h; sourceTree = "<group>"; };
+		7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDParser.m; path = CommuteStream/CSMRAIDParser.m; sourceTree = "<group>"; };
+		7FC68B301DAECF5400DBFD9B /* CSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLogger.h; sourceTree = "<group>"; };
+		7FC68B311DAECF5400DBFD9B /* CSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLogger.m; sourceTree = "<group>"; };
+		7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDModalViewController.h; path = CommuteStream/CSMRAIDModalViewController.h; sourceTree = "<group>"; };
+		7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDModalViewController.m; path = CommuteStream/CSMRAIDModalViewController.m; sourceTree = "<group>"; };
+		7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CSMRAIDServiceDelegate.h; path = CommuteStream/CSMRAIDServiceDelegate.h; sourceTree = "<group>"; };
+		7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDUtil.h; path = CommuteStream/CSMRAIDUtil.h; sourceTree = "<group>"; };
+		7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDUtil.m; path = CommuteStream/CSMRAIDUtil.m; sourceTree = "<group>"; };
+		7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDSettings.h; path = CommuteStream/CSMRAIDSettings.h; sourceTree = "<group>"; };
+		7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDSettings.m; path = CommuteStream/CSMRAIDSettings.m; sourceTree = "<group>"; };
+		7FC68B411DAED47700DBFD9B /* mraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = mraid.js; path = CommuteStream/mraid.js; sourceTree = "<group>"; };
+		7FC68B421DAED47700DBFD9B /* mraidjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mraidjs.h; path = CommuteStream/mraidjs.h; sourceTree = "<group>"; };
+		7FC68B441DAED48D00DBFD9B /* CloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloseButton.h; path = CommuteStream/CloseButton.h; sourceTree = "<group>"; };
 		7FF398B3191552D000C8114E /* libCommuteStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommuteStream.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF398B6191552D000C8114E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FF398BA191552D000C8114E /* CommuteStream-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CommuteStream-Prefix.pch"; sourceTree = "<group>"; };
@@ -275,6 +313,40 @@
 			name = "Google AdMob";
 			sourceTree = "<group>";
 		};
+		7FC68B261DAECDD000DBFD9B /* MRAID */ = {
+			isa = PBXGroup;
+			children = (
+				7FC68B441DAED48D00DBFD9B /* CloseButton.h */,
+				7FC68B411DAED47700DBFD9B /* mraid.js */,
+				7FC68B421DAED47700DBFD9B /* mraidjs.h */,
+				7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */,
+				7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */,
+				7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */,
+				7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */,
+				7FC68B271DAECDF300DBFD9B /* properties */,
+				7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */,
+				7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */,
+				7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */,
+				7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */,
+				7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */,
+				7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */,
+				7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */,
+			);
+			name = MRAID;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7FC68B271DAECDF300DBFD9B /* properties */ = {
+			isa = PBXGroup;
+			children = (
+				7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */,
+				7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */,
+				7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */,
+				7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */,
+			);
+			name = properties;
+			sourceTree = "<group>";
+		};
 		7FF398AA191552D000C8114E = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +389,9 @@
 		7FF398B8191552D000C8114E /* CommuteStream */ = {
 			isa = PBXGroup;
 			children = (
+				7FC68B301DAECF5400DBFD9B /* CSLogger.h */,
+				7FC68B311DAECF5400DBFD9B /* CSLogger.m */,
+				7FC68B261DAECDD000DBFD9B /* MRAID */,
 				7F2367C31917F1D300E3B73C /* Google AdMob */,
 				7FF398DC1915538600C8114E /* MKNetworkKit */,
 				7FF398BB191552D000C8114E /* CommuteStream.h */,
@@ -407,7 +482,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */,
+				7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */,
+				7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */,
+				7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */,
+				7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */,
+				7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */,
+				7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */,
+				7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */,
+				7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */,
 				1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */,
+				7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,18 +631,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC68B2F1DAECEB100DBFD9B /* CSMRAIDParser.m in Sources */,
+				7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */,
 				7FF399C2191581A500C8114E /* Reachability.m in Sources */,
+				7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */,
+				7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */,
 				7FF399C01915819E00C8114E /* MKNetworkEngine.m in Sources */,
 				7FF399C11915819E00C8114E /* MKNetworkOperation.m in Sources */,
 				7FF399B91915818500C8114E /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				7FF399BA1915818500C8114E /* NSData+MKBase64.m in Sources */,
+				7FC68B2B1DAECE2600DBFD9B /* CSMRAIDResizeProperties.m in Sources */,
+				7FC68B3C1DAED20700DBFD9B /* CSMRAIDUtil.m in Sources */,
 				7FF399BB1915818500C8114E /* NSDate+RFC1123.m in Sources */,
+				7FC68B251DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m in Sources */,
 				7FF399BC1915818500C8114E /* NSDictionary+RequestEncoding.m in Sources */,
 				7FF399BD1915818500C8114E /* NSString+MKNetworkKitAdditions.m in Sources */,
 				7FF399BE1915818500C8114E /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				7FF399BF1915818500C8114E /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				7FF39900191553C300C8114E /* CSNetworkEngine.m in Sources */,
 				7FF39903191554CB00C8114E /* CSCustomBanner.m in Sources */,
+				7FC68B371DAED0D900DBFD9B /* CSMRAIDModalViewController.m in Sources */,
 				7FF398BE191552D000C8114E /* CommuteStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -823,6 +916,7 @@
 				1B6717901D0F3A9B006D51F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F3CD5FD192CBB2000237DF3 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
 			isa = XCConfigurationList;
