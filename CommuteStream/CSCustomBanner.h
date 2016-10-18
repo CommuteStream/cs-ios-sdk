@@ -11,6 +11,4 @@
 
 @property (nonatomic, strong) CSNetworkEngine *csNetworkEngine;
 -(void)buildWebView:(NSMutableDictionary*)dict;
-+ (NSString *)getIdfa;
-+ (NSString *)getMacSha:(NSString *)deviceAddress;
 @end

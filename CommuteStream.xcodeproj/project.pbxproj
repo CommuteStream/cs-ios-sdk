@@ -45,22 +45,23 @@
 		7F1880721915A7AF00BE18B5 /* UIImageView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EA1915538600C8114E /* UIImageView+MKNetworkKitAdditions.h */; };
 		7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */; };
-		7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */; };
+		7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B251DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */; };
-		7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */; };
+		7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B2B1DAECE2600DBFD9B /* CSMRAIDResizeProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */; };
-		7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */; };
+		7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B2F1DAECEB100DBFD9B /* CSMRAIDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */; };
-		7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B301DAECF5400DBFD9B /* CSLogger.h */; };
+		7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B301DAECF5400DBFD9B /* CSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B311DAECF5400DBFD9B /* CSLogger.m */; };
-		7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */; };
+		7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B371DAED0D900DBFD9B /* CSMRAIDModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */; };
-		7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */; };
+		7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B3C1DAED20700DBFD9B /* CSMRAIDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */; };
-		7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */; };
+		7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */; };
-		7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; };
-		7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; };
+		7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
 		7FF398BC191552D000C8114E /* CommuteStream.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
 		7FF398BE191552D000C8114E /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
@@ -482,8 +483,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */,
 				7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */,
+				7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */,
 				7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */,
 				7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */,
 				7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */,
@@ -491,8 +492,9 @@
 				7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */,
 				7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */,
 				7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */,
-				1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */,
 				7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */,
+				1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */,
+				7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

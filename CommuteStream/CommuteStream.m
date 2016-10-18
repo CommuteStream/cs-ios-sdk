@@ -2,6 +2,61 @@
 #import "CSNetworkEngine.h"
 #import "GADBannerViewDelegate.h"
 #import <AdSupport/ASIdentifierManager.h>
+#import <CommonCrypto/CommonDigest.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <net/if_dl.h>
+#include <ifaddrs.h>
+
+
+#define SDK_VERSION @"0.3.1"
+
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+
+#define IFT_ETHER 0x6
+#pragma mark -
+
+
+
+static char* getMacAddress(char* macAddress, char* ifName) {
+    
+    int  success;
+    struct ifaddrs * addrs;
+    struct ifaddrs * cursor;
+    const struct sockaddr_dl * dlAddr;
+    const unsigned char* base;
+    int i;
+    
+    success = getifaddrs(&addrs) == 0;
+    if (success) {
+        cursor = addrs;
+        while (cursor != 0) {
+            if ( (cursor->ifa_addr->sa_family == AF_LINK)
+                && (((const struct sockaddr_dl *) cursor->ifa_addr)->sdl_type == IFT_ETHER) && strcmp(ifName,  cursor->ifa_name)==0 ) {
+                dlAddr = (const struct sockaddr_dl *) cursor->ifa_addr;
+                base = (const unsigned char*) &dlAddr->sdl_data[dlAddr->sdl_nlen];
+                strcpy(macAddress, "");
+                for (i = 0; i < dlAddr->sdl_alen; i++) {
+                    if (i != 0) {
+                        strcat(macAddress, ":");
+                    }
+                    char partialAddr[3];
+                    sprintf(partialAddr, "%02X", base[i]);
+                    strcat(macAddress, partialAddr);
+                    
+                }
+            }
+            cursor = cursor->ifa_next;
+        }
+        
+        freeifaddrs(addrs);
+    }
+    return macAddress;
+}
+
 
 
 
@@ -41,8 +96,16 @@
     
     BOOL initialized;
     NSString *agencyStringToSend;
+    
+    NSString *appVersion;
+    NSString *localAppName;
+    
+    
 
 }
+
+char macAddress[32];
+char ifName[3] = "en0";
 
 //create singleton
 + (CommuteStream *)open {
@@ -80,10 +143,116 @@
         
         parameterCheckTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(onParameterCheckTimer:) userInfo:nil repeats:YES];
         
+        appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        
+        localAppName = [[[NSBundle mainBundle] infoDictionary]  objectForKey:@"CFBundleName"];
+        
+        [self setAppVer:appVersion];
+        [self setSdkName:@"com.commutestreamsdk"];
+        [self setAppName:localAppName];
+        
+        [self setSdkVer:SDK_VERSION];
+        
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+            
+            [self getIdfa];
+        }else{
+            NSString *deviceMacAddress = [[NSString alloc] initWithUTF8String:getMacAddress(macAddress, ifName)];
+            [self getMacSha:deviceMacAddress];
+            
+        }
+        
+        if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
+            
+            NSLog(@"Advertising tracking disabled.");
+            [self setIOSLimitAdTracking:@"true"];
+        }else {
+            NSLog(@"Advertising tracking enabled.");
+        }
+        
     }
     
     return self;
 }
+
+
+- (NSString *)getIdfa {
+#ifndef PRE_6
+    Class asIDManagerClass = NSClassFromString(@"ASIdentifierManager");
+    if (asIDManagerClass) {
+        NSString *adId = nil;
+        
+        SEL sharedManagerSel = NSSelectorFromString(@"sharedManager");
+        if ([asIDManagerClass respondsToSelector:sharedManagerSel]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            id adManager = [asIDManagerClass performSelector:sharedManagerSel];
+            if (adManager) {
+                SEL advertisingIdentifierSelector = NSSelectorFromString(@"advertisingIdentifier");
+                
+                if ([adManager respondsToSelector:advertisingIdentifierSelector]) {
+                    
+                    id uuid = [adManager performSelector:advertisingIdentifierSelector];
+                    
+                    if (!uuid) {
+                        return nil;
+                    }
+                    
+                    SEL uuidStringSelector = NSSelectorFromString(@"UUIDString");
+                    if ([uuid respondsToSelector:uuidStringSelector]) {
+                        adId = [uuid performSelector:uuidStringSelector];
+#pragma clang diagnostic pop
+                    }
+                }
+            }
+        }
+        
+        if (!adId) {
+            return nil;
+        }
+        
+        //SHA1
+        NSData *sha1_data = [adId dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+        CC_SHA1(sha1_data.bytes, (CC_LONG)sha1_data.length, digest);
+        NSMutableString* sha1 = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+        
+        for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+            [sha1 appendFormat:@"%02x", digest[i]];
+        NSString *adIdSha = [NSString stringWithFormat:@"%@",sha1];
+        
+        [self setIdfaSha:adIdSha];
+        [self setIdfa:adId];
+        
+        return adId;
+    }
+#endif
+    
+    return nil;
+}
+
+- (NSString *) getMacSha:(NSString *) deviceAddress {
+    
+    //SHA1
+    NSData *sha1_data = [deviceAddress dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(sha1_data.bytes, (CC_LONG)sha1_data.length, digest);
+    NSMutableString* sha1 = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+        [sha1 appendFormat:@"%02x", digest[i]];
+    
+    deviceAddress = [NSString stringWithFormat:@"%@",sha1];
+    
+    [self setMacAddrSha:deviceAddress];
+    
+    return deviceAddress;
+}
+
+
+
+#pragma mark -
 
 
 
@@ -99,8 +268,9 @@
             [[CommuteStream open] setIOSLimitAdTracking:@"true"];
         }else {
             NSLog(@"Advertising tracking enabled.");
+            
         }
-
+        
         __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
         
         [request setCompletionBlock:^{
