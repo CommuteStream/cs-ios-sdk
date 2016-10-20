@@ -55,7 +55,7 @@
 
 - (void)setIOSLimitAdTracking:(NSString *)value;
 
-
+- (void)getAd:(NSObject *)banner;
 
 - (void)setIsInitialized:(BOOL)value;
 

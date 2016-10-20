@@ -21,7 +21,7 @@
 
 
 GADBannerView *testView;
-UIWebView *webView;
+
 
 CGSize myAdSize;
 NSString *bannerUrl;
@@ -60,51 +60,17 @@ int portNumber = 3000;
     csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
     [csNetworkEngine setPortNumber: portNumber];
     
-    __weak MKNetworkOperation *request = [csNetworkEngine getBanner:[[CommuteStream open] httpParams]];
+    
+    
+        
+    
+    [[CommuteStream open] getAd:self];
     
     
     
-    [request setCompletionBlock:^{
-        
-        [[CommuteStream open] reportSuccessfulGet];
-        
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
-        
-        if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
-            [self performSelectorOnMainThread:@selector(buildWebView:) withObject:dict waitUntilDone:NO];
-        }else{
-            NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-            [self.delegate customEventBanner:self didFailAd:request.error];
-        }
-    }];
 }
 
--(void)buildWebView:(NSMutableDictionary*)dict {
-    NSLog(@"CS_SDK: Generating UIWebView for ad display.");
-    NSLog(@"Web View %f width, %f height", myAdSize.width, myAdSize.height);
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, myAdSize.width, myAdSize.height)];
-    NSString *htmlString = [dict objectForKey:@"html"];
-    bannerUrl = [dict objectForKey:@"url"];
-    
-    [webView loadHTMLString:htmlString baseURL:nil];
-    
-    [self.delegate customEventBanner:self didReceiveAd:webView];
-    
-    UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
-    webViewTapped.numberOfTapsRequired = 1;
-    webViewTapped.delegate = self;
-    [webView addGestureRecognizer:webViewTapped];
-    webView.scrollView.scrollEnabled = NO;
-    webView.scrollView.bounces = NO;
-}
 
-- (void)tapAction:(UITapGestureRecognizer *)sender
-{
-    //NSLog(@"%@", bannerUrl);
-    
-    NSURL *url = [NSURL URLWithString:bannerUrl];
-    [[UIApplication sharedApplication] openURL:url];
-}
 
 
 

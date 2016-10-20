@@ -10,5 +10,5 @@
 }
 
 @property (nonatomic, strong) CSNetworkEngine *csNetworkEngine;
--(void)buildWebView:(NSMutableDictionary*)dict;
+
 @end

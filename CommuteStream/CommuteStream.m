@@ -9,6 +9,9 @@
 #include <sys/socket.h>
 #include <net/if_dl.h>
 #include <ifaddrs.h>
+#import "CSCustomBanner.h"
+
+
 
 
 #define SDK_VERSION @"0.3.1"
@@ -99,6 +102,9 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     
     NSString *appVersion;
     NSString *localAppName;
+    UIWebView *webView;
+    NSMutableDictionary *dict;
+    NSString *bannerUrl;
     
     
 
@@ -280,6 +286,9 @@ char ifName[3] = "en0";
     }
 }
 
+
+
+
 - (void)reportSuccessfulGet {
     
     [self setLastServerRequestTime:[NSDate date]];
@@ -296,6 +305,64 @@ char ifName[3] = "en0";
     [(NSMutableArray *)[self agencyInterest] removeAllObjects];
     
 }
+
+- (void)getAd:(CSCustomBanner *)banner{
+    
+    __weak MKNetworkOperation *request = [networkEngine getBanner:[self httpParams]];
+    
+
+    [request setCompletionBlock:^{
+        
+        [self reportSuccessfulGet];
+        
+        dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
+    
+        if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
+            [self performSelectorOnMainThread:@selector(buildAd:) withObject:banner waitUntilDone:NO];
+        }else{
+            NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
+            [banner.delegate customEventBanner:banner didFailAd:request.error];
+        }
+    }];
+
+    
+     
+}
+
+-(void)buildAd:(CSCustomBanner *)banner {
+    [banner.delegate customEventBanner:banner didReceiveAd:[self buildWebView:dict bannerView:banner]];
+}
+
+-(UIView *)buildWebView:(NSMutableDictionary *)dictionary bannerView:(CSCustomBanner *)banner {
+        NSLog(@"CS_SDK: Generating UIWebView for ad display.");
+        //NSLog(@"Web View %f width, %f height", myAdSize.width, myAdSize.height);
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, [banner_width floatValue], [banner_height floatValue])];
+        NSString *htmlString = [dictionary objectForKey:@"html"];
+        bannerUrl = [dictionary objectForKey:@"url"];
+        
+        [webView loadHTMLString:htmlString baseURL:nil];
+        
+        //[self.delegate customEventBanner:self didReceiveAd:webView];
+        
+        UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        webViewTapped.numberOfTapsRequired = 1;
+        webViewTapped.delegate = banner;
+        [webView addGestureRecognizer:webViewTapped];
+        webView.scrollView.scrollEnabled = NO;
+        webView.scrollView.bounces = NO;
+    
+    return webView;
+   
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)sender
+{
+    NSLog(@"%@", bannerUrl);
+    
+    NSURL *url = [NSURL URLWithString:bannerUrl];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 
 
 //GETTERS
