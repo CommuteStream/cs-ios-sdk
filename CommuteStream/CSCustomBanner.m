@@ -57,8 +57,8 @@ int portNumber = 3000;
    
     
     
-    csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
-    [csNetworkEngine setPortNumber: portNumber];
+    //csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
+    //[csNetworkEngine setPortNumber: portNumber];
     
     
     

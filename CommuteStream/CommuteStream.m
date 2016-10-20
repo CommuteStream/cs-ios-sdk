@@ -10,6 +10,7 @@
 #include <net/if_dl.h>
 #include <ifaddrs.h>
 #import "CSCustomBanner.h"
+#import "CSAdFactory.h"
 
 
 
@@ -103,7 +104,7 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     NSString *appVersion;
     NSString *localAppName;
     UIWebView *webView;
-    NSMutableDictionary *dict;
+    
     NSString *bannerUrl;
     
     
@@ -315,10 +316,13 @@ char ifName[3] = "en0";
         
         [self reportSuccessfulGet];
         
-        dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
+        [dict setObject:banner forKey:@"banner"];
+        [dict setObject:banner_height forKey: @"bannerHeight"];
+        [dict setObject:banner_width forKey: @"bannerWidth"];
     
         if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
-            [self performSelectorOnMainThread:@selector(buildAd:) withObject:banner waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
         }else{
             NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
             [banner.delegate customEventBanner:banner didFailAd:request.error];
@@ -329,24 +333,31 @@ char ifName[3] = "en0";
      
 }
 
--(void)buildAd:(CSCustomBanner *)banner {
-    [banner.delegate customEventBanner:banner didReceiveAd:[self buildWebView:dict bannerView:banner]];
+-(void)buildAd:(NSMutableDictionary *)dict {
+    
+    CSCustomBanner *customBanner = [dict objectForKey:@"banner"];
+    
+    CSAdFactory *factory = [CSAdFactory factoryWithAdType:@"basic_banner_ad"];
+    
+    UIView *adView = [factory adViewFromDictionary:dict];
+    
+    
+    //UIView *adView = [self buildWebView:dict];
+    
+    [customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
 }
 
--(UIView *)buildWebView:(NSMutableDictionary *)dictionary bannerView:(CSCustomBanner *)banner {
+-(UIView *)buildWebView:(NSMutableDictionary *)dict {
         NSLog(@"CS_SDK: Generating UIWebView for ad display.");
-        //NSLog(@"Web View %f width, %f height", myAdSize.width, myAdSize.height);
+        NSLog(@"Web View %f width, %f height", [banner_width floatValue],  [banner_height floatValue]);
         webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, [banner_width floatValue], [banner_height floatValue])];
-        NSString *htmlString = [dictionary objectForKey:@"html"];
-        bannerUrl = [dictionary objectForKey:@"url"];
-        
+        NSString *htmlString = [dict objectForKey:@"html"];
+        bannerUrl = [dict objectForKey:@"url"];
         [webView loadHTMLString:htmlString baseURL:nil];
-        
-        //[self.delegate customEventBanner:self didReceiveAd:webView];
         
         UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
         webViewTapped.numberOfTapsRequired = 1;
-        webViewTapped.delegate = banner;
+        webViewTapped.delegate = [dict objectForKey:@"banner"];
         [webView addGestureRecognizer:webViewTapped];
         webView.scrollView.scrollEnabled = NO;
         webView.scrollView.bounces = NO;

@@ -62,6 +62,10 @@
 		7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FD99A191DB9497000E33562 /* CSAdFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A171DB9497000E33562 /* CSAdFactory.h */; };
+		7FD99A1A1DB9497000E33562 /* CSAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A181DB9497000E33562 /* CSAdFactory.m */; };
+		7FD99A1D1DB9544E00E33562 /* CSBasicBannerAdFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */; };
+		7FD99A1E1DB9544E00E33562 /* CSBasicBannerAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A1C1DB9544E00E33562 /* CSBasicBannerAdFactory.m */; };
 		7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
 		7FF398BC191552D000C8114E /* CommuteStream.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
 		7FF398BE191552D000C8114E /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
@@ -211,6 +215,10 @@
 		7FC68B411DAED47700DBFD9B /* mraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = mraid.js; path = CommuteStream/mraid.js; sourceTree = "<group>"; };
 		7FC68B421DAED47700DBFD9B /* mraidjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mraidjs.h; path = CommuteStream/mraidjs.h; sourceTree = "<group>"; };
 		7FC68B441DAED48D00DBFD9B /* CloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloseButton.h; path = CommuteStream/CloseButton.h; sourceTree = "<group>"; };
+		7FD99A171DB9497000E33562 /* CSAdFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSAdFactory.h; sourceTree = "<group>"; };
+		7FD99A181DB9497000E33562 /* CSAdFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSAdFactory.m; sourceTree = "<group>"; };
+		7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBasicBannerAdFactory.h; sourceTree = "<group>"; };
+		7FD99A1C1DB9544E00E33562 /* CSBasicBannerAdFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBasicBannerAdFactory.m; sourceTree = "<group>"; };
 		7FF398B3191552D000C8114E /* libCommuteStream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommuteStream.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF398B6191552D000C8114E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FF398BA191552D000C8114E /* CommuteStream-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CommuteStream-Prefix.pch"; sourceTree = "<group>"; };
@@ -402,6 +410,10 @@
 				7FF398FF191553C300C8114E /* CSNetworkEngine.m */,
 				7FF39901191554CB00C8114E /* CSCustomBanner.h */,
 				7FF39902191554CB00C8114E /* CSCustomBanner.m */,
+				7FD99A171DB9497000E33562 /* CSAdFactory.h */,
+				7FD99A181DB9497000E33562 /* CSAdFactory.m */,
+				7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */,
+				7FD99A1C1DB9544E00E33562 /* CSBasicBannerAdFactory.m */,
 			);
 			path = CommuteStream;
 			sourceTree = "<group>";
@@ -490,9 +502,11 @@
 				7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */,
 				7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */,
 				7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */,
+				7FD99A1D1DB9544E00E33562 /* CSBasicBannerAdFactory.h in Headers */,
 				7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */,
 				7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */,
 				7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */,
+				7FD99A191DB9497000E33562 /* CSAdFactory.h in Headers */,
 				1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */,
 				7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */,
 			);
@@ -634,7 +648,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC68B2F1DAECEB100DBFD9B /* CSMRAIDParser.m in Sources */,
+				7FD99A1A1DB9497000E33562 /* CSAdFactory.m in Sources */,
 				7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */,
+				7FD99A1E1DB9544E00E33562 /* CSBasicBannerAdFactory.m in Sources */,
 				7FF399C2191581A500C8114E /* Reachability.m in Sources */,
 				7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */,
 				7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */,
