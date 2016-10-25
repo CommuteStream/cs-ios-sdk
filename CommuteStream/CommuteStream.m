@@ -347,33 +347,6 @@ char ifName[3] = "en0";
     [customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
 }
 
--(UIView *)buildWebView:(NSMutableDictionary *)dict {
-        NSLog(@"CS_SDK: Generating UIWebView for ad display.");
-        NSLog(@"Web View %f width, %f height", [banner_width floatValue],  [banner_height floatValue]);
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, [banner_width floatValue], [banner_height floatValue])];
-        NSString *htmlString = [dict objectForKey:@"html"];
-        bannerUrl = [dict objectForKey:@"url"];
-        [webView loadHTMLString:htmlString baseURL:nil];
-        
-        UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
-        webViewTapped.numberOfTapsRequired = 1;
-        webViewTapped.delegate = [dict objectForKey:@"banner"];
-        [webView addGestureRecognizer:webViewTapped];
-        webView.scrollView.scrollEnabled = NO;
-        webView.scrollView.bounces = NO;
-    
-    return webView;
-   
-}
-
-- (void)tapAction:(UITapGestureRecognizer *)sender
-{
-    NSLog(@"%@", bannerUrl);
-    
-    NSURL *url = [NSURL URLWithString:bannerUrl];
-    [[UIApplication sharedApplication] openURL:url];
-}
-
 
 
 //GETTERS
