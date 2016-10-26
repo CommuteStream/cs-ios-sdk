@@ -43,7 +43,7 @@
 - (void)tapViewAction:(UITapGestureRecognizer *)sender
 {
     NSLog(@"%@", basicBannerAdUrl);
-    NSLog(@"---------000-%@", self.superview);
+    
     NSURL *url = [NSURL URLWithString:basicBannerAdUrl];
     [[UIApplication sharedApplication] openURL:url];
     

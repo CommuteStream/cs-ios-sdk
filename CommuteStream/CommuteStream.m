@@ -106,6 +106,9 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     UIWebView *webView;
     
     NSString *bannerUrl;
+    NSTimer *impressionMonitorTimer;
+    
+    UIView *adView;
     
     
 
@@ -334,19 +337,50 @@ char ifName[3] = "en0";
 }
 
 -(void)buildAd:(NSMutableDictionary *)dict {
+    adView = nil;
     
     CSCustomBanner *customBanner = [dict objectForKey:@"banner"];
     
     CSAdFactory *factory = [CSAdFactory factoryWithAdType:@"basic_banner_ad"];
     
-    UIView *adView = [factory adViewFromDictionary:dict];
+    adView = [factory adViewFromDictionary:dict];
     
     
     //UIView *adView = [self buildWebView:dict];
     
     [customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
+    
+    NSLog(@"---------000-%@", adView.superview.window);
+    
+    impressionMonitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkImpression:) userInfo:adView repeats:YES];
+    
+    
+    
+    
+    
+    
 }
 
+- (void)checkImpression:(NSTimer *)timerParameter {
+    
+    CGPoint originalPoint = CGPointMake(adView.frame.origin.x, adView.frame.origin.y);
+    
+    CGPoint pointInAppFrame = [adView convertPoint:originalPoint toView:adView.superview.window];
+    
+    //NSLog(@"-----adView Rect %@", NSStringFromCGRect(CGRectMake(pointInAppFrame.x, pointInAppFrame.y, adView.frame.size.width, adView.frame.size.height)));
+    
+    //NSLog(@"-----App Rect %@", NSStringFromCGRect(adView.superview.window.frame));
+    
+    
+    if(CGRectIntersectsRect(CGRectMake(pointInAppFrame.x, pointInAppFrame.y, adView.frame.size.width, adView.frame.size.height), adView.superview.window.frame)){
+        NSLog(@"impression counted - shut timer down");
+        [impressionMonitorTimer invalidate];
+        impressionMonitorTimer = nil;
+    }
+    
+    
+    
+}
 
 
 //GETTERS
