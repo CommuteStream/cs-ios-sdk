@@ -22,14 +22,19 @@ NSString *bannerUrl;
     NSLog(@"CS_SDK: Generating UIWebView for ad display.");
     //NSLog(@"Web View %f width, %f height", [banner_width floatValue],  [banner_height floatValue]);
     CSTestHTMLBanner *webView = [[CSTestHTMLBanner alloc] initWithFrame:CGRectMake(0.0, 0.0, banner_width, banner_height)];
-    NSString *htmlString = @"<html><body onload='alert(\"test\");'><h1>Hello, world!</h1></body></html>";
+    //NSString *htmlPath = @"<html><body><h1>Hello, world!</h1></body></html>";
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
+    
+    
+    //NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"test_creative" ofType:@"html"];
+    //NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    //NSString* htmlString = [[NSString alloc] initWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     //NSString *htmlString = [dictionary objectForKey:@"html"];
     bannerUrl = [dictionary objectForKey:@"url"];
-    [webView loadHTML:htmlString];
+    //[webView loadHTML:htmlPath];
+    [webView loadURLRequest:[NSURLRequest requestWithURL:url]];
     
     [webView setUrl:bannerUrl];
-    //webView.scrollView.scrollEnabled = NO;
-    //webView.scrollView.bounces = NO;
     
     
     
@@ -38,6 +43,8 @@ NSString *bannerUrl;
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    
     
     NSLog(@"callllleeeddd it");
     

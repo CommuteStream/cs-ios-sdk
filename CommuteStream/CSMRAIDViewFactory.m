@@ -50,7 +50,7 @@
     //NSLog(@"Web View %f width, %f height", [banner_width floatValue],  [banner_height floatValue]);
     //CSMRAIDView *webView = [[CSTestHTMLBanner alloc] initWithFrame:CGRectMake(0.0, 0.0, banner_width, banner_height)];
     //NSString *htmlString = [dictionary objectForKey:@"html"];
-    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"banner.getOrientationProperties" ofType:@"html"];
+    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     NSString* htmlData = [[NSString alloc] initWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     CSMRAIDView *webView = [[CSMRAIDView alloc] initWithFrame:CGRectMake(0.0, 0.0, banner_width, banner_height) withHtmlData:htmlData withBaseURL:bundleUrl supportedFeatures:@[MRAIDSupportsSMS, MRAIDSupportsTel, MRAIDSupportsCalendar, MRAIDSupportsStorePicture, MRAIDSupportsInlineVideo] delegate:self serviceDelegate:self rootViewController:[self topViewController:[self topViewController]]];

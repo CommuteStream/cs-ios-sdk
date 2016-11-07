@@ -341,18 +341,15 @@ char ifName[3] = "en0";
     
     CSCustomBanner *customBanner = [dict objectForKey:@"banner"];
     
-    CSAdFactory *factory = [CSAdFactory factoryWithAdType:@"basic_banner_ad"];
+    CSAdFactory *factory = [CSAdFactory factoryWithAdType:@"test_html_banner"];
     
     adView = [factory adViewFromDictionary:dict];
     
     
-    //UIView *adView = [self buildWebView:dict];
-    
     [customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
     
-    NSLog(@"---------000-%@", adView.superview.window);
     
-    impressionMonitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkImpression:) userInfo:adView repeats:YES];
+    impressionMonitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForImpression:) userInfo:adView repeats:YES];
     
     
     
@@ -361,7 +358,7 @@ char ifName[3] = "en0";
     
 }
 
-- (void)checkImpression:(NSTimer *)timerParameter {
+- (void)checkForImpression:(NSTimer *)timerParameter {
     
     CGPoint originalPoint = CGPointMake(adView.frame.origin.x, adView.frame.origin.y);
     
@@ -371,11 +368,14 @@ char ifName[3] = "en0";
     
     //NSLog(@"-----App Rect %@", NSStringFromCGRect(adView.superview.window.frame));
     
+    BOOL hasShown = CGRectIntersectsRect(CGRectMake(pointInAppFrame.x, pointInAppFrame.y, adView.frame.size.width, adView.frame.size.height), adView.superview.window.frame);
     
-    if(CGRectIntersectsRect(CGRectMake(pointInAppFrame.x, pointInAppFrame.y, adView.frame.size.width, adView.frame.size.height), adView.superview.window.frame)){
+    
+    if(hasShown && (adView.hidden == NO)){
         NSLog(@"impression counted - shut timer down");
         [impressionMonitorTimer invalidate];
         impressionMonitorTimer = nil;
+        //api call
     }
     
     

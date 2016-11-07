@@ -7,11 +7,20 @@
 //
 
 #import "CSTestHTMLBanner.h"
+#import "CSWebView.h"
+#import "CSGestureRecognizer.h"
+
+
+
 
 @implementation CSTestHTMLBanner{
     NSString *bannerUrl;
-    WKWebView *webView;
+    CSWebView *webView;
+    BOOL bannerClicked;
+    
 }
+
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,8 +28,14 @@
     if (self) {
         
         
-        webView = [[WKWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
+        webView = [[CSWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
+        //[webView setUserInteractionEnabled:NO];
+        webView.scrollView.scrollEnabled = NO;
+        webView.scrollView.bounces = NO;
         [self addSubview:webView];
+        webView.delegate = self;
+        
+        bannerClicked = NO;
         
     }
     return self;
@@ -39,6 +54,10 @@
     [webView loadHTMLString:htmlString baseURL:nil];
 }
 
+- (void)loadURLRequest:(NSURLRequest *)request {
+    [webView loadRequest:request];
+}
+
 
 - (void)setUrl:(NSString *)url{
     bannerUrl = url;
@@ -46,23 +65,55 @@
     //[[[self configuration] preferences] setJavaScriptEnabled:YES];
     
     
-    UITapGestureRecognizer *webViewTappedRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
-    webViewTappedRecognizer.numberOfTapsRequired = 1;
+    CSGestureRecognizer *webViewTappedRecognizer = [[CSGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
+    //webViewTappedRecognizer.numberOfTapsRequired = 1;
+    //webViewTappedRecognizer.numberOfTouchesRequired = 1;
     webViewTappedRecognizer.delegate = self;
     NSLog(@"Web View Tapped Delegate: %@", webViewTappedRecognizer.delegate);
     [webView addGestureRecognizer:webViewTappedRecognizer];
     
     
+    
 }
+
+- (void)removeScrollAndBounce {
+    webView.scrollView.scrollEnabled = NO;
+    webView.scrollView.bounces = NO;
+}
+
 
 - (void)tapViewAction:(UITapGestureRecognizer *)sender
 {
-    NSLog(@"%@", bannerUrl);
+    //NSLog(@"%@", bannerUrl);
+    NSLog(@"------------> tap recognizer called");
+    bannerClicked = YES;
+    //NSURL *url = [NSURL URLWithString:bannerUrl];
+    //[[UIApplication sharedApplication] openURL:url];
+}
+
+//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    NSURL *url = [NSURL URLWithString:bannerUrl];
-    [[UIApplication sharedApplication] openURL:url];
+    //NSLog(@"009909009090");
+    //[webView setUserInteractionEnabled:YES];
+    //bannerClicked = YES;
     
+//}
+
+
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    //NSLog(@"registereeeeeeeeder - %@", request);
     
+    NSLog(@"------------> webview navigating 1");
+    
+    if (bannerClicked) {
+        NSLog(@"------------> webview navigating 2");
+        NSLog(@"------------> request URL - %@", [request URL]);
+        [[UIApplication sharedApplication] openURL:[request URL]];
+        return NO;
+    }
+    
+    return YES;
 }
 
 

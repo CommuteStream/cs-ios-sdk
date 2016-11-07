@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
-@interface CSTestHTMLBanner : UIView<UIGestureRecognizerDelegate>
+
+
+
+
+
+@interface CSTestHTMLBanner : UIView<UIGestureRecognizerDelegate, UIWebViewDelegate>
 
  - (void)setUrl:(NSString *)url;
+- (void)removeScrollAndBounce;
  - (void)loadHTML:(NSString *)htmlString;
+- (void)loadURLRequest:(NSURLRequest *)request;
 
 @end
