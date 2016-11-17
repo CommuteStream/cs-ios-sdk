@@ -28,15 +28,37 @@
     if (self) {
         
         
-        webView = [[CSWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
+    
+    }
+    return self;
+}
+
+- (id)initWithAdUnitFrame:(CGRect)adFrame andCreativeFrame:(CGRect)creativeFrame {
+    if ((self = [super initWithFrame:CGRectMake(adFrame.origin.x, adFrame.origin.y, adFrame.size.width, adFrame.size.height)])) {
+        webView = [[CSWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, creativeFrame.size.width, creativeFrame.size.height)];
         //[webView setUserInteractionEnabled:NO];
         webView.scrollView.scrollEnabled = NO;
         webView.scrollView.bounces = NO;
         [self addSubview:webView];
         webView.delegate = self;
         
+        webView.scrollView.zoomScale = 1.3;
+        [webView setScalesPageToFit:YES];
+        [self setBackgroundColor:[UIColor blackColor]];
         bannerClicked = NO;
         
+        
+        double creativeHeight = round(floorf(creativeFrame.size.height * 100 + 0.5) / 100);
+        double adFrameHeight = round(floorf(adFrame.size.height * 100 + 0.5) / 100);
+        
+        double creativeWidth = round(floorf(creativeFrame.size.width* 100 + 0.5) / 100);
+        double adFrameWidth = round(floorf(adFrame.size.width * 100 + 0.5) / 100);
+        
+        double multiplier = adFrameHeight/creativeHeight;
+      
+        float xOffset = (adFrameWidth - (creativeWidth * multiplier))/2;
+        [webView setFrame:CGRectMake(xOffset, 0.0, (creativeWidth * multiplier), (creativeHeight * multiplier))];
+
     }
     return self;
 }
@@ -65,12 +87,12 @@
     //[[[self configuration] preferences] setJavaScriptEnabled:YES];
     
     
-    CSGestureRecognizer *webViewTappedRecognizer = [[CSGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
+    CSGestureRecognizer *webViewTouchRecognizer = [[CSGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
     //webViewTappedRecognizer.numberOfTapsRequired = 1;
     //webViewTappedRecognizer.numberOfTouchesRequired = 1;
-    webViewTappedRecognizer.delegate = self;
-    NSLog(@"Web View Tapped Delegate: %@", webViewTappedRecognizer.delegate);
-    [webView addGestureRecognizer:webViewTappedRecognizer];
+    webViewTouchRecognizer.delegate = self;
+    NSLog(@"Web View Tapped Delegate: %@", webViewTouchRecognizer.delegate);
+    [webView addGestureRecognizer:webViewTouchRecognizer];
     
     
     
@@ -85,7 +107,6 @@
 - (void)tapViewAction:(UITapGestureRecognizer *)sender
 {
     //NSLog(@"%@", bannerUrl);
-    NSLog(@"------------> tap recognizer called");
     bannerClicked = YES;
     //NSURL *url = [NSURL URLWithString:bannerUrl];
     //[[UIApplication sharedApplication] openURL:url];

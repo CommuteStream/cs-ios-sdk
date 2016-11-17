@@ -20,5 +20,6 @@
 - (void)removeScrollAndBounce;
  - (void)loadHTML:(NSString *)htmlString;
 - (void)loadURLRequest:(NSURLRequest *)request;
+- (id)initWithAdUnitFrame:(CGRect)adFrame andCreativeFrame:(CGRect)creativeFrame;
 
 @end

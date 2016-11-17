@@ -317,12 +317,29 @@ char ifName[3] = "en0";
 
     [request setCompletionBlock:^{
         
+        
+        NSLog(@"----->----->%@", [[[request readonlyResponse] allHeaderFields] description]);
+    
+        
         [self reportSuccessfulGet];
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
+        
+        //Get width and height from separate headers in the response to later be used for scaling within the ad unit
+        //Get type of add from header
+        
+        NSString *creative_width = @"310.0";
+        NSString *creative_height = @"42.0";
+        
         [dict setObject:banner forKey:@"banner"];
+        //ad unit with and height
         [dict setObject:banner_height forKey: @"bannerHeight"];
         [dict setObject:banner_width forKey: @"bannerWidth"];
+        [dict setObject: creative_width forKey:@"creativeWidth"];
+        [dict setObject: creative_height forKey:@"creativeHeight"];
+        
+        
+        //ADD creative width and height to the dict
     
         if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
             [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
