@@ -78,6 +78,8 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     NSString *acc;
     NSString *fix_time;
     NSString *theme;
+    NSString *session_ID;
+    NSString *time_zone;
     
     NSMutableArray *agency_interest;
     
@@ -148,8 +150,8 @@ char ifName[3] = "en0";
         
         NSString *appHostUrl = @"api.commutestream.com";
         networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
-        int portNumber = 3000;
-        [networkEngine setPortNumber: portNumber];
+        //int portNumber = 3000;
+        //[networkEngine setPortNumber: portNumber];
         
         parameterCheckTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(onParameterCheckTimer:) userInfo:nil repeats:YES];
         
@@ -281,6 +283,30 @@ char ifName[3] = "en0";
             
         }
         
+        NSMutableString *uuidStringReplacement;
+        
+        uint8_t randomBytes[16];
+        int result = SecRandomCopyBytes(kSecRandomDefault, 16, randomBytes);
+        if(result == 0) {
+            uuidStringReplacement = [[NSMutableString alloc] initWithCapacity:16*2];
+            for(NSInteger index = 0; index < 16; index++)
+            {
+                [uuidStringReplacement appendFormat: @"%02x", randomBytes[index]];
+            }
+            NSLog(@"uuidStringReplacement is %@", uuidStringReplacement);
+        } else {
+            NSLog(@"SecRandomCopyBytes failed for some reason");
+        }
+        
+        NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+        NSString *tzName = [timeZone name];
+        
+        
+        [[CommuteStream open] setSessionID: uuidStringReplacement];
+        [[CommuteStream open] setTimeZone:tzName];
+        
+        
+        
         __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
         
         [request setCompletionBlock:^{
@@ -298,6 +324,8 @@ char ifName[3] = "en0";
     [self setLastServerRequestTime:[NSDate date]];
     
     NSLog(@"CS_SDK: Reported success to CommuteStream.");
+    
+    NSLog(@"Time zone----y--y- %@", time_zone);
     
     [self.httpParams removeObjectForKey:@"lat"];
     [self.httpParams removeObjectForKey:@"lon"];
@@ -319,29 +347,37 @@ char ifName[3] = "en0";
         
         
         NSLog(@"----->----->%@", [[[request readonlyResponse] allHeaderFields] description]);
+        
+        NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
+        
+        
     
         
         [self reportSuccessfulGet];
         
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:(NSDictionary *)request.responseJSON];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        
+        NSLog(@"----->>>))>----->%@", [request responseString]);
         
         //Get width and height from separate headers in the response to later be used for scaling within the ad unit
         //Get type of add from header
         
-        NSString *creative_width = @"310.0";
-        NSString *creative_height = @"42.0";
+        NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
+        NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
         
         [dict setObject:banner forKey:@"banner"];
-        //ad unit with and height
+        [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
         [dict setObject:banner_height forKey: @"bannerHeight"];
         [dict setObject:banner_width forKey: @"bannerWidth"];
         [dict setObject: creative_width forKey:@"creativeWidth"];
         [dict setObject: creative_height forKey:@"creativeHeight"];
+        [dict setObject:[request responseString] forKey:@"htmlbody"];
         
         
         //ADD creative width and height to the dict
-    
-        if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
+        
+        //if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
+        if ([request responseString]){
             [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
         }else{
             NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
@@ -358,7 +394,7 @@ char ifName[3] = "en0";
     
     CSCustomBanner *customBanner = [dict objectForKey:@"banner"];
     
-    CSAdFactory *factory = [CSAdFactory factoryWithAdType:@"test_html_banner"];
+    CSAdFactory *factory = [CSAdFactory factoryWithAdType:[dict objectForKey:@"kind"]];
     
     adView = [factory adViewFromDictionary:dict];
     
@@ -413,6 +449,14 @@ char ifName[3] = "en0";
 
 - (NSString *)bannerWidth {
     return banner_width;
+}
+
+- (NSString *)sessionID {
+    return session_ID;
+}
+
+- (NSString *)timeZone {
+    return time_zone;
 }
 
 - (NSString *)sdkName {
@@ -504,6 +548,16 @@ char ifName[3] = "en0";
 - (void)setBannerWidth:(NSString *)bannerWidth {
     banner_width = bannerWidth;
     [self.httpParams setObject:bannerWidth forKey:@"banner_width"];
+}
+
+- (void)setSessionID:(NSString *)sessionID {
+    session_ID = sessionID;
+    [self.httpParams setObject:sessionID forKey:@"session"];
+}
+
+- (void)setTimeZone:(NSString *)timeZone {
+    time_zone = timeZone;
+    [self.httpParams setObject:timeZone forKey:@"timezone"];
 }
 
 - (void)setSdkName:(NSString *)sdkName {

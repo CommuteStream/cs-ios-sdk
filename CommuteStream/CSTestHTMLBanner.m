@@ -16,7 +16,7 @@
 @implementation CSTestHTMLBanner{
     NSString *bannerUrl;
     CSWebView *webView;
-    BOOL bannerClicked;
+    BOOL userInteracted;
     
 }
 
@@ -43,9 +43,11 @@
         webView.delegate = self;
         
         webView.scrollView.zoomScale = 1.3;
+        
         [webView setScalesPageToFit:YES];
         [self setBackgroundColor:[UIColor blackColor]];
-        bannerClicked = NO;
+        userInteracted = NO;
+        
         
         
         double creativeHeight = round(floorf(creativeFrame.size.height * 100 + 0.5) / 100);
@@ -58,6 +60,15 @@
       
         float xOffset = (adFrameWidth - (creativeWidth * multiplier))/2;
         [webView setFrame:CGRectMake(xOffset, 0.0, (creativeWidth * multiplier), (creativeHeight * multiplier))];
+        
+        CSGestureRecognizer *webViewTouchRecognizer = [[CSGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
+        
+        webViewTouchRecognizer.delegate = self;
+    
+        [webView addGestureRecognizer:webViewTouchRecognizer];
+        
+        [webView stringByEvaluatingJavaScriptFromString:@"window.open = function (open) { return function  (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
+
 
     }
     return self;
@@ -87,12 +98,6 @@
     //[[[self configuration] preferences] setJavaScriptEnabled:YES];
     
     
-    CSGestureRecognizer *webViewTouchRecognizer = [[CSGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
-    //webViewTappedRecognizer.numberOfTapsRequired = 1;
-    //webViewTappedRecognizer.numberOfTouchesRequired = 1;
-    webViewTouchRecognizer.delegate = self;
-    NSLog(@"Web View Tapped Delegate: %@", webViewTouchRecognizer.delegate);
-    [webView addGestureRecognizer:webViewTouchRecognizer];
     
     
     
@@ -107,9 +112,10 @@
 - (void)tapViewAction:(UITapGestureRecognizer *)sender
 {
     //NSLog(@"%@", bannerUrl);
-    bannerClicked = YES;
+    userInteracted = YES;
     //NSURL *url = [NSURL URLWithString:bannerUrl];
     //[[UIApplication sharedApplication] openURL:url];
+    NSLog(@"Web View Tapped");
 }
 
 //-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -122,14 +128,44 @@
 
 
 
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    //NSLog(@"registereeeeeeeeder - %@", request);
+
     
-    NSLog(@"------------> webview navigating 1");
+    //NSURL *URL = [request URL];
+
+    if (userInteracted) {
+        
+        switch (navigationType) {
+            case UIWebViewNavigationTypeLinkClicked:
+                NSLog(@"UIWebViewNavigationTypeLinkClicked");
+                break;
+                
+            case UIWebViewNavigationTypeFormSubmitted:
+                NSLog(@"UIWebViewNavigationTypeFormSubmitted");
+                break;
+                
+            case UIWebViewNavigationTypeBackForward:
+                NSLog(@"UIWebViewNavigationTypeBackForward");
+                break;
+                
+            case UIWebViewNavigationTypeReload:
+                NSLog(@"UIWebViewNavigationTypeReload");
+                break;
+                
+            case UIWebViewNavigationTypeFormResubmitted:
+                NSLog(@"UIWebViewNavigationTypeFormResubmitted");
+                break;
+                
+            case UIWebViewNavigationTypeOther:
+                NSLog(@"UIWebViewNavigationTypeOther");
+                break;
+                
+            default:
+                NSLog(@"Unknown");
+                break;
+        }
     
-    if (bannerClicked) {
-        NSLog(@"------------> webview navigating 2");
-        NSLog(@"------------> request URL - %@", [request URL]);
         [[UIApplication sharedApplication] openURL:[request URL]];
         return NO;
     }

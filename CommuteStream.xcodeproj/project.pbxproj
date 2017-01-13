@@ -63,6 +63,11 @@
 		7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */; };
 		7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FCA5F0E1E0B261500936E40 /* cs_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F091E0B261500936E40 /* cs_logo.png */; };
+		7FCA5F0F1E0B261500936E40 /* hammer-time.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F0B1E0B261500936E40 /* hammer-time.min.js */; };
+		7FCA5F101E0B261500936E40 /* hammer.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F0C1E0B261500936E40 /* hammer.min.js */; };
+		7FCA5F111E0B261500936E40 /* pan-gesture-banner.html in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F0D1E0B261500936E40 /* pan-gesture-banner.html */; };
+		7FCFCB4E1DEF54E300ACFB7C /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD99A191DB9497000E33562 /* CSAdFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A171DB9497000E33562 /* CSAdFactory.h */; };
 		7FD99A1A1DB9497000E33562 /* CSAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A181DB9497000E33562 /* CSAdFactory.m */; };
@@ -229,6 +234,10 @@
 		7FC68B411DAED47700DBFD9B /* mraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = mraid.js; path = CommuteStream/mraid.js; sourceTree = "<group>"; };
 		7FC68B421DAED47700DBFD9B /* mraidjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mraidjs.h; path = CommuteStream/mraidjs.h; sourceTree = "<group>"; };
 		7FC68B441DAED48D00DBFD9B /* CloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloseButton.h; path = CommuteStream/CloseButton.h; sourceTree = "<group>"; };
+		7FCA5F091E0B261500936E40 /* cs_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cs_logo.png; sourceTree = "<group>"; };
+		7FCA5F0B1E0B261500936E40 /* hammer-time.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "hammer-time.min.js"; sourceTree = "<group>"; };
+		7FCA5F0C1E0B261500936E40 /* hammer.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hammer.min.js; sourceTree = "<group>"; };
+		7FCA5F0D1E0B261500936E40 /* pan-gesture-banner.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "pan-gesture-banner.html"; sourceTree = "<group>"; };
 		7FD99A171DB9497000E33562 /* CSAdFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSAdFactory.h; sourceTree = "<group>"; };
 		7FD99A181DB9497000E33562 /* CSAdFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSAdFactory.m; sourceTree = "<group>"; };
 		7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBasicBannerAdFactory.h; sourceTree = "<group>"; };
@@ -456,9 +465,37 @@
 			name = properties;
 			sourceTree = "<group>";
 		};
+		7FCA5F071E0B261500936E40 /* pan-gesture-banner */ = {
+			isa = PBXGroup;
+			children = (
+				7FCA5F081E0B261500936E40 /* img */,
+				7FCA5F0A1E0B261500936E40 /* js */,
+				7FCA5F0D1E0B261500936E40 /* pan-gesture-banner.html */,
+			);
+			path = "pan-gesture-banner";
+			sourceTree = "<group>";
+		};
+		7FCA5F081E0B261500936E40 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				7FCA5F091E0B261500936E40 /* cs_logo.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		7FCA5F0A1E0B261500936E40 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				7FCA5F0B1E0B261500936E40 /* hammer-time.min.js */,
+				7FCA5F0C1E0B261500936E40 /* hammer.min.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
 		7FD99A421DBE7E8000E33562 /* creatives */ = {
 			isa = PBXGroup;
 			children = (
+				7FCA5F071E0B261500936E40 /* pan-gesture-banner */,
 				7FD99A431DBE7E8000E33562 /* banner.addEventListener.html */,
 				7FD99A441DBE7E8000E33562 /* banner.callTel.html */,
 				7FD99A451DBE7E8000E33562 /* banner.close.html */,
@@ -703,6 +740,7 @@
 				7FD99A1D1DB9544E00E33562 /* CSBasicBannerAdFactory.h in Headers */,
 				7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */,
 				7FD99A911DBE7FA900E33562 /* CSTestHTMLBanner.h in Headers */,
+				7FCFCB4E1DEF54E300ACFB7C /* CSCustomBanner.h in Headers */,
 				7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */,
 				7FD99A391DBE696600E33562 /* CSBasicBannerAd.h in Headers */,
 				7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */,
@@ -769,6 +807,9 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = TF5BTLR683;
 					};
+					7FF398B2191552D000C8114E = {
+						LastSwiftMigration = 0810;
+					};
 				};
 			};
 			buildConfigurationList = 7FF398AE191552D000C8114E /* Build configuration list for PBXProject "CommuteStream" */;
@@ -796,7 +837,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FCA5F111E0B261500936E40 /* pan-gesture-banner.html in Resources */,
+				7FCA5F101E0B261500936E40 /* hammer.min.js in Resources */,
+				7FCA5F0E1E0B261500936E40 /* cs_logo.png in Resources */,
 				7FF398D1191552D100C8114E /* InfoPlist.strings in Resources */,
+				7FCA5F0F1E0B261500936E40 /* hammer-time.min.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,7 +1089,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_MODULES_AUTOLINK = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1052,6 +1097,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CommuteStream",
@@ -1063,6 +1109,9 @@
 				SEPARATE_STRIP = NO;
 				SKIP_INSTALL = NO;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "CommuteStream/CommuteStream-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
@@ -1071,7 +1120,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CLANG_MODULES_AUTOLINK = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1080,6 +1129,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "CommuteStream/CommuteStream-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CommuteStream",
@@ -1090,6 +1140,8 @@
 				SEPARATE_STRIP = NO;
 				SKIP_INSTALL = NO;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "CommuteStream/CommuteStream-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Release;

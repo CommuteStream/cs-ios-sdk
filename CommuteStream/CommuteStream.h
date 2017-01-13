@@ -15,6 +15,13 @@
 
 - (NSString *)bannerWidth;
 
+
+
+- (NSString *)sessionID;
+
+- (NSString *)timeZone;
+
+
 - (NSString *)sdkName;
 
 - (NSString *)appName;
@@ -64,6 +71,13 @@
 - (void)setBannerHeight:(NSString *)bannerHeight;
 
 - (void)setBannerWidth:(NSString *)bannerWidth;
+
+
+
+- (void)setSessionID:(NSString *)sessionID;
+
+- (void)setTimeZone:(NSString *)timeZone;
+
 
 - (void)setSdkName:(NSString *)sdkName;
 

@@ -12,7 +12,7 @@
 
 - (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams {
     
-    MKNetworkOperation *op = [self operationWithPath:@"banner" params:callParams httpMethod:@"GET" ssl:YES];
+    MKNetworkOperation *op = [self operationWithPath:@"v2/banner" params:callParams httpMethod:@"GET" ssl:YES];
     
     [op addCompletionHandler:^(MKNetworkOperation *operation){
         NSLog(@"CS_SDK: Call to banner server successful");
