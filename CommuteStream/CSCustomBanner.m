@@ -71,7 +71,9 @@ int portNumber = 3000;
 }
 
 
-
+- (void)didReceiveAdWithView:(UIView *)adView {
+    [self.delegate customEventBanner:self didReceiveAd:adView];
+}
 
 
 #pragma mark -

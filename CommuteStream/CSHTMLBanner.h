@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "CSNetworkEngine.h"
 
 
 
 
 
 
-@interface CSTestHTMLBanner : UIView<UIGestureRecognizerDelegate, UIWebViewDelegate>
+@interface CSHTMLBanner : UIView<UIGestureRecognizerDelegate, UIWebViewDelegate>
 
  - (void)setUrl:(NSString *)url;
 - (void)removeScrollAndBounce;
  - (void)loadHTML:(NSString *)htmlString;
 - (void)loadURLRequest:(NSURLRequest *)request;
 - (id)initWithAdUnitFrame:(CGRect)adFrame andCreativeFrame:(CGRect)creativeFrame;
+- (void)setRequestID:(NSString *)requestString;
+
+@property (nonatomic, strong) CSNetworkEngine *csNetworkEngine;
 
 @end

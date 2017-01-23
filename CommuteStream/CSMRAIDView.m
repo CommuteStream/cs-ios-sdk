@@ -135,6 +135,7 @@ typedef enum {
            delegate:(id<CSMRAIDViewDelegate>)delegate
     serviceDelegate:(id<CSMRAIDServiceDelegate>)serviceDelegate
  rootViewController:(UIViewController *)rootViewController
+ andCreativeFrame:(CGRect)creativeFrame
 {
     return [self initWithFrame:frame
                   withHtmlData:htmlData
@@ -143,7 +144,8 @@ typedef enum {
              supportedFeatures:features
                       delegate:delegate
                serviceDelegate:serviceDelegate
-            rootViewController:rootViewController];
+            rootViewController:rootViewController
+              andCreativeFrame:creativeFrame];
 }
 
 // designated initializer
@@ -155,10 +157,22 @@ typedef enum {
            delegate:(id<CSMRAIDViewDelegate>)delegate
     serviceDelegate:(id<CSMRAIDServiceDelegate>)serviceDelegate
  rootViewController:(UIViewController *)rootViewController
+ andCreativeFrame:(CGRect)creativeFrame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self setUpTapGestureRecognizer];
+        
+        
+        double creativeHeight = round(floorf(creativeFrame.size.height * 100 + 0.5) / 100);
+        double adFrameHeight = round(floorf(frame.size.height * 100 + 0.5) / 100);
+        
+        double creativeWidth = round(floorf(creativeFrame.size.width* 100 + 0.5) / 100);
+        double adFrameWidth = round(floorf(frame.size.width * 100 + 0.5) / 100);
+        
+        double multiplier = adFrameHeight/creativeHeight;
+        float xOffset = (adFrameWidth - (creativeWidth * multiplier))/2;
+        
         isInterstitial = isInter;
         _delegate = delegate;
         _serviceDelegate = serviceDelegate;
@@ -185,7 +199,9 @@ typedef enum {
             supportedFeatures=currentFeatures;
         }
         
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        //webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(xOffset, 0.0, (creativeWidth * multiplier), (creativeHeight * multiplier))];
+        //[webView setFrame:CGRectMake(xOffset, 0.0, (creativeWidth * multiplier), (creativeHeight * multiplier))];
         [self initWebView:webView];
         currentWebView = webView;
         [self addSubview:webView];
@@ -1063,6 +1079,15 @@ typedef enum {
         }
     }
     scrollView.scrollEnabled = NO;
+    
+    wv.scrollView.scrollEnabled = NO;
+    wv.scrollView.bounces = NO;
+    //webView.delegate = self;
+    
+    wv.scrollView.zoomScale = 1.3;
+    
+    [wv setScalesPageToFit:YES];
+    [self setBackgroundColor:[UIColor blackColor]];
     
     // disable selection
     NSString *js = @"window.getSelection().removeAllRanges();";

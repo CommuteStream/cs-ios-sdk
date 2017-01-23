@@ -8,7 +8,7 @@
 
 #import "CSAdFactory.h"
 #import "CSBasicBannerAdFactory.h"
-#import "CSTestHTMLBannerFactory.h"
+#import "CSHTMLBannerFactory.h"
 #import "CSMRAIDViewFactory.h"
 
 NSString * const BASIC_BANNER_AD = @"basic_banner_ad";
@@ -22,7 +22,8 @@ NSString * const MRAID_BANNER = @"mraid_banner";
     if([adType isEqualToString:BASIC_BANNER_AD]){
         return [[CSBasicBannerAdFactory alloc] init];
     }else if([adType isEqualToString:HTML_BANNER]){
-        return [[CSTestHTMLBannerFactory alloc] init];
+        return [[CSHTMLBannerFactory alloc] init];
+        //return [[CSMRAIDViewFactory alloc] init];
     }else if([adType isEqualToString:MRAID_BANNER]){
         return [[CSMRAIDViewFactory alloc] init];
     }else{

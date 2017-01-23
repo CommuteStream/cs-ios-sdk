@@ -10,6 +10,7 @@
 #include <net/if_dl.h>
 #include <ifaddrs.h>
 #import "CSCustomBanner.h"
+#import "CSCustomEventDelegate.h"
 #import "CSAdFactory.h"
 
 
@@ -111,6 +112,7 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     NSTimer *impressionMonitorTimer;
     
     UIView *adView;
+    NSString *registerImpressionID;
     
     
 
@@ -338,7 +340,7 @@ char ifName[3] = "en0";
     
 }
 
-- (void)getAd:(CSCustomBanner *)banner{
+- (void)getAd:(NSObject *)banner{
     
     __weak MKNetworkOperation *request = [networkEngine getBanner:[self httpParams]];
     
@@ -365,8 +367,11 @@ char ifName[3] = "en0";
         NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
         NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
         
+        registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
+        
         [dict setObject:banner forKey:@"banner"];
         [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
+        [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
         [dict setObject:banner_height forKey: @"bannerHeight"];
         [dict setObject:banner_width forKey: @"bannerWidth"];
         [dict setObject: creative_width forKey:@"creativeWidth"];
@@ -381,7 +386,7 @@ char ifName[3] = "en0";
             [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
         }else{
             NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-            [banner.delegate customEventBanner:banner didFailAd:request.error];
+            //[banner.delegate customEventBanner:banner didFailAd:request.error];
         }
     }];
 
@@ -392,14 +397,18 @@ char ifName[3] = "en0";
 -(void)buildAd:(NSMutableDictionary *)dict {
     adView = nil;
     
-    CSCustomBanner *customBanner = [dict objectForKey:@"banner"];
+    NSObject *customBanner = [dict objectForKey:@"banner"];
     
     CSAdFactory *factory = [CSAdFactory factoryWithAdType:[dict objectForKey:@"kind"]];
     
     adView = [factory adViewFromDictionary:dict];
     
     
-    [customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
+    //[customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
+    if([customBanner conformsToProtocol:@protocol(CSCustomEventDelegate)]){
+        //[customBanner didReceiveAdWithView:adView];
+        [customBanner performSelector:@selector(didReceiveAdWithView:) withObject:adView];
+    }
     
     
     impressionMonitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForImpression:) userInfo:adView repeats:YES];
@@ -428,7 +437,17 @@ char ifName[3] = "en0";
         NSLog(@"impression counted - shut timer down");
         [impressionMonitorTimer invalidate];
         impressionMonitorTimer = nil;
+        
+        NSMutableDictionary *impressionDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : registerImpressionID}];
+        
         //api call
+        __weak MKNetworkOperation *request = [networkEngine registerImpression:impressionDict];
+        
+        [request setCompletionBlock:^{
+            NSLog(@"Reported it successfully");
+        }];
+        
+        
     }
     
     

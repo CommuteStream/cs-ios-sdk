@@ -4,8 +4,9 @@
 #import "GADBannerView.h"
 #import "GADBannerViewDelegate.h"
 #import "CSNetworkEngine.h"
+#import "CSCustomEventDelegate.h"
 
-@interface CSCustomBanner : NSObject <GADCustomEventBanner, GADBannerViewDelegate, UIGestureRecognizerDelegate> {
+@interface CSCustomBanner : NSObject <GADCustomEventBanner, GADBannerViewDelegate, UIGestureRecognizerDelegate, CSCustomEventDelegate> {
     GADBannerView *bannerView_;
 }
 

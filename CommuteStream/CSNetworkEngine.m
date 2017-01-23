@@ -29,4 +29,38 @@
 }
 
 
+- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams {
+    
+    MKNetworkOperation *op = [self operationWithPath:@"v2/impression" params:callParams httpMethod:@"GET" ssl:YES];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation){
+        NSLog(@"CS_SDK: Registered impression successfully.");
+        
+    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
+        NSLog(@"CS_SDK: Error registering impression - %@", error);
+    }];
+    
+    
+    [self enqueueOperation:op];
+    
+    return op;
+    
+}
+
+- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams {
+    MKNetworkOperation *op = [self operationWithPath:@"v2/click" params:callParams httpMethod:@"GET" ssl:YES];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation){
+        NSLog(@"CS_SDK: Registered click successfully.");
+        
+    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
+        NSLog(@"CS_SDK: Error registering click - %@", error);
+    }];
+    
+    
+    [self enqueueOperation:op];
+    
+    return op;
+}
+
 @end

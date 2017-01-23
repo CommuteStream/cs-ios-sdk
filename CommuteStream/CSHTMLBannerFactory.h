@@ -8,7 +8,7 @@
 
 #import "CSAdFactory.h"
 
-@interface CSTestHTMLBannerFactory : CSAdFactory<UIWebViewDelegate> {
+@interface CSHTMLBannerFactory : CSAdFactory<UIWebViewDelegate> {
     
 }
 

@@ -6,20 +6,28 @@
 //  Copyright © 2016 CommuteStream. All rights reserved.
 //
 
-#import "CSTestHTMLBanner.h"
+#import "CSHTMLBanner.h"
 #import "CSWebView.h"
 #import "CSGestureRecognizer.h"
+#import "NSURL+CSURL.h"
 
 
 
 
-@implementation CSTestHTMLBanner{
+@implementation CSHTMLBanner{
     NSString *bannerUrl;
+    NSString *requestID;
+    int touchCount;
     CSWebView *webView;
     BOOL userInteracted;
     
+    
+    
 }
 
+@synthesize csNetworkEngine;
+
+NSString *hostUrl = @"api.commutestream.com";
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -64,10 +72,13 @@
         CSGestureRecognizer *webViewTouchRecognizer = [[CSGestureRecognizer alloc]initWithTarget:self action:@selector(tapViewAction:)];
         
         webViewTouchRecognizer.delegate = self;
-    
         [webView addGestureRecognizer:webViewTouchRecognizer];
         
-        [webView stringByEvaluatingJavaScriptFromString:@"window.open = function (open) { return function  (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
+        //[webView stringByEvaluatingJavaScriptFromString:@"window.open = function (open) {return function  (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
+        
+        csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:hostUrl];
+        
+        touchCount = 0;
 
 
     }
@@ -96,11 +107,10 @@
     bannerUrl = url;
     
     //[[[self configuration] preferences] setJavaScriptEnabled:YES];
-    
-    
-    
-    
-    
+}
+
+- (void)setRequestID:(NSString *)requestString {
+    requestID = requestString;
 }
 
 - (void)removeScrollAndBounce {
@@ -115,7 +125,23 @@
     userInteracted = YES;
     //NSURL *url = [NSURL URLWithString:bannerUrl];
     //[[UIApplication sharedApplication] openURL:url];
-    NSLog(@"Web View Tapped");
+    
+    NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary:@{@"request_id" : requestID}];
+    
+    touchCount++;
+    
+    //api call
+    if(touchCount == 1){
+        __weak MKNetworkOperation *request = [csNetworkEngine registerClick:clickDict];
+        
+        [request setCompletionBlock:^{
+            NSLog(@"Reported click successfully");
+        }];
+        
+        NSLog(@"Web View Tapped");
+    }
+    
+    
 }
 
 //-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -132,45 +158,32 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 
     
-    //NSURL *URL = [request URL];
+    NSURL *URL = [request URL];
+    if ([self shouldIntercept:URL forNavigationType:navigationType]) {
+        [self interceptURL:URL];
+        return NO;
+    } else {
+        // don't handle any deep links without user interaction
+        return userInteracted || [URL isSafeForLoadingWithoutUserAction];
+    }
+}
 
-    if (userInteracted) {
-        
-        switch (navigationType) {
-            case UIWebViewNavigationTypeLinkClicked:
-                NSLog(@"UIWebViewNavigationTypeLinkClicked");
-                break;
-                
-            case UIWebViewNavigationTypeFormSubmitted:
-                NSLog(@"UIWebViewNavigationTypeFormSubmitted");
-                break;
-                
-            case UIWebViewNavigationTypeBackForward:
-                NSLog(@"UIWebViewNavigationTypeBackForward");
-                break;
-                
-            case UIWebViewNavigationTypeReload:
-                NSLog(@"UIWebViewNavigationTypeReload");
-                break;
-                
-            case UIWebViewNavigationTypeFormResubmitted:
-                NSLog(@"UIWebViewNavigationTypeFormResubmitted");
-                break;
-                
-            case UIWebViewNavigationTypeOther:
-                NSLog(@"UIWebViewNavigationTypeOther");
-                break;
-                
-            default:
-                NSLog(@"Unknown");
-                break;
-        }
-    
-        [[UIApplication sharedApplication] openURL:[request URL]];
+
+- (BOOL)shouldIntercept:(NSURL *)URL forNavigationType:(UIWebViewNavigationType)navigationType {
+    if ([URL hasTelephoneScheme] || [URL hasTelephonePromptScheme]) {
+        return YES;
+    }else if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        return YES;
+    } else if (navigationType == UIWebViewNavigationTypeOther) {
+        return [[URL absoluteString] hasPrefix:@""] || [[URL absoluteString] hasPrefix:@"http://commutestream.com"];
+    } else {
         return NO;
     }
-    
-    return YES;
+
+}
+
+- (void)interceptURL:(NSURL *)URL {
+    [[UIApplication sharedApplication] openURL:URL];
 }
 
 

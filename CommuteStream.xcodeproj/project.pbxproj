@@ -43,8 +43,11 @@
 		7F1880701915A7AF00BE18B5 /* NSString+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E61915538600C8114E /* NSString+MKNetworkKitAdditions.h */; };
 		7F1880711915A7AF00BE18B5 /* UIAlertView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E81915538600C8114E /* UIAlertView+MKNetworkKitAdditions.h */; };
 		7F1880721915A7AF00BE18B5 /* UIImageView+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398EA1915538600C8114E /* UIImageView+MKNetworkKitAdditions.h */; };
+		7F3034911E2E8D3000134984 /* NSURL+CSURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F30348F1E2E8D3000134984 /* NSURL+CSURL.h */; };
+		7F3034921E2E8D3000134984 /* NSURL+CSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3034901E2E8D3000134984 /* NSURL+CSURL.m */; };
 		7F38C4F51DD110EF002F9A02 /* CSGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */; };
 		7F38C4F61DD110EF002F9A02 /* CSGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */; };
+		7F86788B1E32BB0000612231 /* CSCustomEventDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678891E32BB0000612231 /* CSCustomEventDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */; };
 		7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,10 +78,10 @@
 		7FD99A1E1DB9544E00E33562 /* CSBasicBannerAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A1C1DB9544E00E33562 /* CSBasicBannerAdFactory.m */; };
 		7FD99A391DBE696600E33562 /* CSBasicBannerAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A371DBE696600E33562 /* CSBasicBannerAd.h */; };
 		7FD99A3A1DBE696600E33562 /* CSBasicBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A381DBE696600E33562 /* CSBasicBannerAd.m */; };
-		7FD99A911DBE7FA900E33562 /* CSTestHTMLBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A8F1DBE7FA900E33562 /* CSTestHTMLBanner.h */; };
-		7FD99A921DBE7FA900E33562 /* CSTestHTMLBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A901DBE7FA900E33562 /* CSTestHTMLBanner.m */; };
-		7FD99A951DBE822D00E33562 /* CSTestHTMLBannerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A931DBE822D00E33562 /* CSTestHTMLBannerFactory.h */; };
-		7FD99A961DBE822D00E33562 /* CSTestHTMLBannerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A941DBE822D00E33562 /* CSTestHTMLBannerFactory.m */; };
+		7FD99A911DBE7FA900E33562 /* CSHTMLBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A8F1DBE7FA900E33562 /* CSHTMLBanner.h */; };
+		7FD99A921DBE7FA900E33562 /* CSHTMLBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */; };
+		7FD99A951DBE822D00E33562 /* CSHTMLBannerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */; };
+		7FD99A961DBE822D00E33562 /* CSHTMLBannerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */; };
 		7FD99AB31DBFC9DE00E33562 /* CSMRAIDViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */; };
 		7FD99AB41DBFC9DE00E33562 /* CSMRAIDViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */; };
 		7FD99B831DC2A0A200E33562 /* CSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99B811DC2A0A200E33562 /* CSWebView.h */; };
@@ -194,8 +197,11 @@
 /* Begin PBXFileReference section */
 		1B7395171C875EF200606647 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1B7395191C875EF800606647 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		7F30348F1E2E8D3000134984 /* NSURL+CSURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CSURL.h"; sourceTree = "<group>"; };
+		7F3034901E2E8D3000134984 /* NSURL+CSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CSURL.m"; sourceTree = "<group>"; };
 		7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGestureRecognizer.h; sourceTree = "<group>"; };
 		7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGestureRecognizer.m; sourceTree = "<group>"; };
+		7F8678891E32BB0000612231 /* CSCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCustomEventDelegate.h; sourceTree = "<group>"; };
 		7F9BFD7D19225D2200DF667C /* GADAdMobExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
 		7F9BFD7E19225D2200DF667C /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		7F9BFD7F19225D2200DF667C /* GADAdSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
@@ -320,10 +326,10 @@
 		7FD99A8C1DBE7E8000E33562 /* interstitial.useCustomClose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = interstitial.useCustomClose.html; sourceTree = "<group>"; };
 		7FD99A8D1DBE7E8000E33562 /* interstitial.viewableChange.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = interstitial.viewableChange.html; sourceTree = "<group>"; };
 		7FD99A8E1DBE7E8000E33562 /* nexage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nexage.gif; sourceTree = "<group>"; };
-		7FD99A8F1DBE7FA900E33562 /* CSTestHTMLBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSTestHTMLBanner.h; sourceTree = "<group>"; };
-		7FD99A901DBE7FA900E33562 /* CSTestHTMLBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSTestHTMLBanner.m; sourceTree = "<group>"; };
-		7FD99A931DBE822D00E33562 /* CSTestHTMLBannerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSTestHTMLBannerFactory.h; sourceTree = "<group>"; };
-		7FD99A941DBE822D00E33562 /* CSTestHTMLBannerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSTestHTMLBannerFactory.m; sourceTree = "<group>"; };
+		7FD99A8F1DBE7FA900E33562 /* CSHTMLBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSHTMLBanner.h; sourceTree = "<group>"; };
+		7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHTMLBanner.m; sourceTree = "<group>"; };
+		7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSHTMLBannerFactory.h; sourceTree = "<group>"; };
+		7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHTMLBannerFactory.m; sourceTree = "<group>"; };
 		7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMRAIDViewFactory.h; sourceTree = "<group>"; };
 		7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMRAIDViewFactory.m; sourceTree = "<group>"; };
 		7FD99B811DC2A0A200E33562 /* CSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSWebView.h; sourceTree = "<group>"; };
@@ -429,6 +435,15 @@
 				7F9BFD8819225D2200DF667C /* GADRequestError.h */,
 			);
 			name = "Google AdMob";
+			sourceTree = "<group>";
+		};
+		7F30348E1E2E8CD700134984 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7F30348F1E2E8D3000134984 /* NSURL+CSURL.h */,
+				7F3034901E2E8D3000134984 /* NSURL+CSURL.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		7FC68B261DAECDD000DBFD9B /* MRAID */ = {
@@ -619,6 +634,7 @@
 		7FF398B8191552D000C8114E /* CommuteStream */ = {
 			isa = PBXGroup;
 			children = (
+				7F30348E1E2E8CD700134984 /* Categories */,
 				7FC68B301DAECF5400DBFD9B /* CSLogger.h */,
 				7FC68B311DAECF5400DBFD9B /* CSLogger.m */,
 				7FC68B261DAECDD000DBFD9B /* MRAID */,
@@ -637,16 +653,17 @@
 				7FD99A381DBE696600E33562 /* CSBasicBannerAd.m */,
 				7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */,
 				7FD99A1C1DB9544E00E33562 /* CSBasicBannerAdFactory.m */,
-				7FD99A8F1DBE7FA900E33562 /* CSTestHTMLBanner.h */,
-				7FD99A901DBE7FA900E33562 /* CSTestHTMLBanner.m */,
-				7FD99A931DBE822D00E33562 /* CSTestHTMLBannerFactory.h */,
-				7FD99A941DBE822D00E33562 /* CSTestHTMLBannerFactory.m */,
+				7FD99A8F1DBE7FA900E33562 /* CSHTMLBanner.h */,
+				7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */,
+				7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */,
+				7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */,
 				7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */,
 				7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */,
 				7FD99B811DC2A0A200E33562 /* CSWebView.h */,
 				7FD99B821DC2A0A200E33562 /* CSWebView.m */,
 				7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */,
 				7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */,
+				7F8678891E32BB0000612231 /* CSCustomEventDelegate.h */,
 			);
 			path = CommuteStream;
 			sourceTree = "<group>";
@@ -733,16 +750,18 @@
 				7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */,
 				7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */,
 				7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */,
-				7FD99A951DBE822D00E33562 /* CSTestHTMLBannerFactory.h in Headers */,
+				7FD99A951DBE822D00E33562 /* CSHTMLBannerFactory.h in Headers */,
 				7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */,
 				7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */,
 				7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */,
 				7FD99A1D1DB9544E00E33562 /* CSBasicBannerAdFactory.h in Headers */,
 				7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */,
-				7FD99A911DBE7FA900E33562 /* CSTestHTMLBanner.h in Headers */,
+				7FD99A911DBE7FA900E33562 /* CSHTMLBanner.h in Headers */,
+				7F86788B1E32BB0000612231 /* CSCustomEventDelegate.h in Headers */,
 				7FCFCB4E1DEF54E300ACFB7C /* CSCustomBanner.h in Headers */,
 				7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */,
 				7FD99A391DBE696600E33562 /* CSBasicBannerAd.h in Headers */,
+				7F3034911E2E8D3000134984 /* NSURL+CSURL.h in Headers */,
 				7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */,
 				7FD99A191DB9497000E33562 /* CSAdFactory.h in Headers */,
 				7F38C4F51DD110EF002F9A02 /* CSGestureRecognizer.h in Headers */,
@@ -903,7 +922,8 @@
 				7FF399C2191581A500C8114E /* Reachability.m in Sources */,
 				7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */,
 				7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */,
-				7FD99A961DBE822D00E33562 /* CSTestHTMLBannerFactory.m in Sources */,
+				7FD99A961DBE822D00E33562 /* CSHTMLBannerFactory.m in Sources */,
+				7F3034921E2E8D3000134984 /* NSURL+CSURL.m in Sources */,
 				7FD99A3A1DBE696600E33562 /* CSBasicBannerAd.m in Sources */,
 				7FF399C01915819E00C8114E /* MKNetworkEngine.m in Sources */,
 				7FF399C11915819E00C8114E /* MKNetworkOperation.m in Sources */,
@@ -921,7 +941,7 @@
 				7FF39900191553C300C8114E /* CSNetworkEngine.m in Sources */,
 				7FF39903191554CB00C8114E /* CSCustomBanner.m in Sources */,
 				7FC68B371DAED0D900DBFD9B /* CSMRAIDModalViewController.m in Sources */,
-				7FD99A921DBE7FA900E33562 /* CSTestHTMLBanner.m in Sources */,
+				7FD99A921DBE7FA900E33562 /* CSHTMLBanner.m in Sources */,
 				7FF398BE191552D000C8114E /* CommuteStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

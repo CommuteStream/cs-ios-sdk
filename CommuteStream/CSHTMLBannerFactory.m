@@ -6,10 +6,10 @@
 //  Copyright © 2016 CommuteStream. All rights reserved.
 //
 
-#import "CSTestHTMLBannerFactory.h"
-#import "CSTestHTMLBanner.h"
+#import "CSHTMLBannerFactory.h"
+#import "CSHTMLBanner.h"
 
-@implementation CSTestHTMLBannerFactory
+@implementation CSHTMLBannerFactory
 
 NSString *bannerUrl;
 
@@ -24,18 +24,22 @@ NSString *bannerUrl;
     float creative_height = [[dictionary objectForKey:@"creativeHeight"] floatValue];
     
     NSString *htmlBody = [dictionary objectForKey:@"htmlbody"];
+    NSString *requestID = [dictionary objectForKey:@"request_id"];
 
     
     
     NSLog(@"CS_SDK: Generating UIWebView for ad display.");
-    CSTestHTMLBanner *webView = [[CSTestHTMLBanner alloc] initWithAdUnitFrame:CGRectMake(0.0, 0.0, banner_width, banner_height) andCreativeFrame:CGRectMake(0.0, 0.0, creative_width, creative_height)];
+    CSHTMLBanner *webView = [[CSHTMLBanner alloc] initWithAdUnitFrame:CGRectMake(0.0, 0.0, banner_width, banner_height) andCreativeFrame:CGRectMake(0.0, 0.0, creative_width, creative_height)];
+    
+    
     
     NSString *htmlPath = htmlBody;
     //NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"pan-gesture-banner" ofType:@"html"]];
     //NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
-    
+    [webView setRequestID:requestID];
     bannerUrl = [dictionary objectForKey:@"url"];
     [webView loadHTML:htmlPath];
+
     //[webView loadURLRequest:[NSURLRequest requestWithURL:url]];
     
     //[webView setUrl:bannerUrl];
@@ -48,9 +52,6 @@ NSString *bannerUrl;
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    
-    
-    NSLog(@"callllleeeddd it");
     
     return YES;
 }
