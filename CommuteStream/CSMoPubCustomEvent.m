@@ -14,31 +14,21 @@
 -(void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info{
     
     
-    NSLog(@"MoPub requesting CS ad.");
-    
+    NSLog(@"CS_SDK: MoPub Requesting CS Ad.");
     
     
     if (![[CommuteStream open] isInitialized]) {
         NSLog(@"CS_SDK: Retrieving Info.");
         
-        [[CommuteStream open] setAdUnitUUID: [info objectForKey:@"cs_adunit_uuid"]];
-        
+        [[CommuteStream open] setAdUnitUUID: [info objectForKey:@"cs_ad_unit_uuid"]];
         [[CommuteStream open] setIsInitialized:YES];
     }
     
+    NSLog(@"CS_SDK: Banner width = %f, Banner height = %f", size.width, size.height);
     //Store Banner Width and height and skip_fetch false
     [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", (int) size.width]];
     [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) size.height]];
     [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
-    
-    
-    
-    
-    //csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
-    //[csNetworkEngine setPortNumber: portNumber];
-    
-    
-    
     
     
     [[CommuteStream open] getAd:self];
@@ -49,6 +39,10 @@
 
 - (void)didReceiveAdWithView:(UIView *)adView {
     [self.delegate bannerCustomEvent:self didLoadAd:adView];
+}
+
+- (void)didFailAdWithError:(NSError *)error {
+    [self.delegate bannerCustomEvent:self didFailToLoadAdWithError:error];
 }
 
 -(void) bannerCustomEvent:(MPBannerCustomEvent *)event didLoadAd:(UIView *)ad {
@@ -64,12 +58,7 @@
 }
 
 - (void)bannerCustomEvent:(MPBannerCustomEvent *)event didFailToLoadAdWithError:(NSError *)error {
-    
-}
-
-
--(void)trackClick {
-    
+    [self.delegate bannerCustomEvent:event didFailToLoadAdWithError:error];
 }
 
 

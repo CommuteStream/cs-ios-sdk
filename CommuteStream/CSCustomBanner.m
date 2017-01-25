@@ -1,5 +1,4 @@
 #import "CSCustomBanner.h"
-#import "CSNetworkEngine.h"
 #import "CommuteStream.h"
 #import <AdSupport/ASIdentifierManager.h>
 
@@ -8,7 +7,7 @@
 @implementation CSCustomBanner
 
 // Will be set by the AdMob SDK.
-@synthesize delegate, csNetworkEngine;
+@synthesize delegate;
 
 - (void)dealloc {
     bannerView_.delegate = nil;
@@ -16,12 +15,6 @@
 
 #pragma mark -
 #pragma mark GADCustomEventBanner
-
-
-
-
-GADBannerView *testView;
-
 
 CGSize myAdSize;
 NSString *bannerUrl;
@@ -47,32 +40,24 @@ int portNumber = 3000;
     
     //get banner width and height
     myAdSize = CGSizeFromGADAdSize(adSize);
-    NSLog(@"Banner %f width, %f height", adSize.size.width, adSize.size.height);
-    
+    NSLog(@"CS_SDK: Banner width = %f, Banner height = %f", adSize.size.width, adSize.size.height);
     //Store Banner Width and height and skip_fetch false
     [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", (int) myAdSize.width]];
     [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) myAdSize.height]];
     [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
-    
-   
-    
-    
-    //csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
-    //[csNetworkEngine setPortNumber: portNumber];
-    
-    
-    
-        
+
     
     [[CommuteStream open] getAd:self];
-    
-    
-    
+
 }
 
 
 - (void)didReceiveAdWithView:(UIView *)adView {
     [self.delegate customEventBanner:self didReceiveAd:adView];
+}
+
+- (void)didFailAdWithError:(NSError *)error {
+    [self.delegate customEventBanner:self didFailAd:error];
 }
 
 

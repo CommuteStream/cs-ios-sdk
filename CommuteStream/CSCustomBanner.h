@@ -10,6 +10,5 @@
     GADBannerView *bannerView_;
 }
 
-@property (nonatomic, strong) CSNetworkEngine *csNetworkEngine;
 
 @end

@@ -12,4 +12,6 @@
 
 - (void)didReceiveAdWithView:(UIView *)adView;
 
+- (void)didFailAdWithError:(NSError *)error;
+
 @end

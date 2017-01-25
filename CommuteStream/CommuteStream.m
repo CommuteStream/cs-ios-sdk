@@ -327,7 +327,7 @@ char ifName[3] = "en0";
     
     NSLog(@"CS_SDK: Reported success to CommuteStream.");
     
-    NSLog(@"Time zone----y--y- %@", time_zone);
+    NSLog(@"CS_SDK: Time zone%@", time_zone);
     
     [self.httpParams removeObjectForKey:@"lat"];
     [self.httpParams removeObjectForKey:@"lon"];
@@ -347,31 +347,22 @@ char ifName[3] = "en0";
 
     [request setCompletionBlock:^{
         
-        
-        NSLog(@"----->----->%@", [[[request readonlyResponse] allHeaderFields] description]);
-        
         NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
-        
-        
     
-        
         [self reportSuccessfulGet];
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         
-        NSLog(@"----->>>))>----->%@", [request responseString]);
         
         //Get width and height from separate headers in the response to later be used for scaling within the ad unit
         //Get type of add from header
         
         NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
         NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
-        
         registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
-        
-        [dict setObject:banner forKey:@"banner"];
         [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
         [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
+        [dict setObject:banner forKey:@"banner"];
         [dict setObject:banner_height forKey: @"bannerHeight"];
         [dict setObject:banner_width forKey: @"bannerWidth"];
         [dict setObject: creative_width forKey:@"creativeWidth"];
@@ -379,19 +370,29 @@ char ifName[3] = "en0";
         [dict setObject:[request responseString] forKey:@"htmlbody"];
         
         
-        //ADD creative width and height to the dict
-        
         //if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
-        if ([request responseString]){
-            [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
-        }else{
-            NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-            //[banner.delegate customEventBanner:banner didFailAd:request.error];
-        }
+            if ([request responseString]){
+                [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
+            }else{
+                NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
+                //[banner.delegate customEventBanner:banner didFailAd:request.error];
+                NSDictionary *dictWithError = @{@"banner": [dict objectForKey:@"banner"], @"error": request.error};
+                [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
+            }
+        //}
     }];
 
     
      
+}
+
+-(void)getAdFailedWithBanner:(NSMutableDictionary *)dict{
+    NSObject *customBanner = [dict objectForKey:@"banner"];
+    NSError *dictError = [dict objectForKey:@"error"];
+    if([customBanner conformsToProtocol:@protocol(CSCustomEventDelegate)]){
+        [customBanner performSelector:@selector(didFailAdWithError:) withObject:dictError];
+    }
+
 }
 
 -(void)buildAd:(NSMutableDictionary *)dict {
@@ -404,9 +405,7 @@ char ifName[3] = "en0";
     adView = [factory adViewFromDictionary:dict];
     
     
-    //[customBanner.delegate customEventBanner:customBanner didReceiveAd:adView];
     if([customBanner conformsToProtocol:@protocol(CSCustomEventDelegate)]){
-        //[customBanner didReceiveAdWithView:adView];
         [customBanner performSelector:@selector(didReceiveAdWithView:) withObject:adView];
     }
     
