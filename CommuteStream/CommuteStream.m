@@ -14,56 +14,7 @@
 #import "CSAdFactory.h"
 
 
-
-
-#define SDK_VERSION @"0.3.1"
-
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-
-
-#define IFT_ETHER 0x6
-#pragma mark -
-
-
-
-static char* getMacAddress(char* macAddress, char* ifName) {
-    
-    int  success;
-    struct ifaddrs * addrs;
-    struct ifaddrs * cursor;
-    const struct sockaddr_dl * dlAddr;
-    const unsigned char* base;
-    int i;
-    
-    success = getifaddrs(&addrs) == 0;
-    if (success) {
-        cursor = addrs;
-        while (cursor != 0) {
-            if ( (cursor->ifa_addr->sa_family == AF_LINK)
-                && (((const struct sockaddr_dl *) cursor->ifa_addr)->sdl_type == IFT_ETHER) && strcmp(ifName,  cursor->ifa_name)==0 ) {
-                dlAddr = (const struct sockaddr_dl *) cursor->ifa_addr;
-                base = (const unsigned char*) &dlAddr->sdl_data[dlAddr->sdl_nlen];
-                strcpy(macAddress, "");
-                for (i = 0; i < dlAddr->sdl_alen; i++) {
-                    if (i != 0) {
-                        strcat(macAddress, ":");
-                    }
-                    char partialAddr[3];
-                    sprintf(partialAddr, "%02X", base[i]);
-                    strcat(macAddress, partialAddr);
-                    
-                }
-            }
-            cursor = cursor->ifa_next;
-        }
-        
-        freeifaddrs(addrs);
-    }
-    return macAddress;
-}
-
-
-
+#define SDK_VERSION @"0.8.0"
 
 @implementation CommuteStream {
 
@@ -165,13 +116,25 @@ char ifName[3] = "en0";
         
         [self setSdkVer:SDK_VERSION];
         
+        NSData* sessionIDData;
+        uint8_t randomBytes[16];
+        int result = SecRandomCopyBytes(kSecRandomDefault, 16, randomBytes);
         
+        if( result != 0 ) {
+            for(int i = 0; i < 16; i+=1) {
+                randomBytes[i] = rand();
+            }
+        }
+        sessionIDData = [[NSData alloc] initWithBytes: randomBytes length: 16];
+        NSString* sessionID = [sessionIDData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        sessionID = [sessionID stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+        sessionID = [sessionID stringByReplacingOccurrencesOfString:@"+" withString:@"-"];
+        [[CommuteStream open] setSessionID: sessionID];
+
         NSUUID* adId = [[ASIdentifierManager sharedManager] advertisingIdentifier];
         [self setIdfa: [adId UUIDString]];
         
-    
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
-            
             NSLog(@"Advertising tracking disabled.");
             [self setIOSLimitAdTracking:@"true"];
         }else {
@@ -184,7 +147,7 @@ char ifName[3] = "en0";
 }
 
 
-- (NSString *)getIdfa {
+- (NSString *)idfa {
         return idfa;
 }
 
@@ -204,29 +167,9 @@ char ifName[3] = "en0";
             
         }
         
-        NSMutableString *uuidStringReplacement;
-        
-        uint8_t randomBytes[16];
-        int result = SecRandomCopyBytes(kSecRandomDefault, 16, randomBytes);
-        if(result == 0) {
-            uuidStringReplacement = [[NSMutableString alloc] initWithCapacity:16*2];
-            for(NSInteger index = 0; index < 16; index++)
-            {
-                [uuidStringReplacement appendFormat: @"%02x", randomBytes[index]];
-            }
-            NSLog(@"uuidStringReplacement is %@", uuidStringReplacement);
-        } else {
-            NSLog(@"SecRandomCopyBytes failed for some reason");
-        }
-        
         NSTimeZone *timeZone = [NSTimeZone localTimeZone];
         NSString *tzName = [timeZone name];
-        
-        
-        [[CommuteStream open] setSessionID: uuidStringReplacement];
         [[CommuteStream open] setTimeZone:tzName];
-        
-        
         
         __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
         
