@@ -15,12 +15,9 @@
 
 - (NSString *)bannerWidth;
 
-
-
 - (NSString *)sessionID;
 
 - (NSString *)timeZone;
-
 
 - (NSString *)sdkName;
 
