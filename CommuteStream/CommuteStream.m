@@ -84,9 +84,7 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     
     NSMutableArray *agency_interest;
     
-    NSString *idfa_sha;
     NSString *idfa;
-    NSString *mac_addr_sha;
     NSString *testing;
     NSString *limit_tracking;
     
@@ -168,15 +166,10 @@ char ifName[3] = "en0";
         [self setSdkVer:SDK_VERSION];
         
         
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-            
-            [self getIdfa];
-        }else{
-            NSString *deviceMacAddress = [[NSString alloc] initWithUTF8String:getMacAddress(macAddress, ifName)];
-            [self getMacSha:deviceMacAddress];
-            
-        }
+        NSUUID* adId = [[ASIdentifierManager sharedManager] advertisingIdentifier];
+        [self setIdfa: [adId UUIDString]];
         
+    
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
             
             NSLog(@"Advertising tracking disabled.");
@@ -192,82 +185,8 @@ char ifName[3] = "en0";
 
 
 - (NSString *)getIdfa {
-#ifndef PRE_6
-    Class asIDManagerClass = NSClassFromString(@"ASIdentifierManager");
-    if (asIDManagerClass) {
-        NSString *adId = nil;
-        
-        SEL sharedManagerSel = NSSelectorFromString(@"sharedManager");
-        if ([asIDManagerClass respondsToSelector:sharedManagerSel]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            id adManager = [asIDManagerClass performSelector:sharedManagerSel];
-            if (adManager) {
-                SEL advertisingIdentifierSelector = NSSelectorFromString(@"advertisingIdentifier");
-                
-                if ([adManager respondsToSelector:advertisingIdentifierSelector]) {
-                    
-                    id uuid = [adManager performSelector:advertisingIdentifierSelector];
-                    
-                    if (!uuid) {
-                        return nil;
-                    }
-                    
-                    SEL uuidStringSelector = NSSelectorFromString(@"UUIDString");
-                    if ([uuid respondsToSelector:uuidStringSelector]) {
-                        adId = [uuid performSelector:uuidStringSelector];
-#pragma clang diagnostic pop
-                    }
-                }
-            }
-        }
-        
-        if (!adId) {
-            return nil;
-        }
-        
-        //SHA1
-        NSData *sha1_data = [adId dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-        CC_SHA1(sha1_data.bytes, (CC_LONG)sha1_data.length, digest);
-        NSMutableString* sha1 = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-        
-        for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
-            [sha1 appendFormat:@"%02x", digest[i]];
-        NSString *adIdSha = [NSString stringWithFormat:@"%@",sha1];
-        
-        [self setIdfaSha:adIdSha];
-        [self setIdfa:adId];
-        
-        return adId;
-    }
-#endif
-    
-    return nil;
+        return idfa;
 }
-
-- (NSString *) getMacSha:(NSString *) deviceAddress {
-    
-    //SHA1
-    NSData *sha1_data = [deviceAddress dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(sha1_data.bytes, (CC_LONG)sha1_data.length, digest);
-    NSMutableString* sha1 = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
-        [sha1 appendFormat:@"%02x", digest[i]];
-    
-    deviceAddress = [NSString stringWithFormat:@"%@",sha1];
-    
-    [self setMacAddrSha:deviceAddress];
-    
-    return deviceAddress;
-}
-
-
-
-#pragma mark -
-
 
 
 -(void)onParameterCheckTimer:(NSTimer *)paramTimer {
@@ -511,12 +430,6 @@ char ifName[3] = "en0";
 - (NSMutableArray *)agencyInterest {
     return agency_interest;
 }
-- (NSString *)idfaSha {
-    return idfa_sha;
-}
-- (NSString *)macAddrSha {
-    return mac_addr_sha;
-}
 - (NSString *)testing {
     return testing;
 }
@@ -636,16 +549,6 @@ char ifName[3] = "en0";
 - (void)setIdfa:(NSString *)thisIdfa {
     idfa = thisIdfa;
     [self.httpParams setObject:idfa forKey:@"idfa"];
-}
-
-- (void)setIdfaSha:(NSString *)idfaSha {
-    idfa_sha = idfaSha;
-    [self.httpParams setObject:idfaSha forKey:@"idfa_sha"];
-}
-
-- (void)setMacAddrSha:(NSString *)string {
-    mac_addr_sha = string;
-    [self.httpParams setObject:string forKey:@"mac_addr_sha"];
 }
 
 - (void)setTesting {

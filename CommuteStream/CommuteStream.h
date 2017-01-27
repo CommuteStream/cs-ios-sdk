@@ -37,9 +37,7 @@
 
 - (NSString *)agencyInterest;
 
-- (NSString *)idfaSha;
-
-- (NSString *)macAddrSha;
+- (NSString *)idfa;
 
 - (NSString *)testing;
 
@@ -95,10 +93,6 @@
 - (void)setAgencyInterest:(NSString *)typeString agencyID:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
 
 - (void)setIdfa:(NSString *)idfa;
-
-- (void)setIdfaSha:(NSString *)idfaSha;
-
-- (void)setMacAddrSha:(NSString *)string;
 
 - (void)setTesting;
 
