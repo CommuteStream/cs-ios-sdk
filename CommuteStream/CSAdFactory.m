@@ -23,11 +23,10 @@ NSString * const MRAID_BANNER = @"mraid_banner";
         return [[CSBasicBannerAdFactory alloc] init];
     }else if([adType isEqualToString:HTML_BANNER]){
         return [[CSHTMLBannerFactory alloc] init];
-        //return [[CSMRAIDViewFactory alloc] init];
     }else if([adType isEqualToString:MRAID_BANNER]){
         return [[CSMRAIDViewFactory alloc] init];
     }else{
-        return nil;
+        return [[CSHTMLBannerFactory alloc] init];
     }
 
 }
