@@ -91,6 +91,7 @@ static char* getMacAddress(char* macAddress, char* ifName) {
     NSString *limit_tracking;
     
     CLLocation *location;
+    CSLocationManager *csLocationManager;
     
     NSMutableDictionary *http_params;
     
@@ -184,6 +185,13 @@ char ifName[3] = "en0";
         }else {
             NSLog(@"Advertising tracking enabled.");
         }
+        
+        csLocationManager = self.locationManager;
+        
+        if(csLocationManager.lastKnownLocation != nil){
+            [self setLocation:csLocationManager.lastKnownLocation];
+        }
+        
         
     }
     
@@ -327,7 +335,7 @@ char ifName[3] = "en0";
     
     NSLog(@"CS_SDK: Reported success to CommuteStream.");
     
-    NSLog(@"CS_SDK: Time zone%@", time_zone);
+    NSLog(@"CS_SDK: Time zone: %@", time_zone);
     
     [self.httpParams removeObjectForKey:@"lat"];
     [self.httpParams removeObjectForKey:@"lon"];
@@ -341,6 +349,8 @@ char ifName[3] = "en0";
 }
 
 - (void)getAd:(NSObject *)banner{
+    
+    NSLog(@"Params: %@", [self httpParams]);
     
     __weak MKNetworkOperation *request = [networkEngine getBanner:[self httpParams]];
     
@@ -525,6 +535,10 @@ char ifName[3] = "en0";
     return location;
 }
 
+- (CSLocationManager *)locationManager {
+    return [[CSLocationManager alloc] init];
+}
+
 - (NSMutableDictionary *)httpParams {
     return http_params;
 }
@@ -653,6 +667,7 @@ char ifName[3] = "en0";
 }
 
 - (void)setLocation:(CLLocation *)thisLocation {
+    NSLog(@"setLocation called");
     location = thisLocation;
     NSNumber *latitudeNumber = [NSNumber numberWithDouble:location.coordinate.latitude];
     NSNumber *longitudeNumber = [NSNumber numberWithDouble:location.coordinate.longitude];

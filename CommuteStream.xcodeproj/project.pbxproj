@@ -47,6 +47,8 @@
 		7F3034921E2E8D3000134984 /* NSURL+CSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3034901E2E8D3000134984 /* NSURL+CSURL.m */; };
 		7F38C4F51DD110EF002F9A02 /* CSGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */; };
 		7F38C4F61DD110EF002F9A02 /* CSGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */; };
+		7F4B701B1E3BBE27001B2F68 /* CSLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F4B70191E3BBE27001B2F68 /* CSLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F4B701C1E3BBE27001B2F68 /* CSLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4B701A1E3BBE27001B2F68 /* CSLocationManager.m */; };
 		7F86788B1E32BB0000612231 /* CSCustomEventDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678891E32BB0000612231 /* CSCustomEventDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F8678971E36798300612231 /* CSMoPubCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678951E36798300612231 /* CSMoPubCustomEvent.h */; };
 		7F8678981E36798300612231 /* CSMoPubCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678961E36798300612231 /* CSMoPubCustomEvent.m */; };
@@ -580,6 +582,8 @@
 		7F3034901E2E8D3000134984 /* NSURL+CSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CSURL.m"; sourceTree = "<group>"; };
 		7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGestureRecognizer.h; sourceTree = "<group>"; };
 		7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGestureRecognizer.m; sourceTree = "<group>"; };
+		7F4B70191E3BBE27001B2F68 /* CSLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLocationManager.h; sourceTree = "<group>"; };
+		7F4B701A1E3BBE27001B2F68 /* CSLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLocationManager.m; sourceTree = "<group>"; };
 		7F8678891E32BB0000612231 /* CSCustomEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSCustomEventDelegate.h; sourceTree = "<group>"; };
 		7F8678951E36798300612231 /* CSMoPubCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMoPubCustomEvent.h; sourceTree = "<group>"; };
 		7F8678961E36798300612231 /* CSMoPubCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMoPubCustomEvent.m; sourceTree = "<group>"; };
@@ -2005,6 +2009,8 @@
 				7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */,
 				7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */,
 				7F8678891E32BB0000612231 /* CSCustomEventDelegate.h */,
+				7F4B70191E3BBE27001B2F68 /* CSLocationManager.h */,
+				7F4B701A1E3BBE27001B2F68 /* CSLocationManager.m */,
 			);
 			path = CommuteStream;
 			sourceTree = "<group>";
@@ -2097,6 +2103,7 @@
 				7F867A6D1E367A0200612231 /* MPClosableView.h in Headers */,
 				7F867B061E367A0200612231 /* MPAnalyticsTracker.h in Headers */,
 				7F867BBD1E367A0300612231 /* MPNativeAdDelegate.h in Headers */,
+				7F4B701B1E3BBE27001B2F68 /* CSLocationManager.h in Headers */,
 				7F867AB71E367A0200612231 /* MPInterstitialAdManagerDelegate.h in Headers */,
 				7F867BC21E367A0300612231 /* MPNativeAdRendererConfiguration.h in Headers */,
 				7FD99AB31DBFC9DE00E33562 /* CSMRAIDViewFactory.h in Headers */,
@@ -2487,6 +2494,7 @@
 				7FC68B251DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m in Sources */,
 				7FF399BC1915818500C8114E /* NSDictionary+RequestEncoding.m in Sources */,
 				7FF399BD1915818500C8114E /* NSString+MKNetworkKitAdditions.m in Sources */,
+				7F4B701C1E3BBE27001B2F68 /* CSLocationManager.m in Sources */,
 				7F867A411E367A0200612231 /* README.md in Sources */,
 				7FF399BE1915818500C8114E /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				7FF399BF1915818500C8114E /* UIImageView+MKNetworkKitAdditions.m in Sources */,

@@ -17,7 +17,6 @@
 #pragma mark GADCustomEventBanner
 
 CGSize myAdSize;
-NSString *bannerUrl;
 NSString *appHostUrl = @"api.commutestream.com";
 int portNumber = 3000;
 

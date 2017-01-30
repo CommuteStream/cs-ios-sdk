@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CSLocationManager.h"
 
 @interface CommuteStream : NSObject
 
@@ -44,6 +45,8 @@
 - (NSString *)testing;
 
 - (CLLocation *)location;
+
+- (CSLocationManager *)locationManager;
 
 - (NSMutableDictionary *)httpParams;
 

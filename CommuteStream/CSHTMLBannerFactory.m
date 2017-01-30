@@ -11,7 +11,7 @@
 
 @implementation CSHTMLBannerFactory
 
-NSString *bannerUrl;
+//NSString *htmlBannerUrl;
 
 - (UIView *)adViewFromDictionary:(NSMutableDictionary*)dictionary {
     
@@ -37,7 +37,7 @@ NSString *bannerUrl;
     //NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"pan-gesture-banner" ofType:@"html"]];
     //NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
     [webView setRequestID:requestID];
-    bannerUrl = [dictionary objectForKey:@"url"];
+    //htmlBannerUrl = [dictionary objectForKey:@"url"];
     [webView loadHTML:htmlPath];
 
     //[webView loadURLRequest:[NSURLRequest requestWithURL:url]];

@@ -11,7 +11,7 @@
 
 @implementation CSBasicBannerAdFactory
 
-NSString *bannerUrl;
+NSString *basicBannerUrl;
 
 - (UIView *)adViewFromDictionary:(NSMutableDictionary*)dictionary {
     
@@ -23,9 +23,9 @@ NSString *bannerUrl;
     //NSLog(@"Web View %f width, %f height", [banner_width floatValue],  [banner_height floatValue]);
     CSBasicBannerAd *webView = [[CSBasicBannerAd alloc] initWithFrame:CGRectMake(0.0, 0.0, banner_width, banner_height)];
     NSString *htmlString = [dictionary objectForKey:@"html"];
-    bannerUrl = [dictionary objectForKey:@"url"];
+    basicBannerUrl = [dictionary objectForKey:@"url"];
     [webView loadHTMLString:htmlString baseURL:nil];
-    [webView setUrl:bannerUrl];
+    [webView setUrl:basicBannerUrl];
     webView.scrollView.scrollEnabled = NO;
     webView.scrollView.bounces = NO;
     
