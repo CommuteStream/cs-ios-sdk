@@ -130,7 +130,7 @@ char ifName[3] = "en0";
         NSString* sessionID = [sessionIDData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         sessionID = [sessionID stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
         sessionID = [sessionID stringByReplacingOccurrencesOfString:@"+" withString:@"-"];
-        [[CommuteStream open] setSessionID: sessionID];
+        [self setSessionID: sessionID];
 
         NSUUID* adId = [[ASIdentifierManager sharedManager] advertisingIdentifier];
         [self setIdfa: [adId UUIDString]];
@@ -201,8 +201,7 @@ char ifName[3] = "en0";
     [self setLastServerRequestTime:[NSDate date]];
     
     NSLog(@"CS_SDK: Reported success to CommuteStream.");
-    
-    NSLog(@"CS_SDK: Time zone: %@", time_zone);
+   
     
     [self.httpParams removeObjectForKey:@"lat"];
     [self.httpParams removeObjectForKey:@"lon"];
@@ -245,7 +244,6 @@ char ifName[3] = "en0";
         [dict setObject: creative_width forKey:@"creativeWidth"];
         [dict setObject: creative_height forKey:@"creativeHeight"];
         [dict setObject:[request responseString] forKey:@"htmlbody"];
-        
         
         //if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
             if ([request responseString]){
