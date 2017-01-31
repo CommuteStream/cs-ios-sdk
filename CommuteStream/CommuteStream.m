@@ -148,6 +148,11 @@ char ifName[3] = "en0";
             [self setLocation:csLocationManager.lastKnownLocation];
         }
         
+        NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+        NSString *tzName = [timeZone name];
+        
+        [self setTimeZone:tzName];
+        
         
     }
     
