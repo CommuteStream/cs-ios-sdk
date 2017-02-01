@@ -227,6 +227,8 @@ char ifName[3] = "en0";
     
         [self reportSuccessfulGet];
         
+        NSLog(@"%@", headerDict);
+        
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         
         
