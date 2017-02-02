@@ -13,12 +13,10 @@
 
 -(void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info{
     
-    
-    NSLog(@"CS_SDK: MoPub Requesting CS Ad.");
-    
+    NSLog(@"CS_SDK: MoPub Requesting CommuteStream Ad.");
     
     if (![[CommuteStream open] isInitialized]) {
-        NSLog(@"CS_SDK: Retrieving Info.");
+        NSLog(@"CS_SDK: Retrieving Ad Unit ID.");
         
         [[CommuteStream open] setAdUnitUUID: [info objectForKey:@"cs_ad_unit_uuid"]];
         [[CommuteStream open] setIsInitialized:YES];
@@ -30,10 +28,7 @@
     [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) size.height]];
     [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
     
-    
     [[CommuteStream open] getAd:self];
-    
-    
     
 }
 

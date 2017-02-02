@@ -17,8 +17,6 @@
 #pragma mark GADCustomEventBanner
 
 CGSize myAdSize;
-NSString *appHostUrl = @"api.commutestream.com";
-int portNumber = 3000;
 
 
 - (void)requestBannerAd:(GADAdSize)adSize
@@ -27,11 +25,11 @@ int portNumber = 3000;
                 request:(GADCustomEventRequest *)customEventRequest  {
 
     
-    NSLog(@"CS_SDK: AdMob requesting ad.");
+    NSLog(@"CS_SDK: AdMob requesting CommuteStream Ad.");
     
     
     if (![[CommuteStream open] isInitialized]) {
-        NSLog(@"CS_SDK: Retrieving Info.");
+        NSLog(@"CS_SDK: Retrieving Ad Unit ID.");
         [[CommuteStream open] setAdUnitUUID:serverParameter];
         
         [[CommuteStream open] setIsInitialized:YES];

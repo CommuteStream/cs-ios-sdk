@@ -102,8 +102,6 @@ char ifName[3] = "en0";
         
         NSString *appHostUrl = @"api.commutestream.com";
         networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
-        //int portNumber = 3000;
-        //[networkEngine setPortNumber: portNumber];
         
         parameterCheckTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(onParameterCheckTimer:) userInfo:nil repeats:YES];
         
@@ -136,10 +134,10 @@ char ifName[3] = "en0";
         [self setIdfa: [adId UUIDString]];
         
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
-            NSLog(@"Advertising tracking disabled.");
+            NSLog(@"CS_SDK: Advertising tracking disabled.");
             [self setIOSLimitAdTracking:@"true"];
         }else {
-            NSLog(@"Advertising tracking enabled.");
+            NSLog(@"CS_SDK: Advertising tracking enabled.");
         }
         
         csLocationManager = self.locationManager;
@@ -173,10 +171,10 @@ char ifName[3] = "en0";
         [self.httpParams setObject:@"true" forKey:@"skip_fetch"];
         
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
-            NSLog(@"Advertising tracking disabled.");
+            NSLog(@"CS_SDK: Advertising tracking disabled.");
             [[CommuteStream open] setIOSLimitAdTracking:@"true"];
         }else {
-            NSLog(@"Advertising tracking enabled.");
+            NSLog(@"CS_SDK: Advertising tracking enabled.");
             
         }
         
@@ -216,47 +214,48 @@ char ifName[3] = "en0";
 
 - (void)getAd:(NSObject *)banner{
     
-    NSLog(@"Params: %@", [self httpParams]);
-    
     __weak MKNetworkOperation *request = [networkEngine getBanner:[self httpParams]];
     
 
     [request setCompletionBlock:^{
         
-        NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
-    
         [self reportSuccessfulGet];
-        
-        NSLog(@"%@", headerDict);
-        
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         
+        if ([[request readonlyResponse] statusCode] == 200) {
+            
+            NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
         
-        //Get width and height from separate headers in the response to later be used for scaling within the ad unit
-        //Get type of add from header
-        
-        NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
-        NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
-        registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
-        [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
-        [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
-        [dict setObject:banner forKey:@"banner"];
-        [dict setObject:banner_height forKey: @"bannerHeight"];
-        [dict setObject:banner_width forKey: @"bannerWidth"];
-        [dict setObject: creative_width forKey:@"creativeWidth"];
-        [dict setObject: creative_height forKey:@"creativeHeight"];
-        [dict setObject:[request responseString] forKey:@"htmlbody"];
-        
-        //if ([[dict objectForKey:@"item_returned"]boolValue] == YES) {
+            NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
+            NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
+            registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
+            [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
+            [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
+            [dict setObject:banner forKey:@"banner"];
+            [dict setObject:banner_height forKey: @"bannerHeight"];
+            [dict setObject:banner_width forKey: @"bannerWidth"];
+            [dict setObject: creative_width forKey:@"creativeWidth"];
+            [dict setObject: creative_height forKey:@"creativeHeight"];
+            [dict setObject:[request responseString] forKey:@"htmlbody"];
+            
             if ([request responseString]){
                 [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
             }else{
                 NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-                //[banner.delegate customEventBanner:banner didFailAd:request.error];
                 NSDictionary *dictWithError = @{@"banner": [dict objectForKey:@"banner"], @"error": request.error};
                 [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
             }
-        //}
+        }else if([[request readonlyResponse] statusCode] == 400){
+            NSLog(@"CS_SDK: Ad request failed with error 400, bad request");
+        }else if([[request readonlyResponse] statusCode] == 500){
+            NSLog(@"CS_SDK: Ad request failed with error 500, server temporarily unavailable.");
+        }else{
+            NSLog(@"CS_SDK: Ad request failed with error %@, deferring to AdMob", [request error]);
+            NSDictionary *dictWithError = @{@"banner": banner, @"error": request.error};
+            [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
+            
+        }
+
     }];
 
     
@@ -267,6 +266,7 @@ char ifName[3] = "en0";
     NSObject *customBanner = [dict objectForKey:@"banner"];
     NSError *dictError = [dict objectForKey:@"error"];
     if([customBanner conformsToProtocol:@protocol(CSCustomEventDelegate)]){
+
         [customBanner performSelector:@selector(didFailAdWithError:) withObject:dictError];
     }
 
@@ -286,14 +286,7 @@ char ifName[3] = "en0";
         [customBanner performSelector:@selector(didReceiveAdWithView:) withObject:adView];
     }
     
-    
     impressionMonitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForImpression:) userInfo:adView repeats:YES];
-    
-    
-    
-    
-    
-    
 }
 
 - (void)checkForImpression:(NSTimer *)timerParameter {
@@ -301,16 +294,12 @@ char ifName[3] = "en0";
     CGPoint originalPoint = CGPointMake(adView.frame.origin.x, adView.frame.origin.y);
     
     CGPoint pointInAppFrame = [adView convertPoint:originalPoint toView:adView.superview.window];
-    
-    //NSLog(@"-----adView Rect %@", NSStringFromCGRect(CGRectMake(pointInAppFrame.x, pointInAppFrame.y, adView.frame.size.width, adView.frame.size.height)));
-    
-    //NSLog(@"-----App Rect %@", NSStringFromCGRect(adView.superview.window.frame));
-    
+
     BOOL hasShown = CGRectIntersectsRect(CGRectMake(pointInAppFrame.x, pointInAppFrame.y, adView.frame.size.width, adView.frame.size.height), adView.superview.window.frame);
     
     
     if(hasShown && (adView.hidden == NO)){
-        NSLog(@"impression counted - shut timer down");
+        NSLog(@"CS_SDK: Impression counted.");
         [impressionMonitorTimer invalidate];
         impressionMonitorTimer = nil;
         
@@ -320,7 +309,7 @@ char ifName[3] = "en0";
         __weak MKNetworkOperation *request = [networkEngine registerImpression:impressionDict];
         
         [request setCompletionBlock:^{
-            NSLog(@"Reported it successfully");
+            NSLog(@"CS_SDK: Reported impression successfully");
         }];
         
         
