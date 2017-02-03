@@ -179,4 +179,4 @@ The following ids are to be used in the various method calls above where "agency
 
 ## Logging
 
-Log messages from the CommuteStream SDK are sent to LogCat under the "CS_SDK" tag inside Android Studio.
+Log messages from the CommuteStream SDK are sent to Console under the "CS_SDK" tag.

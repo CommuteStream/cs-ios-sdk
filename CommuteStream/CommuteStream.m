@@ -60,9 +60,12 @@
     
     NSString *bannerUrl;
     NSTimer *impressionMonitorTimer;
+
     
     UIView *adView;
     NSString *registerImpressionID;
+    
+    
     
     
 
@@ -299,26 +302,61 @@ char ifName[3] = "en0";
     
     
     if(hasShown && (adView.hidden == NO)){
-        NSLog(@"CS_SDK: Impression counted.");
+        
         [impressionMonitorTimer invalidate];
         impressionMonitorTimer = nil;
         
-        NSMutableDictionary *impressionDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : registerImpressionID}];
         
-        //api call
-        __weak MKNetworkOperation *request = [networkEngine registerImpression:impressionDict];
-        
-        [request setCompletionBlock:^{
-            NSLog(@"CS_SDK: Reported impression successfully");
-        }];
-        
-        
+        NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @5.0, @"count" : @7}];
+        [self callRegisterImpressionWithTimerParams:retryDict];
+    
     }
-    
-    
-    
 }
 
+
+- (void)callRegisterImpressionWithTimerParams:(NSMutableDictionary *)params {
+    
+    NSMutableDictionary *impressionDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : registerImpressionID}];
+    
+    NSLog(@"Params = %@", params);
+    
+    __block CGFloat impressionResponseTimerDelay = [[params objectForKey:@"delay"] floatValue];
+    __block NSInteger impressionResponseTimerCount = [[params objectForKey:@"count"] integerValue];
+    
+    
+    //api call
+    __weak MKNetworkOperation *request = [networkEngine registerImpression:impressionDict];
+    
+    [request setCompletionBlock:^{
+        
+        if ([[request readonlyResponse] statusCode] == 204 || [[request readonlyResponse] statusCode] == 303) {
+            
+            NSLog(@"CS_SDK: Reported impression successfully");
+        }else{
+    
+            if(impressionResponseTimerCount > 0){
+                
+                impressionResponseTimerDelay *= 2;
+                impressionResponseTimerCount--;
+                
+                NSLog(@"impression timer delay = %f", impressionResponseTimerDelay);
+                NSLog(@"impression timer count = %ld", (long)impressionResponseTimerCount);
+                
+                NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @(impressionResponseTimerDelay), @"count" : @(impressionResponseTimerCount)}];
+                
+                NSLog(@"Retry Dict = %@", retryDict);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self performSelector:@selector(callRegisterImpressionWithTimerParams:) withObject:retryDict afterDelay:impressionResponseTimerDelay];
+                });
+            }
+            
+            NSLog(@"CS_SDK: Failed to report impression. Trying again in %f seconds.", impressionResponseTimerDelay);
+            
+        }
+        
+    }];
+
+}
 
 //GETTERS
 
