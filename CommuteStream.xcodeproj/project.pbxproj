@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		1B2181CC1E49024A000AB72C /* MoPub Framework */ = {
+		1B2181CC1E49024A000AB72C /* MoPubFramework */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 1B2181D01E49024A000AB72C /* Build configuration list for PBXAggregateTarget "MoPub Framework" */;
+			buildConfigurationList = 1B2181D01E49024A000AB72C /* Build configuration list for PBXAggregateTarget "MoPubFramework" */;
 			buildPhases = (
 				1B2181CF1E49024A000AB72C /* ShellScript */,
 			);
 			dependencies = (
 				1B2181D41E49026F000AB72C /* PBXTargetDependency */,
 			);
-			name = "MoPub Framework";
+			name = MoPubFramework;
 			productName = Framework;
 		};
-		1B67178D1D0F3A9B006D51F8 /* AdMob Framework */ = {
+		1B67178D1D0F3A9B006D51F8 /* AdMobFramework */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 1B67178E1D0F3A9B006D51F8 /* Build configuration list for PBXAggregateTarget "AdMob Framework" */;
+			buildConfigurationList = 1B67178E1D0F3A9B006D51F8 /* Build configuration list for PBXAggregateTarget "AdMobFramework" */;
 			buildPhases = (
 				1B6717931D0F3AB5006D51F8 /* ShellScript */,
 			);
 			dependencies = (
 				1B6717921D0F3AAA006D51F8 /* PBXTargetDependency */,
 			);
-			name = "AdMob Framework";
+			name = AdMobFramework;
 			productName = Framework;
 		};
 /* End PBXAggregateTarget section */
@@ -559,7 +559,7 @@
 		7FF398C5191552D100C8114E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398C4191552D100C8114E /* XCTest.framework */; };
 		7FF398C6191552D100C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
 		7FF398C8191552D100C8114E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398C7191552D100C8114E /* UIKit.framework */; };
-		7FF398CB191552D100C8114E /* libCommuteStream AdMob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B3191552D000C8114E /* libCommuteStream AdMob.a */; };
+		7FF398CB191552D100C8114E /* libCommuteStreamAdMob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B3191552D000C8114E /* libCommuteStreamAdMob.a */; };
 		7FF398D1191552D100C8114E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FF398CF191552D100C8114E /* InfoPlist.strings */; };
 		7FF398D3191552D100C8114E /* CommuteStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398D2191552D100C8114E /* CommuteStreamTests.m */; };
 		7FF398F41915538600C8114E /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398DF1915538600C8114E /* NSAlert+MKNetworkKitAdditions.m */; };
@@ -711,9 +711,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1B2181CB1E49023F000AB72C /* libCommuteStream MoPub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCommuteStream MoPub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B2181CB1E49023F000AB72C /* libCommuteStreamMoPub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommuteStreamMoPub.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B7395171C875EF200606647 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1B7395191C875EF800606647 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		1BC3E1D01E492544002C1F58 /* build_framework.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build_framework.sh; sourceTree = "<group>"; };
 		7F30348F1E2E8D3000134984 /* NSURL+CSURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CSURL.h"; sourceTree = "<group>"; };
 		7F3034901E2E8D3000134984 /* NSURL+CSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CSURL.m"; sourceTree = "<group>"; };
 		7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGestureRecognizer.h; sourceTree = "<group>"; };
@@ -1228,7 +1229,7 @@
 		7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMRAIDViewFactory.m; sourceTree = "<group>"; };
 		7FD99B811DC2A0A200E33562 /* CSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSWebView.h; sourceTree = "<group>"; };
 		7FD99B821DC2A0A200E33562 /* CSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSWebView.m; sourceTree = "<group>"; };
-		7FF398B3191552D000C8114E /* libCommuteStream AdMob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libCommuteStream AdMob.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FF398B3191552D000C8114E /* libCommuteStreamAdMob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommuteStreamAdMob.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF398B6191552D000C8114E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7FF398BA191552D000C8114E /* CommuteStream-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CommuteStream-Prefix.pch"; sourceTree = "<group>"; };
 		7FF398BB191552D000C8114E /* CommuteStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommuteStream.h; sourceTree = "<group>"; };
@@ -1321,7 +1322,7 @@
 				7FF398C5191552D100C8114E /* XCTest.framework in Frameworks */,
 				7FF398C8191552D100C8114E /* UIKit.framework in Frameworks */,
 				7F867A2F1E367A0200612231 /* GoogleMobileAds.framework in Frameworks */,
-				7FF398CB191552D100C8114E /* libCommuteStream AdMob.a in Frameworks */,
+				7FF398CB191552D100C8114E /* libCommuteStreamAdMob.a in Frameworks */,
 				7FF398C6191552D100C8114E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2091,6 +2092,7 @@
 		7FF398AA191552D000C8114E = {
 			isa = PBXGroup;
 			children = (
+				1BC3E1D01E492544002C1F58 /* build_framework.sh */,
 				7F8678991E367A0200612231 /* MoPubSDK */,
 				7FD99A421DBE7E8000E33562 /* creatives */,
 				7FF398B8191552D000C8114E /* CommuteStream */,
@@ -2103,9 +2105,9 @@
 		7FF398B4191552D000C8114E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7FF398B3191552D000C8114E /* libCommuteStream AdMob.a */,
+				7FF398B3191552D000C8114E /* libCommuteStreamAdMob.a */,
 				7FF398C3191552D100C8114E /* CommuteStreamTests.xctest */,
-				1B2181CB1E49023F000AB72C /* libCommuteStream MoPub.a */,
+				1B2181CB1E49023F000AB72C /* libCommuteStreamMoPub.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2495,9 +2497,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1B2180B11E49023F000AB72C /* CommuteStream MoPub */ = {
+		1B2180B11E49023F000AB72C /* CommuteStreamMoPub */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B2181C81E49023F000AB72C /* Build configuration list for PBXNativeTarget "CommuteStream MoPub" */;
+			buildConfigurationList = 1B2181C81E49023F000AB72C /* Build configuration list for PBXNativeTarget "CommuteStreamMoPub" */;
 			buildPhases = (
 				1B2180B21E49023F000AB72C /* Sources */,
 				1B2180D41E49023F000AB72C /* Frameworks */,
@@ -2511,14 +2513,14 @@
 			);
 			dependencies = (
 			);
-			name = "CommuteStream MoPub";
+			name = CommuteStreamMoPub;
 			productName = CommuteStream;
-			productReference = 1B2181CB1E49023F000AB72C /* libCommuteStream MoPub.a */;
+			productReference = 1B2181CB1E49023F000AB72C /* libCommuteStreamMoPub.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		7FF398B2191552D000C8114E /* CommuteStream AdMob */ = {
+		7FF398B2191552D000C8114E /* CommuteStreamAdMob */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FF398D6191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStream AdMob" */;
+			buildConfigurationList = 7FF398D6191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStreamAdMob" */;
 			buildPhases = (
 				7FF398AF191552D000C8114E /* Sources */,
 				7FF398B0191552D000C8114E /* Frameworks */,
@@ -2532,9 +2534,9 @@
 			);
 			dependencies = (
 			);
-			name = "CommuteStream AdMob";
+			name = CommuteStreamAdMob;
 			productName = CommuteStream;
-			productReference = 7FF398B3191552D000C8114E /* libCommuteStream AdMob.a */;
+			productReference = 7FF398B3191552D000C8114E /* libCommuteStreamAdMob.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		7FF398C2191552D100C8114E /* CommuteStreamTests */ = {
@@ -2585,11 +2587,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7FF398B2191552D000C8114E /* CommuteStream AdMob */,
-				1B2180B11E49023F000AB72C /* CommuteStream MoPub */,
+				7FF398B2191552D000C8114E /* CommuteStreamAdMob */,
+				1B2180B11E49023F000AB72C /* CommuteStreamMoPub */,
 				7FF398C2191552D100C8114E /* CommuteStreamTests */,
-				1B67178D1D0F3A9B006D51F8 /* AdMob Framework */,
-				1B2181CC1E49024A000AB72C /* MoPub Framework */,
+				1B67178D1D0F3A9B006D51F8 /* AdMobFramework */,
+				1B2181CC1E49024A000AB72C /* MoPubFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -2655,7 +2657,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=CommuteStreamMoPub\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
 		};
 		1B6717751D0F3675006D51F8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2681,7 +2683,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=CommuteStreamAdMob\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2957,17 +2959,17 @@
 /* Begin PBXTargetDependency section */
 		1B2181D41E49026F000AB72C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1B2180B11E49023F000AB72C /* CommuteStream MoPub */;
+			target = 1B2180B11E49023F000AB72C /* CommuteStreamMoPub */;
 			targetProxy = 1B2181D31E49026F000AB72C /* PBXContainerItemProxy */;
 		};
 		1B6717921D0F3AAA006D51F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7FF398B2191552D000C8114E /* CommuteStream AdMob */;
+			target = 7FF398B2191552D000C8114E /* CommuteStreamAdMob */;
 			targetProxy = 1B6717911D0F3AAA006D51F8 /* PBXContainerItemProxy */;
 		};
 		7FF398CA191552D100C8114E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7FF398B2191552D000C8114E /* CommuteStream AdMob */;
+			target = 7FF398B2191552D000C8114E /* CommuteStreamAdMob */;
 			targetProxy = 7FF398C9191552D100C8114E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3278,7 +3280,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B2181C81E49023F000AB72C /* Build configuration list for PBXNativeTarget "CommuteStream MoPub" */ = {
+		1B2181C81E49023F000AB72C /* Build configuration list for PBXNativeTarget "CommuteStreamMoPub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B2181C91E49023F000AB72C /* Debug */,
@@ -3287,7 +3289,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B2181D01E49024A000AB72C /* Build configuration list for PBXAggregateTarget "MoPub Framework" */ = {
+		1B2181D01E49024A000AB72C /* Build configuration list for PBXAggregateTarget "MoPubFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B2181D11E49024A000AB72C /* Debug */,
@@ -3296,7 +3298,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B67178E1D0F3A9B006D51F8 /* Build configuration list for PBXAggregateTarget "AdMob Framework" */ = {
+		1B67178E1D0F3A9B006D51F8 /* Build configuration list for PBXAggregateTarget "AdMobFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B67178F1D0F3A9B006D51F8 /* Debug */,
@@ -3314,7 +3316,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7FF398D6191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStream AdMob" */ = {
+		7FF398D6191552D100C8114E /* Build configuration list for PBXNativeTarget "CommuteStreamAdMob" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FF398D7191552D100C8114E /* Debug */,

@@ -7,8 +7,8 @@
 //
 
 #import "MPBannerCustomEvent.h"
-#import <CommuteStream/CommuteStream.h>
-#import <CommuteStream/CSCustomEventDelegate.h>
+#import "CommuteStream.h"
+#import "CSCustomEventDelegate.h"
 
 @interface CSMoPubCustomEvent : MPBannerCustomEvent <CSCustomEventDelegate>
 
