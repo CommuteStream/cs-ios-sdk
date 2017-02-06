@@ -64,11 +64,6 @@
     
     UIView *adView;
     NSString *registerImpressionID;
-    
-    
-    
-    
-
 }
 
 char macAddress[32];
