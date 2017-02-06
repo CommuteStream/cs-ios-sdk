@@ -18,12 +18,13 @@
         NSLog(@"CS_SDK: Call to banner server successful");
         
     }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        NSLog(@"CS_SDK: Error from banner server - %@", error);
+        if([[operation readonlyResponse] statusCode] != 404) {
+            NSLog(@"CS_SDK: Error from banner server - %@", error);
+        }
     }];
     
     
     [self enqueueOperation:op];
-    
     return op;
     
 }
