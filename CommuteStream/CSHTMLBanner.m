@@ -10,7 +10,7 @@
 #import "CSWebView.h"
 #import "CSGestureRecognizer.h"
 #import "NSURL+CSURL.h"
-
+#import "CommuteStream.h"
 
 
 
@@ -126,19 +126,16 @@ NSString *hostUrl = @"api.commutestream.com";
     //NSURL *url = [NSURL URLWithString:bannerUrl];
     //[[UIApplication sharedApplication] openURL:url];
     
-    NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary:@{@"request_id" : requestID}];
-    
     touchCount++;
     
     //api call
     if(touchCount == 1){
-        __weak MKNetworkOperation *request = [csNetworkEngine registerClick:clickDict];
         
-        [request setCompletionBlock:^{
-            NSLog(@"Reported click successfully");
-        }];
+        NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @5.0, @"count" : @7, @"requestID" : requestID}];
+       
+        [[CommuteStream open] callRegisterClickWithTimerParams:retryDict];
         
-        NSLog(@"Web View Tapped");
+        
     }
     
     

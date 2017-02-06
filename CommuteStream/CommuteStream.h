@@ -71,6 +71,7 @@
 - (void)setBannerWidth:(NSString *)bannerWidth;
 
 
+- (void)callRegisterClickWithTimerParams:(NSMutableDictionary*)params;
 
 - (void)setSessionID:(NSString *)sessionID;
 

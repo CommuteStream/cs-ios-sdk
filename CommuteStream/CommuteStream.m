@@ -348,14 +348,64 @@ char ifName[3] = "en0";
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self performSelector:@selector(callRegisterImpressionWithTimerParams:) withObject:retryDict afterDelay:impressionResponseTimerDelay];
                 });
+                NSLog(@"CS_SDK: Failed to report impression. Trying again in %f seconds.", impressionResponseTimerDelay);
             }
             
-            NSLog(@"CS_SDK: Failed to report impression. Trying again in %f seconds.", impressionResponseTimerDelay);
+            
             
         }
         
     }];
 
+}
+
+
+- (void)callRegisterClickWithTimerParams:(NSMutableDictionary *)params {
+    
+    NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : [params objectForKey:@"requestID"]}];
+    
+    NSLog(@"Params = %@", params);
+    
+    __block CGFloat clickResponseTimerDelay = [[params objectForKey:@"delay"] floatValue];
+    __block NSInteger clickResponseTimerCount = [[params objectForKey:@"count"] integerValue];
+    __block NSString *clickResponseRequestID = [params objectForKey:@"requestID"];
+    
+    
+    //api call
+    __weak MKNetworkOperation *request = [networkEngine registerClick:clickDict];
+    
+    
+    [request setCompletionBlock:^{
+        
+        if ([[request readonlyResponse] statusCode] == 204 || [[request readonlyResponse] statusCode] == 303) {
+            
+            NSLog(@"CS_SDK: Reported click successfully");
+        }else{
+            
+            if(clickResponseTimerCount > 0){
+                
+                clickResponseTimerDelay *= 2;
+                clickResponseTimerCount--;
+                
+                NSLog(@"click timer delay = %f", clickResponseTimerDelay);
+                NSLog(@"click timer count = %ld", (long)clickResponseTimerCount);
+                
+                NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @(clickResponseTimerDelay), @"count" : @(clickResponseTimerCount), @"requestID" : clickResponseRequestID}];
+                
+                NSLog(@"Retry Dict = %@", retryDict);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self performSelector:@selector(callRegisterClickWithTimerParams:) withObject:retryDict afterDelay:clickResponseTimerDelay];
+                });
+                
+                NSLog(@"CS_SDK: Failed to report click. Trying again in %f seconds.", clickResponseTimerDelay);
+            }
+            
+            
+            
+        }
+        
+    }];
+    
 }
 
 //GETTERS
