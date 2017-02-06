@@ -82,7 +82,6 @@
 		1B2180E31E49023F000AB72C /* MKNetworkKit.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398EE1915538600C8114E /* MKNetworkKit.h */; };
 		1B2180E41E49023F000AB72C /* MKNetworkOperation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398EF1915538600C8114E /* MKNetworkOperation.h */; };
 		1B2180E51E49023F000AB72C /* CSNetworkEngine.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398FE191553C300C8114E /* CSNetworkEngine.h */; };
-		1B2180E61E49023F000AB72C /* CSCustomBanner.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; };
 		1B2180E71E49023F000AB72C /* CommuteStream.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; };
 		1B2180E91E49023F000AB72C /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398F21915538600C8114E /* Reachability.h */; };
 		1B2180EB1E49023F000AB72C /* NSAlert+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398DE1915538600C8114E /* NSAlert+MKNetworkKitAdditions.h */; };
@@ -312,6 +311,10 @@
 		1B2181E21E4902EC000AB72C /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F86798B1E367A0200612231 /* MPInterstitialCustomEvent.m */; };
 		1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B7395181C875EF200606647 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7395171C875EF200606647 /* ImageIO.framework */; };
+		1BC3E1D31E49285E002C1F58 /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BC3E1D41E492868002C1F58 /* CSCustomBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF39902191554CB00C8114E /* CSCustomBanner.m */; };
+		1BC3E1D51E492874002C1F58 /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
+		1BC3E1D61E492874002C1F58 /* CommuteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398BD191552D000C8114E /* CommuteStream.m */; };
 		7F1880631915A76500BE18B5 /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398F21915538600C8114E /* Reachability.h */; };
 		7F18806C1915A7AF00BE18B5 /* NSAlert+MKNetworkKitAdditions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398DE1915538600C8114E /* NSAlert+MKNetworkKitAdditions.h */; };
 		7F18806D1915A7AF00BE18B5 /* NSData+MKBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF398E01915538600C8114E /* NSData+MKBase64.h */; };
@@ -634,7 +637,6 @@
 				1B2180E31E49023F000AB72C /* MKNetworkKit.h in Copy Files */,
 				1B2180E41E49023F000AB72C /* MKNetworkOperation.h in Copy Files */,
 				1B2180E51E49023F000AB72C /* CSNetworkEngine.h in Copy Files */,
-				1B2180E61E49023F000AB72C /* CSCustomBanner.h in Copy Files */,
 				1B2180E71E49023F000AB72C /* CommuteStream.h in Copy Files */,
 			);
 			name = "Copy Files";
@@ -2367,6 +2369,7 @@
 				1B2181661E49023F000AB72C /* MOPUBAVPlayerView.h in Headers */,
 				1B2181671E49023F000AB72C /* MPProgressOverlayView.h in Headers */,
 				1B2181681E49023F000AB72C /* CSBasicBannerAd.h in Headers */,
+				1BC3E1D31E49285E002C1F58 /* CSCustomBanner.h in Headers */,
 				1B2181691E49023F000AB72C /* MPRetryingHTTPOperation.h in Headers */,
 				1B21816A1E49023F000AB72C /* MPReachability.h in Headers */,
 				1B21816B1E49023F000AB72C /* NSURL+CSURL.h in Headers */,
@@ -2718,6 +2721,7 @@
 				1B2180C61E49023F000AB72C /* NSDate+RFC1123.m in Sources */,
 				1B2180C71E49023F000AB72C /* CSMRAIDViewFactory.m in Sources */,
 				1B2180C81E49023F000AB72C /* CSMRAIDOrientationProperties.m in Sources */,
+				1BC3E1D41E492868002C1F58 /* CSCustomBanner.m in Sources */,
 				1B2180C91E49023F000AB72C /* NSDictionary+RequestEncoding.m in Sources */,
 				1B2181E01E4902EC000AB72C /* MPConstants.m in Sources */,
 				1B2180CA1E49023F000AB72C /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -2728,6 +2732,7 @@
 				1B2181E21E4902EC000AB72C /* MPInterstitialCustomEvent.m in Sources */,
 				1B2180CF1E49023F000AB72C /* README.md in Sources */,
 				1B2180D01E49023F000AB72C /* CSNetworkEngine.m in Sources */,
+				1BC3E1D61E492874002C1F58 /* CommuteStream.m in Sources */,
 				1B2181DC1E4902EC000AB72C /* MoPub.m in Sources */,
 				1B2180D21E49023F000AB72C /* CSMRAIDModalViewController.m in Sources */,
 				1B2180D31E49023F000AB72C /* CSHTMLBanner.m in Sources */,
@@ -2753,6 +2758,7 @@
 				7FF399C01915819E00C8114E /* MKNetworkEngine.m in Sources */,
 				7FF399C11915819E00C8114E /* MKNetworkOperation.m in Sources */,
 				7FF399B91915818500C8114E /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				1BC3E1D51E492874002C1F58 /* CommuteStream.m in Sources */,
 				7FF399BA1915818500C8114E /* NSData+MKBase64.m in Sources */,
 				7FC68B2B1DAECE2600DBFD9B /* CSMRAIDResizeProperties.m in Sources */,
 				7FC68B3C1DAED20700DBFD9B /* CSMRAIDUtil.m in Sources */,
