@@ -508,18 +508,18 @@ char ifName[3] = "en0";
 
 - (void)setBannerHeight:(NSString *)bannerHeight{
     banner_height = bannerHeight;
-    [self.httpParams setObject:bannerHeight forKey:@"banner_height"];
+    [self.httpParams setObject:bannerHeight forKey:@"height"];
     
 }
 
 - (void)setBannerWidth:(NSString *)bannerWidth {
     banner_width = bannerWidth;
-    [self.httpParams setObject:bannerWidth forKey:@"banner_width"];
+    [self.httpParams setObject:bannerWidth forKey:@"width"];
 }
 
 - (void)setSessionID:(NSString *)sessionID {
     session_ID = sessionID;
-    [self.httpParams setObject:sessionID forKey:@"session"];
+    [self.httpParams setObject:sessionID forKey:@"session_id"];
 }
 
 - (void)setTimeZone:(NSString *)timeZone {
