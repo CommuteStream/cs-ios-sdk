@@ -73,6 +73,8 @@ NSString *hostUrl = @"api.commutestream.com";
         webViewTouchRecognizer.delegate = self;
         [webView addGestureRecognizer:webViewTouchRecognizer];
         
+        //[webView stringByEvaluatingJavaScriptFromString:@"window.open = function (open) {return function  (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
+        
         csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:hostUrl];
         
         touchCount = 0;
@@ -120,7 +122,6 @@ NSString *hostUrl = @"api.commutestream.com";
     
     touchCount++;
     
-    //api call
     if(touchCount == 1){
         
         NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @5.0, @"count" : @7, @"requestID" : requestID}];
@@ -134,7 +135,6 @@ NSString *hostUrl = @"api.commutestream.com";
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-
     
     NSURL *URL = [request URL];
     if ([self shouldIntercept:URL forNavigationType:navigationType]) {
@@ -149,11 +149,11 @@ NSString *hostUrl = @"api.commutestream.com";
 
 - (BOOL)shouldIntercept:(NSURL *)URL forNavigationType:(UIWebViewNavigationType)navigationType {
     if ([URL hasTelephoneScheme] || [URL hasTelephonePromptScheme]) {
-        return YES;
+        return userInteracted;
     }else if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-        return YES;
+        return userInteracted;
     } else if (navigationType == UIWebViewNavigationTypeOther) {
-        return [[URL absoluteString] hasPrefix:@""] || [[URL absoluteString] hasPrefix:@"http://commutestream.com"];
+        return userInteracted;
     } else {
         return NO;
     }
