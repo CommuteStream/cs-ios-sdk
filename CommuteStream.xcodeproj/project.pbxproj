@@ -302,13 +302,6 @@
 		1B2181C41E49023F000AB72C /* MPTableViewAdPlacer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679DF1E367A0200612231 /* MPTableViewAdPlacer.h */; };
 		1B2181C51E49023F000AB72C /* MPStaticNativeAdImpressionTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679AE1E367A0200612231 /* MPStaticNativeAdImpressionTimer.h */; };
 		1B2181C61E49023F000AB72C /* CSMRAIDServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B2181DC1E4902EC000AB72C /* MoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F86797E1E367A0200612231 /* MoPub.m */; };
-		1B2181DD1E4902EC000AB72C /* MPAdConversionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8679801E367A0200612231 /* MPAdConversionTracker.m */; };
-		1B2181DE1E4902EC000AB72C /* MPAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8679821E367A0200612231 /* MPAdView.m */; };
-		1B2181DF1E4902EC000AB72C /* MPBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8679841E367A0200612231 /* MPBannerCustomEvent.m */; };
-		1B2181E01E4902EC000AB72C /* MPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8679871E367A0200612231 /* MPConstants.m */; };
-		1B2181E11E4902EC000AB72C /* MPInterstitialAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8679891E367A0200612231 /* MPInterstitialAdController.m */; };
-		1B2181E21E4902EC000AB72C /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F86798B1E367A0200612231 /* MPInterstitialCustomEvent.m */; };
 		1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B7395181C875EF200606647 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7395171C875EF200606647 /* ImageIO.framework */; };
 		1BC3E1D31E49285E002C1F58 /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2695,7 +2688,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B2181DD1E4902EC000AB72C /* MPAdConversionTracker.m in Sources */,
 				1B2180B31E49023F000AB72C /* CSGestureRecognizer.m in Sources */,
 				1B2180B41E49023F000AB72C /* CSMRAIDParser.m in Sources */,
 				1B2180B51E49023F000AB72C /* CSWebView.m in Sources */,
@@ -2703,11 +2695,8 @@
 				1B2180B71E49023F000AB72C /* CSMRAIDView.m in Sources */,
 				1B2180B81E49023F000AB72C /* CSBasicBannerAdFactory.m in Sources */,
 				1B2180B91E49023F000AB72C /* Reachability.m in Sources */,
-				1B2181DF1E4902EC000AB72C /* MPBannerCustomEvent.m in Sources */,
-				1B2181E11E4902EC000AB72C /* MPInterstitialAdController.m in Sources */,
 				1B2180BA1E49023F000AB72C /* CSMRAIDSettings.m in Sources */,
 				1B2180BB1E49023F000AB72C /* CSLogger.m in Sources */,
-				1B2181DE1E4902EC000AB72C /* MPAdView.m in Sources */,
 				1B2180BC1E49023F000AB72C /* CSHTMLBannerFactory.m in Sources */,
 				1B2180BD1E49023F000AB72C /* NSURL+CSURL.m in Sources */,
 				1B2180BE1E49023F000AB72C /* CSBasicBannerAd.m in Sources */,
@@ -2723,17 +2712,14 @@
 				1B2180C81E49023F000AB72C /* CSMRAIDOrientationProperties.m in Sources */,
 				1BC3E1D41E492868002C1F58 /* CSCustomBanner.m in Sources */,
 				1B2180C91E49023F000AB72C /* NSDictionary+RequestEncoding.m in Sources */,
-				1B2181E01E4902EC000AB72C /* MPConstants.m in Sources */,
 				1B2180CA1E49023F000AB72C /* NSString+MKNetworkKitAdditions.m in Sources */,
 				1B2180CB1E49023F000AB72C /* CSLocationManager.m in Sources */,
 				1B2180CC1E49023F000AB72C /* README.md in Sources */,
 				1B2180CD1E49023F000AB72C /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				1B2180CE1E49023F000AB72C /* UIImageView+MKNetworkKitAdditions.m in Sources */,
-				1B2181E21E4902EC000AB72C /* MPInterstitialCustomEvent.m in Sources */,
 				1B2180CF1E49023F000AB72C /* README.md in Sources */,
 				1B2180D01E49023F000AB72C /* CSNetworkEngine.m in Sources */,
 				1BC3E1D61E492874002C1F58 /* CommuteStream.m in Sources */,
-				1B2181DC1E4902EC000AB72C /* MoPub.m in Sources */,
 				1B2180D21E49023F000AB72C /* CSMRAIDModalViewController.m in Sources */,
 				1B2180D31E49023F000AB72C /* CSHTMLBanner.m in Sources */,
 			);
