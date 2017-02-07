@@ -13,18 +13,43 @@ Your app needs the follow in addition to any sub-requirements of MoPub or AdMob.
 - (For AdMob) Latest Google Mobile Ads SDK
 
 ## Downloading
-Clone the repository or download the zip file at `https://github.com/CommuteStream/cs-ios-sdk`
+Clone the repository or download the appropriate zip file:
+
+**GitHub:**
+[https://github.com/CommuteStream/cs-ios-sdk](https://github.com/CommuteStream/cs-ios-sdk).
+
+**AdMob:**
+[CommuteStreamAdMob-iOS-0.8.0.zip](https://s3.amazonaws.com/download.commutestream.com/CommuteStreamAdMob-iOS-0.8.0.zip).
+
+**MoPub:**
+[CommuteStreamMoPub-iOS-0.8.0.zip](https://s3.amazonaws.com/download.commutestream.com/CommuteStreamMoPub-iOS-0.8.0.zip).
+
    
 ## Adding the SDK
-1. Follow either the AdMob or MoPub mediation setup instructions found at [https://commutestream.com/sdkinstructions](https://commutestream.com/sdkinstructions).
+First, follow either the AdMob or MoPub mediation setup instructions found at [https://commutestream.com/sdkinstructions](https://commutestream.com/sdkinstructions), then follow the instructions for either AdMob or MoPub:
+
+**For AdMob:**
+
+1. Drag the
+`CommuteStream-Admob-SDK.framework` file into your Xcode project.
 
 
-
-2. Depending on your primary ad network, Drag either 
-`CommuteStream-Admob-SDK.framework` or `Commutetream-MoPub-SDK.framework` into your Xcode project.
+2. In your project's Build Settings, add `-ObjC` to `Other Linker Flags`.
 
 
-3. Add `#import <CommuteStream/CommuteStream.h>` to the top of each ViewController that requests ads.
+3. Add `#import <CommuteStreamAdMob/CommuteStream.h>` to the top of each ViewController that requests ads.
+
+**For MoPub:**
+
+1. Drag the
+`CommuteStream-MoPub-SDK.framework` file into your Xcode project.
+
+
+2. In your project's Build Settings, add `-ObjC` to `Other Linker Flags`.
+
+
+3. Add `#import <CommuteStreamMoPub/CommuteStream.h>` to the top of each ViewController that requests ads.
+
 
 
 ## Test Banners
