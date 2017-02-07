@@ -44,7 +44,6 @@ NSString *hostUrl = @"api.commutestream.com";
 - (id)initWithAdUnitFrame:(CGRect)adFrame andCreativeFrame:(CGRect)creativeFrame {
     if ((self = [super initWithFrame:CGRectMake(adFrame.origin.x, adFrame.origin.y, adFrame.size.width, adFrame.size.height)])) {
         webView = [[CSWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, creativeFrame.size.width, creativeFrame.size.height)];
-        //[webView setUserInteractionEnabled:NO];
         webView.scrollView.scrollEnabled = NO;
         webView.scrollView.bounces = NO;
         [self addSubview:webView];
@@ -73,8 +72,6 @@ NSString *hostUrl = @"api.commutestream.com";
         
         webViewTouchRecognizer.delegate = self;
         [webView addGestureRecognizer:webViewTouchRecognizer];
-        
-        //[webView stringByEvaluatingJavaScriptFromString:@"window.open = function (open) {return function  (url, name, features) { window.location.href = url; return window; }; } (window.open);"];
         
         csNetworkEngine = [[CSNetworkEngine alloc] initWithHostName:hostUrl];
         
@@ -106,7 +103,6 @@ NSString *hostUrl = @"api.commutestream.com";
 - (void)setUrl:(NSString *)url{
     bannerUrl = url;
     
-    //[[[self configuration] preferences] setJavaScriptEnabled:YES];
 }
 
 - (void)setRequestID:(NSString *)requestString {
@@ -119,12 +115,8 @@ NSString *hostUrl = @"api.commutestream.com";
 }
 
 
-- (void)tapViewAction:(UITapGestureRecognizer *)sender
-{
-    //NSLog(@"%@", bannerUrl);
+- (void)tapViewAction:(UITapGestureRecognizer *)sender {
     userInteracted = YES;
-    //NSURL *url = [NSURL URLWithString:bannerUrl];
-    //[[UIApplication sharedApplication] openURL:url];
     
     touchCount++;
     
@@ -140,17 +132,6 @@ NSString *hostUrl = @"api.commutestream.com";
     
     
 }
-
-//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    //NSLog(@"009909009090");
-    //[webView setUserInteractionEnabled:YES];
-    //bannerClicked = YES;
-    
-//}
-
-
-
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 

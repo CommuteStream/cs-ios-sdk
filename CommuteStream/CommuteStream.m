@@ -64,11 +64,6 @@
     
     UIView *adView;
     NSString *registerImpressionID;
-    
-    
-    
-    
-
 }
 
 char macAddress[32];
@@ -250,6 +245,8 @@ char ifName[3] = "en0";
             }
         }else if([[request readonlyResponse] statusCode] == 400){
             NSLog(@"CS_SDK: Ad request failed with error 400, bad request");
+        }else if([[request readonlyResponse] statusCode] == 404) {
+            NSLog(@"CS_SDK: No banner returned");
         }else if([[request readonlyResponse] statusCode] == 500){
             NSLog(@"CS_SDK: Ad request failed with error 500, server temporarily unavailable.");
         }else{
