@@ -222,27 +222,38 @@ char ifName[3] = "en0";
         
         if ([[request readonlyResponse] statusCode] == 200) {
             
-            NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
-        
-            NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
-            NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
-            registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
-            [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
-            [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
-            [dict setObject:banner forKey:@"banner"];
-            [dict setObject:banner_height forKey: @"bannerHeight"];
-            [dict setObject:banner_width forKey: @"bannerWidth"];
-            [dict setObject: creative_width forKey:@"creativeWidth"];
-            [dict setObject: creative_height forKey:@"creativeHeight"];
-            [dict setObject:[request responseString] forKey:@"htmlbody"];
+            @try{
+                NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
+                
+                NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
+                NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
+                registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
+                [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
+                [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
+                [dict setObject:banner forKey:@"banner"];
+                [dict setObject:banner_height forKey: @"bannerHeight"];
+                [dict setObject:banner_width forKey: @"bannerWidth"];
+                [dict setObject: creative_width forKey:@"creativeWidth"];
+                [dict setObject: creative_height forKey:@"creativeHeight"];
+                [dict setObject:[request responseString] forKey:@"htmlbody"];
+                
+                if ([request responseString]){
+                    [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
+                }else{
+                    NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
+                    NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
+                    NSDictionary *dictWithError = @{@"banner": [dict objectForKey:@"banner"], @"error": error};
+                    [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
+                }
+            }
             
-            if ([request responseString]){
-                [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
-            }else{
-                NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-                NSDictionary *dictWithError = @{@"banner": [dict objectForKey:@"banner"], @"error": request.error};
+            @catch (NSException *exception){
+                NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
+                
+                NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
                 [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
             }
+            
         }else if([[request readonlyResponse] statusCode] == 400){
             NSLog(@"CS_SDK: Ad request failed with error 400, bad request");
         }else if([[request readonlyResponse] statusCode] == 404) {
@@ -250,8 +261,10 @@ char ifName[3] = "en0";
         }else if([[request readonlyResponse] statusCode] == 500){
             NSLog(@"CS_SDK: Ad request failed with error 500, server temporarily unavailable.");
         }else{
-            NSLog(@"CS_SDK: Ad request failed with error %@, deferring to AdMob", [request error]);
-            NSDictionary *dictWithError = @{@"banner": banner, @"error": request.error};
+    
+            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
+            NSLog(@"CS_SDK: Ad request failed with error %@, deferring to AdMob", error);
+            NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
             [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
             
         }
