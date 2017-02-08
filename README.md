@@ -31,7 +31,7 @@ First, follow either the AdMob or MoPub mediation setup instructions found at [h
 **For AdMob:**
 
 1. Drag the
-`CommuteStream-Admob-SDK.framework` file into your Xcode project.
+`CommuteStreamAdMob.framework` file into your Xcode project.
 
 
 2. In your project's Build Settings, add `-ObjC` to `Other Linker Flags`.
@@ -42,7 +42,7 @@ First, follow either the AdMob or MoPub mediation setup instructions found at [h
 **For MoPub:**
 
 1. Drag the
-`CommuteStream-MoPub-SDK.framework` file into your Xcode project.
+`CommuteStreamMoPub.framework` file into your Xcode project.
 
 
 2. In your project's Build Settings, add `-ObjC` to `Other Linker Flags`.
