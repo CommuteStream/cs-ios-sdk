@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CSLocationManager.h"
 
 @interface CommuteStream : NSObject
 
@@ -14,6 +15,10 @@
 - (NSString *)bannerHeight;
 
 - (NSString *)bannerWidth;
+
+- (NSString *)sessionID;
+
+- (NSString *)timeZone;
 
 - (NSString *)sdkName;
 
@@ -33,13 +38,13 @@
 
 - (NSString *)agencyInterest;
 
-- (NSString *)idfaSha;
-
-- (NSString *)macAddrSha;
+- (NSString *)idfa;
 
 - (NSString *)testing;
 
 - (CLLocation *)location;
+
+- (CSLocationManager *)locationManager;
 
 - (NSMutableDictionary *)httpParams;
 
@@ -55,7 +60,7 @@
 
 - (void)setIOSLimitAdTracking:(NSString *)value;
 
-
+- (void)getAd:(NSObject *)banner;
 
 - (void)setIsInitialized:(BOOL)value;
 
@@ -64,6 +69,14 @@
 - (void)setBannerHeight:(NSString *)bannerHeight;
 
 - (void)setBannerWidth:(NSString *)bannerWidth;
+
+
+- (void)callRegisterClickWithTimerParams:(NSMutableDictionary*)params;
+
+- (void)setSessionID:(NSString *)sessionID;
+
+- (void)setTimeZone:(NSString *)timeZone;
+
 
 - (void)setSdkName:(NSString *)sdkName;
 
@@ -84,10 +97,6 @@
 - (void)setAgencyInterest:(NSString *)typeString agencyID:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
 
 - (void)setIdfa:(NSString *)idfa;
-
-- (void)setIdfaSha:(NSString *)idfaSha;
-
-- (void)setMacAddrSha:(NSString *)string;
 
 - (void)setTesting;
 

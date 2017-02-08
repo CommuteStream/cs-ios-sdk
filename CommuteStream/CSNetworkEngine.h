@@ -12,5 +12,9 @@
 
 - (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams;
 
+- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams;
+
+- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams;
+
 
 @end

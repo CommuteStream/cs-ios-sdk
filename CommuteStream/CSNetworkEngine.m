@@ -12,13 +12,33 @@
 
 - (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams {
     
-    MKNetworkOperation *op = [self operationWithPath:@"banner" params:callParams httpMethod:@"GET" ssl:YES];
+    MKNetworkOperation *op = [self operationWithPath:@"v2/banner" params:callParams httpMethod:@"GET" ssl:YES];
     
     [op addCompletionHandler:^(MKNetworkOperation *operation){
         NSLog(@"CS_SDK: Call to banner server successful");
         
     }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        NSLog(@"CS_SDK: Error from banner server - %@", error);
+        if([[operation readonlyResponse] statusCode] != 404) {
+            NSLog(@"CS_SDK: Error from banner server - %@", error);
+        }
+    }];
+    
+    
+    [self enqueueOperation:op];
+    return op;
+    
+}
+
+
+- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams {
+    
+    MKNetworkOperation *op = [self operationWithPath:@"v2/impression" params:callParams httpMethod:@"GET" ssl:YES];
+   
+    [op addCompletionHandler:^(MKNetworkOperation *operation){
+        NSLog(@"CS_SDK: Registered impression successfully.");
+        
+    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
+        NSLog(@"CS_SDK: Error registering impression - %@", error);
     }];
     
     
@@ -28,6 +48,21 @@
     
 }
 
-
+- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams {
+    MKNetworkOperation *op = [self operationWithPath:@"v2/click" params:callParams httpMethod:@"GET" ssl:YES];
+    
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation){
+        NSLog(@"CS_SDK: Registered click successfully.");
+        
+    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
+        NSLog(@"CS_SDK: Error registering click - %@", error);
+    }];
+    
+    
+    [self enqueueOperation:op];
+    
+    return op;
+}
 
 @end

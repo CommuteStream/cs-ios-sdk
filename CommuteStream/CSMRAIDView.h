@@ -42,7 +42,8 @@
   supportedFeatures:(NSArray *)features
            delegate:(id<CSMRAIDViewDelegate>)delegate
     serviceDelegate:(id<CSMRAIDServiceDelegate>)serviceDelegate
- rootViewController:(UIViewController *)rootViewController;
+ rootViewController:(UIViewController *)rootViewController
+   andCreativeFrame:(CGRect)creativeFrame;
 
 - (void)cancel;
 

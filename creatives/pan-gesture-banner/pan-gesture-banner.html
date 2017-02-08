@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script type="text/javascript" src="js/hammer.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 640px;
+      height: 100px;
+      overflow: hidden;
+      font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+
+    }
+
+    .banner-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: lightgrey;
+      overflow: hidden;
+    }
+
+    .left-bkg-holder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 50%;
+      height: 100%;
+      background: limegreen;
+
+
+    }
+
+    .banner-wrapper.swiped-right .left-bkg-holder {
+
+      right: 0px;
+      background: green;
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .right-bkg-holder {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 0;
+      height: 100%;
+      background: #ba0000;
+
+    }
+
+    .banner-wrapper.swiped-left .right-bkg-holder {
+
+      left: 0;
+      background: red;
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .front-holder {
+      position: absolute;
+      top: 0;
+      left: 200px;
+      width: 100%;
+      height: 100%;
+      background: #1b5c99;
+      text-align: center;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 8px 12px 4px;
+    }
+
+    .banner-wrapper.swiped-right .front-holder {
+      left: 640px;
+
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .banner-wrapper.swiped-left .front-holder {
+      left: -640px;
+
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .survey-header {
+      font-size: 12px;
+      color: #8caccb;
+      display: block;
+    }
+
+    .survey-question {
+      margin-top: 2px;
+      display: block;
+      font-size: 36px;
+      color: #fff;
+
+    }
+
+    .left-bkg-holder__text, .right-bkg-holder__text {
+      text-align: center;
+      width: 100%;
+      color: #fff;
+      font-size: 42px;
+      line-height: 100px;
+      display: block;
+    }
+
+    .powered-by {
+      margin-top: 3px;
+    }
+
+    .powered-by__text {
+      color: #8caccb;
+      font-size: 10px;
+
+    }
+
+    .powered-by__logo {
+      width: 90px;
+      margin-left: 5px;
+      opacity: 0.7;
+    }
+
+
+
+  </style>
+</head>
+<body>
+<div id="banner-wrapper" class="banner-wrapper">
+  <div id="backPos" class="left-bkg-holder">
+    <span class="left-bkg-holder__text">YES</span>
+  </div>
+  <div id="backNeg" class="right-bkg-holder">
+    <span class="right-bkg-holder__text">NO</span>
+  </div>
+  <div id="front" class="front-holder">
+    <span class="survey-header">Questions for Commuters</span>
+    <span class="survey-question">Is your train on time?</span>
+    <div class="powered-by">
+      <span class="powered-by__text">powered by<img class="powered-by__logo" src="img/cs_logo.png"> </span>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+
+  var spring = 0.05;
+  var targetX = 0;
+  var vx = 0;
+  var friction = 0.93;
+  var bannerWrapper = document.getElementById("banner-wrapper")
+  var element = document.getElementById("front");
+  var backPositive = document.getElementById("backPos");
+  var backNegative = document.getElementById("backNeg");
+
+  var testButton = document.getElementById("buttonID");
+
+  var leftThreshold = 200;
+  var crossedLeftThreshold = false;
+
+  var timer;
+
+  function springBack(){
+    timer = setInterval(function(){
+
+      var dx = targetX - element.offsetLeft;
+
+      var ax = dx *spring;
+      vx += ax;
+      vx *= friction;
+
+      friction = friction > 0? (friction -= .0025): 0.0;
+      var newPos = (element.offsetLeft += vx);
+
+      if (newPos <= leftThreshold) crossedLeftThreshold = true;
+
+      var newPosString = newPos + "px";
+
+
+      element.style.left = newPosString;
+      //(element.offsetWidth - (element.offsetLeft + element.offsetWidth - 100))
+      updateBackLayerPositions();
+
+
+      //console.log(element.offsetWidth + element.offsetLeft);
+    }, 33)
+  }
+
+
+  function updateBackLayerPositions(){
+    backNegative.style.left = ((element.offsetWidth + element.offsetLeft) - 40) + "px";
+
+    backPositive.style.right = (640 - element.offsetLeft) -40 + "px";
+
+  }
+
+  // create a simple instance
+  // by default, it only adds horizontal recognizers
+  var mc = new Hammer(element);
+
+  // let the pan gesture support all directions.
+  // this will block the vertical scrolling on a touch-device while on the element
+  mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+
+  // listen to events...
+
+  var currentX;
+  var userSwipedLeft = false;
+  var userSwipedRight = false;
+  var userDone = false;
+
+  mc.on("panleft panright panup pandown tap press panstart panend", function(ev) {
+    //clearInterval(timer)
+
+    if(userSwipedRight){
+      if(userDone) return;
+      bannerWrapper.className = "banner-wrapper swiped-right";
+      backPositive.style.right = "";
+      element.style.left = "";
+      window.open('http://google.com', '_blank');
+
+      userDone = true;
+      return;
+    }else if(userSwipedLeft){
+      if(userDone) return;
+      bannerWrapper.className = "banner-wrapper swiped-left";
+      backNegative.style.left = "";
+      element.style.left = "";
+      window.open('http://bing.com', '_blank');
+      userDone = true;
+      return;
+    }
+
+
+
+    if(ev.type == 'panstart') {
+      currentX = element.offsetLeft;
+      clearInterval(timer)
+    }
+
+    updateBackLayerPositions();
+
+    console.log('Original Pos = ' + currentX);
+    console.log('Delta = ' + ev.deltaX);
+
+
+
+
+    var newPanPos = currentX + ev.deltaX;
+
+    console.log('New Pos = ' + newPanPos)
+
+
+    element.style.left = newPanPos + "px"
+
+    console.log('New Left = ' + (element.style.left))
+
+    if(ev.type == 'panright' && element.offsetLeft >= 350){
+      userSwipedRight = true;
+    }
+
+    if(ev.type == 'panleft' && element.offsetLeft <= -350){
+      userSwipedLeft = true;
+    }
+
+    if(ev.type == 'panend'){
+      vx = 0;
+      friction = 0.8;
+      springBack();
+    }
+
+  });
+  springBack();
+</script>
+</body>
+</html>
