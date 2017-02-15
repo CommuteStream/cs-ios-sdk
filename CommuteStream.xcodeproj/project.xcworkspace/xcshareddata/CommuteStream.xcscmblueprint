@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "75D9289851B10C14CB192DA4B29587781E9C79FA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "75D9289851B10C14CB192DA4B29587781E9C79FA" : 0,
+    "DBA6F8B12B84878540F44342C4772AC004D85ABD" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DC28710E-9355-4FBC-B8E0-7D8C3F743484",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "75D9289851B10C14CB192DA4B29587781E9C79FA" : "ios-sdk\/",
+    "DBA6F8B12B84878540F44342C4772AC004D85ABD" : "ios-sdk\/protobuf\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CommuteStream",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CommuteStream.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sampro\/CommuteStreamSDK-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "75D9289851B10C14CB192DA4B29587781E9C79FA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:google\/protobuf.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DBA6F8B12B84878540F44342C4772AC004D85ABD"
+    }
+  ]
+}
