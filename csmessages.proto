@@ -1,0 +1,41 @@
+// Protocol for sending and receiving ads
+
+syntax = "proto3";
+package google.protobuf;
+option objc_class_prefix = "CSP";
+option java_package = "com.commutestream.sdk.protobuf";
+
+
+message Stop {
+  string agency_id = 1;
+  string route_id = 2;
+  string stop_id = 3;
+}
+
+message StopAd {
+  uint64 request_id = 1;
+  Stop stop = 2;
+  bytes icon = 3;
+  string title = 4;
+  string background_color = 5;
+}
+
+message StopAdResponse {
+  repeated StopAd stop_ads = 1;
+}
+
+message DeviceID  {
+  enum Type {
+    IDFA = 0;
+    AAID = 1;
+  }
+  Type device_id_type = 1;
+  string device_id = 2;
+}
+
+message StopAdRequest {
+  string ad_unit = 1;
+  DeviceID device_id = 2;
+  string timezone = 3;
+  repeated Stop stops = 4;
+}

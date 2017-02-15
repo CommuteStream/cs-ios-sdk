@@ -1,5 +1,4 @@
 #import "CommuteStream.h"
-#import "CSNetworkEngine.h"
 #import "GADBannerViewDelegate.h"
 #import <AdSupport/ASIdentifierManager.h>
 #import <CommonCrypto/CommonDigest.h>
@@ -12,7 +11,8 @@
 #import "CSCustomBanner.h"
 #import "CSCustomEventDelegate.h"
 #import "CSAdFactory.h"
-
+#import "CSClient.h"
+#import "CSHttpClient.h"
 
 #define SDK_VERSION @"0.8.0"
 
@@ -20,9 +20,6 @@
 
 
 @implementation CommuteStream {
-    
-    
-
     NSString *ad_unit_uuid;
     NSString *banner_height;
     NSString *banner_width;
@@ -37,24 +34,20 @@
     NSString *theme;
     NSString *session_ID;
     NSString *time_zone;
-    
-    NSMutableArray *agency_interest;
-    
     NSString *idfa;
     NSString *testing;
-    NSString *limit_tracking;
+    bool limit_tracking;
     
     CLLocation *location;
     CSLocationManager *csLocationManager;
-    
-    NSMutableDictionary *http_params;
     
     NSDate *lastServerRequestTime;
     NSDate *lastParameterChange;
     
     NSTimer *parameterCheckTimer;
     
-    CSNetworkEngine *networkEngine;
+    id<CSClient> client;
+    CSBannerRequest *bannerRequest;
     
     BOOL initialized;
     NSString *agencyStringToSend;
@@ -101,16 +94,13 @@ CSNativeInterstitial *interstitialView;
         
         NSLog(@"CS_SDK: Initialized CS");
         
-        http_params = [[NSMutableDictionary alloc] init];
-        nativeAdDictionary = [[NSMutableDictionary alloc] init];
-        
-        agency_interest = [[NSMutableArray alloc] init];
+        bannerRequest = [CSBannerRequest alloc];
         
         lastServerRequestTime = [NSDate date];
         lastParameterChange = [NSDate date];
         
         NSString *appHostUrl = @"api.commutestream.com";
-        networkEngine = [[CSNetworkEngine alloc] initWithHostName:appHostUrl];
+        client = [[CSHttpClient alloc] initWithHostName:appHostUrl];
         
         parameterCheckTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(onParameterCheckTimer:) userInfo:nil repeats:YES];
         
@@ -144,7 +134,7 @@ CSNativeInterstitial *interstitialView;
         
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
             NSLog(@"CS_SDK: Advertising tracking disabled.");
-            [self setIOSLimitAdTracking:@"true"];
+            [self setIOSLimitAdTracking:true];
         }else {
             NSLog(@"CS_SDK: Advertising tracking enabled.");
         }
@@ -177,138 +167,60 @@ CSNativeInterstitial *interstitialView;
         
         NSLog(@"CS_SDK: Sending client updates");
         
-        [self.httpParams setObject:@"true" forKey:@"skip_fetch"];
-        
+        [bannerRequest setSkipFetch:true];
         if(![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]){
             NSLog(@"CS_SDK: Advertising tracking disabled.");
-            [[CommuteStream open] setIOSLimitAdTracking:@"true"];
+            [[CommuteStream open] setIOSLimitAdTracking:true];
         }else {
             NSLog(@"CS_SDK: Advertising tracking enabled.");
-            
         }
         
         NSTimeZone *timeZone = [NSTimeZone localTimeZone];
         NSString *tzName = [timeZone name];
         [[CommuteStream open] setTimeZone:tzName];
         
-        __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
-        
-        [request setCompletionBlock:^{
-            [self reportSuccessfulGet];
-            [agency_interest removeAllObjects];
+        [client getBanner:bannerRequest handler:^(CSBannerResponse *bannerResponse) {
+            [self onSuccessfulBannerRequest];
         }];
     }
 }
 
 
-
-
-- (void)reportSuccessfulGet {
-    
+- (void) onSuccessfulBannerRequest {
     [self setLastServerRequestTime:[NSDate date]];
     
     NSLog(@"CS_SDK: Reported success to CommuteStream.");
-   
-    
-    [self.httpParams removeObjectForKey:@"lat"];
-    [self.httpParams removeObjectForKey:@"lon"];
-    [self.httpParams removeObjectForKey:@"acc"];
-    [self.httpParams removeObjectForKey:@"fix_time"];
-    [self.httpParams removeObjectForKey:@"agency_interest"];
-    [self.httpParams removeObjectForKey:@"limit_tracking"];
-    
-    [(NSMutableArray *)[self agencyInterest] removeAllObjects];
-    
+    [bannerRequest setLocation:NULL];
+    [bannerRequest setAgencyInterests:NULL];
+    [bannerRequest setSkipFetch:false];
 }
 
-- (void)getAd:(NSObject *)banner{
-    
-    __weak MKNetworkOperation *request = [networkEngine getBanner:[self httpParams]];
-    
-
-    [request setCompletionBlock:^{
-        
-        [self reportSuccessfulGet];
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        
-        if ([[request readonlyResponse] statusCode] == 200) {
-            
-            @try{
-                NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
-                
-                NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
-                NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
-                registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
-                [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
-                [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
-                [dict setObject:banner forKey:@"banner"];
-                [dict setObject:banner_height forKey: @"bannerHeight"];
-                [dict setObject:banner_width forKey: @"bannerWidth"];
-                [dict setObject: creative_width forKey:@"creativeWidth"];
-                [dict setObject: creative_height forKey:@"creativeHeight"];
-                [dict setObject:[request responseString] forKey:@"htmlbody"];
-                
-                if ([request responseString]){
-                    [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
-                }else{
-                    NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-                    NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
-                    NSDictionary *dictWithError = @{@"banner": [dict objectForKey:@"banner"], @"error": error};
-                    [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
-                }
-            }
-            
-            @catch (NSException *exception){
-                NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
-                
-                NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
-                [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
-            }
-            
-        }else if([[request readonlyResponse] statusCode] == 400){
-            NSLog(@"CS_SDK: Ad request failed with error 400, bad request");
-        }else if([[request readonlyResponse] statusCode] == 404) {
-            NSLog(@"CS_SDK: No banner returned");
-        }else if([[request readonlyResponse] statusCode] == 500){
-            NSLog(@"CS_SDK: Ad request failed with error 500, server temporarily unavailable.");
-        }else{
-    
-            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
-            NSLog(@"CS_SDK: Ad request failed with error %@, deferring to AdMob", error);
-            NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
-            [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
-            
+- (void)getAd:(id<CSCustomEventDelegate>)bannerDelegate {
+    [client getBanner:bannerRequest handler:^(CSBannerResponse *bannerResponse) {
+        [self onSuccessfulBannerRequest];
+        if(bannerResponse == NULL) {
+            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:0 userInfo:@{@"Error reason": @"Unknown"}];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self getAdFailedWithDelegate:bannerDelegate error:error];
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self buildAd:bannerResponse eventDelegate:bannerDelegate];
+            });
         }
-
     }];
-
-    
-     
 }
 
--(void)getAdFailedWithBanner:(NSMutableDictionary *)dict{
-    NSObject *customBanner = [dict objectForKey:@"banner"];
-    NSError *dictError = [dict objectForKey:@"error"];
-    if([customBanner conformsToProtocol:@protocol(CSCustomEventDelegate)]){
-
-        [customBanner performSelector:@selector(didFailAdWithError:) withObject:dictError];
-    }
-
+- (void)getAdFailedWithDelegate:(id<CSCustomEventDelegate>)bannerDelegate error:(NSError *)error {
+    [bannerDelegate didFailAdWithError:error];
 }
 
--(void)buildAd:(NSMutableDictionary *)dict {
+-(void)buildAd:(CSBannerResponse *)bannerResponse eventDelegate:(id<CSCustomEventDelegate>)eventDelegate {
     adView = nil;
+    CSAdFactory *factory = [CSAdFactory factoryWithAdType:[bannerResponse adKind]];
+    adView = [factory adViewFromBannerResponse:bannerResponse];
     
-    NSObject *customBanner = [dict objectForKey:@"banner"];
-    
-    CSAdFactory *factory = [CSAdFactory factoryWithAdType:[dict objectForKey:@"kind"]];
-    
-    adView = [factory adViewFromDictionary:dict];
-    
-    
-    if([customBanner conformsToProtocol:@protocol(CSCustomEventDelegate)]){
-        [customBanner performSelector:@selector(didReceiveAdWithView:) withObject:adView];
-    }
+    [eventDelegate didReceiveAdWithView:adView];
     
     impressionMonitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForImpression:) userInfo:adView repeats:YES];
 }
@@ -329,57 +241,9 @@ CSNativeInterstitial *interstitialView;
         
         
         NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @5.0, @"count" : @7}];
-        [self callRegisterImpressionWithTimerParams:retryDict];
-    
+        //[client registerImpression:?];
     }
 }
-
-
-- (void)callRegisterImpressionWithTimerParams:(NSMutableDictionary *)params {
-    
-    NSMutableDictionary *impressionDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : registerImpressionID}];
-    
-    NSLog(@"Params = %@", params);
-    
-    __block CGFloat impressionResponseTimerDelay = [[params objectForKey:@"delay"] floatValue];
-    __block NSInteger impressionResponseTimerCount = [[params objectForKey:@"count"] integerValue];
-    
-    
-    //api call
-    __weak MKNetworkOperation *request = [networkEngine registerImpression:impressionDict];
-    
-    [request setCompletionBlock:^{
-        
-        if ([[request readonlyResponse] statusCode] == 204 || [[request readonlyResponse] statusCode] == 303) {
-            
-            NSLog(@"CS_SDK: Reported impression successfully");
-        }else{
-    
-            if(impressionResponseTimerCount > 0){
-                
-                impressionResponseTimerDelay *= 2;
-                impressionResponseTimerCount--;
-                
-                NSLog(@"impression timer delay = %f", impressionResponseTimerDelay);
-                NSLog(@"impression timer count = %ld", (long)impressionResponseTimerCount);
-                
-                NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @(impressionResponseTimerDelay), @"count" : @(impressionResponseTimerCount)}];
-                
-                NSLog(@"Retry Dict = %@", retryDict);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self performSelector:@selector(callRegisterImpressionWithTimerParams:) withObject:retryDict afterDelay:impressionResponseTimerDelay];
-                });
-                NSLog(@"CS_SDK: Failed to report impression. Trying again in %f seconds.", impressionResponseTimerDelay);
-            }
-            
-            
-            
-        }
-        
-    }];
-
-}
-
 
 + (CSNativeAdIcon *)getNativeAdIconForStopID:(NSString *)stopID {
     
@@ -397,7 +261,7 @@ CSNativeInterstitial *interstitialView;
     }];
     
     
-    [icon setImage:[UIImage imageNamed:[[[nativeAdDictionary objectForKey:stopID] objectForKey:@"icon"] objectForKey:@"icon_name"]]];
+    //[icon setImage:[UIImage imageNamed:[[[nativeAdDictionary objectForKey:stopID] objectForKey:@"icon"] objectForKey:@"icon_name"]]];
     
     return icon;
     
@@ -422,55 +286,6 @@ CSNativeInterstitial *interstitialView;
     nativeAdDictionary = json;
 
     callback();
-    
-}
-
-
-- (void)callRegisterClickWithTimerParams:(NSMutableDictionary *)params {
-    
-    NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : [params objectForKey:@"requestID"]}];
-    
-    NSLog(@"Params = %@", params);
-    
-    __block CGFloat clickResponseTimerDelay = [[params objectForKey:@"delay"] floatValue];
-    __block NSInteger clickResponseTimerCount = [[params objectForKey:@"count"] integerValue];
-    __block NSString *clickResponseRequestID = [params objectForKey:@"requestID"];
-    
-    
-    //api call
-    __weak MKNetworkOperation *request = [networkEngine registerClick:clickDict];
-    
-    
-    [request setCompletionBlock:^{
-        
-        if ([[request readonlyResponse] statusCode] == 204 || [[request readonlyResponse] statusCode] == 303) {
-            
-            NSLog(@"CS_SDK: Reported click successfully");
-        }else{
-            
-            if(clickResponseTimerCount > 0){
-                
-                clickResponseTimerDelay *= 2;
-                clickResponseTimerCount--;
-                
-                NSLog(@"click timer delay = %f", clickResponseTimerDelay);
-                NSLog(@"click timer count = %ld", (long)clickResponseTimerCount);
-                
-                NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @(clickResponseTimerDelay), @"count" : @(clickResponseTimerCount), @"requestID" : clickResponseRequestID}];
-                
-                NSLog(@"Retry Dict = %@", retryDict);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self performSelector:@selector(callRegisterClickWithTimerParams:) withObject:retryDict afterDelay:clickResponseTimerDelay];
-                });
-                
-                NSLog(@"CS_SDK: Failed to report click. Trying again in %f seconds.", clickResponseTimerDelay);
-            }
-            
-            
-            
-        }
-        
-    }];
     
 }
 
@@ -528,9 +343,11 @@ CSNativeInterstitial *interstitialView;
 - (NSString *)fixTime {
     return fix_time;
 }
-- (NSMutableArray *)agencyInterest {
-    return agency_interest;
+
+- (NSArray *)agencyInterest {
+    return [[bannerRequest agencyInterests] allObjects];
 }
+
 - (NSString *)testing {
     return testing;
 }
@@ -541,10 +358,6 @@ CSNativeInterstitial *interstitialView;
 
 - (CSLocationManager *)locationManager {
     return [[CSLocationManager alloc] init];
-}
-
-- (NSMutableDictionary *)httpParams {
-    return http_params;
 }
 
 + (NSMutableDictionary *)nativeAdDict {
@@ -575,58 +388,43 @@ CSNativeInterstitial *interstitialView;
 
 
 - (void)setAdUnitUUID:(NSString *)adUnitUUID {
-    ad_unit_uuid = adUnitUUID;
-    [self.httpParams setObject:adUnitUUID forKey:@"ad_unit_uuid"];
-}
+    ad_unit_uuid = adUnitUUID;}
 
 - (void)setBannerHeight:(NSString *)bannerHeight{
     banner_height = bannerHeight;
-    [self.httpParams setObject:bannerHeight forKey:@"height"];
-    
 }
 
 - (void)setBannerWidth:(NSString *)bannerWidth {
     banner_width = bannerWidth;
-    [self.httpParams setObject:bannerWidth forKey:@"width"];
 }
 
 - (void)setSessionID:(NSString *)sessionID {
     session_ID = sessionID;
-    [self.httpParams setObject:sessionID forKey:@"session_id"];
 }
 
 - (void)setTimeZone:(NSString *)timeZone {
     time_zone = timeZone;
-    [self.httpParams setObject:timeZone forKey:@"timezone"];
 }
 
 - (void)setSdkName:(NSString *)sdkName {
     sdk_name = sdkName;
-    [self.httpParams setObject:sdkName forKey:@"sdk_name"];
 }
 
 - (void)setAppName:(NSString *)appName {
     app_name = appName;
-    [self.httpParams setObject:appName forKey:@"app_name"];
 }
 
 - (void)setSdkVer:(NSString *)sdkVer {
     sdk_ver = sdkVer;
-    [self.httpParams setObject:sdkVer forKey:@"sdk_ver"];
 }
 
 - (void)setAppVer:(NSString *)appVer {
     app_ver = appVer;
-    [self.httpParams setObject:appVer forKey:@"app_ver"];
-    
 }
 
 - (void)setTheme:(NSString *)themeString {
     theme = themeString;
-    [self.httpParams setObject:themeString forKey:@"theme"];
-    
 }
-
 
 - (void)setLatitude:(NSString *)thisLatitude {
     latitude = thisLatitude;
@@ -645,47 +443,30 @@ CSNativeInterstitial *interstitialView;
 }
 
 
--(NSString *)iOSLimitAdTracking {
+- (bool) iOSLimitAdTracking {
     return limit_tracking;
 }
 
-- (void)setIOSLimitAdTracking:(NSString *)value {
+- (void)setIOSLimitAdTracking:(bool)value {
     limit_tracking = value;
-    
-    [self.httpParams setObject:value forKey:@"limit_tracking"];
+    [bannerRequest setLimitTracking:value];
 }
 
 - (void)setIdfa:(NSString *)thisIdfa {
     idfa = thisIdfa;
-    [self.httpParams setObject:idfa forKey:@"idfa"];
 }
 
 - (void)setTesting {
-    [self.httpParams setObject:@"true" forKey:@"testing"];
+    [bannerRequest setTesting:true];
 }
 
 - (void)setLocation:(CLLocation *)thisLocation {
     NSLog(@"setLocation called");
     location = thisLocation;
-    NSNumber *latitudeNumber = [NSNumber numberWithDouble:location.coordinate.latitude];
-    NSNumber *longitudeNumber = [NSNumber numberWithDouble:location.coordinate.longitude];
-    NSNumber *haNumber = [NSNumber numberWithDouble:location.horizontalAccuracy];
-    
-    long long milliseconds = (long long)([location.timestamp timeIntervalSince1970] * 1000.0);
-    
-    NSString *fixTimeIntString = [NSString stringWithFormat:@"%lld", milliseconds];
-    
-    [self.httpParams setObject:[latitudeNumber stringValue] forKey:@"lat"];
-    [self.httpParams setObject:[longitudeNumber stringValue] forKey:@"lon"];
-    [self.httpParams setObject:[haNumber stringValue] forKey:@"acc"];
-    [self.httpParams setObject: fixTimeIntString forKey:@"fix_time"];
-    
+    [bannerRequest setLocation:location];
     [self setLastParameterChange:[NSDate date]];
 }
 
-- (void)setHttpParams:(NSMutableDictionary *)httpParams {
-    http_params = httpParams;
-}
 
 + (void)setNaviteAdDict:(NSMutableDictionary *)nativeAdDict {
     nativeAdDictionary = nativeAdDict;
@@ -708,24 +489,18 @@ CSNativeInterstitial *interstitialView;
     agencyStringToSend = string;
 }
 
-- (void)setAgencyInterest:(NSString *)typeString agencyID:(NSString *)agencyIDString routeID:(NSString *)routeIDString stopID:(NSString *)stopIDString{
-    
+- (void)addAgencyInterest:(NSString *)typeString agencyID:(NSString *)agencyIDString routeID:(NSString *)routeIDString stopID:(NSString *)stopIDString{
     if (routeIDString == nil) {
         routeIDString = @"null";
     }
-    
     if (stopIDString == nil) {
         stopIDString = @"null";
     }
-    
-    
     NSString *agencyInterestString = [[NSString alloc] initWithFormat:@"%@,%@,%@,%@", typeString, agencyIDString, routeIDString, stopIDString];
-    
-    [agency_interest addObject:agencyInterestString];
-    
-    [self setAgencyStringToSend:[agency_interest componentsJoinedByString:@","]];
-    
-    [self.httpParams setObject:agencyStringToSend forKey:@"agency_interest"];
+    if([bannerRequest agencyInterests] == NULL) {
+        [bannerRequest setAgencyInterests:[NSMutableSet alloc]];
+    }
+    [[bannerRequest agencyInterests] addObject:agencyInterestString];
     
     [self setLastParameterChange:[NSDate date]];
     
@@ -733,37 +508,37 @@ CSNativeInterstitial *interstitialView;
 }
 
 - (void)trackingDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
-    [self setAgencyInterest:@"TRACKING_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    [self addAgencyInterest:@"TRACKING_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
     
     NSLog(@"CS_SDK: Tracking interest added to CommuteStream parameters.");
 }
 
 - (void)alertDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
-    [self setAgencyInterest:@"ALERT_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    [self addAgencyInterest:@"ALERT_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
     
     NSLog(@"CS_SDK: Alert interest added to CommuteStream parameters.");
 }
 
 - (void)mapDisplayed:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
-    [self setAgencyInterest:@"MAP_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    [self addAgencyInterest:@"MAP_DISPLAYED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
     
     NSLog(@"CS_SDK: Map interest added to CommuteStream parameters.");
 }
 
 - (void)favoriteAdded:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
-    [self setAgencyInterest:@"FAVORITE_ADDED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    [self addAgencyInterest:@"FAVORITE_ADDED" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
     
     NSLog(@"CS_SDK: Favorite added to CommuteStream parameters.");
 }
 
 - (void)tripPlanningPointA:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
-    [self setAgencyInterest:@"TRIP_PLANNING_POINT_A" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    [self addAgencyInterest:@"TRIP_PLANNING_POINT_A" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
     
     NSLog(@"CS_SDK: Trip Planning interest added to CommuteStream parameters.");
 }
 
 - (void)tripPlanningPointB:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString {
-    [self setAgencyInterest:@"TRIP_PLANNING_POINT_B" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
+    [self addAgencyInterest:@"TRIP_PLANNING_POINT_B" agencyID:agencyIDString routeID:routeIDString stopID:stopIDString];
     
     NSLog(@"CS_SDK: Trip Planning interest added to CommuteStream parameters.");
 }

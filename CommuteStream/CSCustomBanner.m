@@ -40,10 +40,7 @@ CGSize myAdSize;
     NSLog(@"CS_SDK: Banner width = %f, Banner height = %f", adSize.size.width, adSize.size.height);
     //Store Banner Width and height and skip_fetch false
     [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", (int) myAdSize.width]];
-    [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) myAdSize.height]];
-    [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
-
-    
+    [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) myAdSize.height]];    
     [[CommuteStream open] getAd:self];
 
 }

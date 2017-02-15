@@ -52,8 +52,6 @@
 
 - (CSLocationManager *)locationManager;
 
-- (NSMutableDictionary *)httpParams;
-
 + (NSMutableDictionary *)nativeAdDict;
 
 - (NSDate *)lastServerRequestTime;
@@ -64,9 +62,9 @@
 
 - (NSString *)theme;
 
-- (NSString *)iOSLimitAdTracking;
+- (bool)iOSLimitAdTracking;
 
-- (void)setIOSLimitAdTracking:(NSString *)value;
+- (void)setIOSLimitAdTracking:(bool)value;
 
 - (void)getAd:(NSObject *)banner;
 
@@ -102,7 +100,7 @@
 
 - (void)setFixTime:(NSString *)fixTime;
 
-- (void)setAgencyInterest:(NSString *)typeString agencyID:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
+- (void)addAgencyInterest:(NSString *)typeString agencyID:(NSString*)agencyIDString routeID:(NSString*)routeIDString stopID:(NSString*)stopIDString;
 
 - (void)setIdfa:(NSString *)idfa;
 
@@ -110,15 +108,11 @@
 
 - (void)setLocation:(CLLocation *)thisLocation;
 
-- (void)setHttpParams:(NSMutableDictionary *)httpParams;
-
 + (void)setNaviteAdDict:(NSMutableDictionary *)nativeAdDict;
 
 - (void)setLastServerRequestTime:(NSDate *)time;
 
 - (void)setLastParameterChange:(NSDate *)time;
-
-- (void)setAgencyStringToSend:(NSString *)string;
 
 - (void)setTheme:(NSString *)themeString;
 

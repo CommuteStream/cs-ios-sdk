@@ -26,8 +26,6 @@
     //Store Banner Width and height and skip_fetch false
     [[CommuteStream open] setBannerWidth:[NSString stringWithFormat:@"%d", (int) size.width]];
     [[CommuteStream open] setBannerHeight:[NSString stringWithFormat:@"%d", (int) size.height]];
-    [[[CommuteStream open] httpParams] setObject:@"false" forKey:@"skip_fetch"];
-    
     [[CommuteStream open] getAd:self];
     
 }

@@ -1,23 +1,21 @@
-//
-//  CSAdFactory.h
-//  CommuteStream
-//
-//  Created by David Rogers on 10/20/16.
-//  Copyright © 2016 CommuteStream. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "CSClient.h"
 
 extern NSString * const gotFilePathNotification;
+
+@protocol CSAdViewFactory
+- (UIView *) buildAdViewFromBannerResponse:(CSBannerResponse *)bannerRespones;
+@end
+
 
 @interface CSAdFactory : NSObject {
     
 }
 
-+ (CSAdFactory *) factoryWithAdType:(NSString *)adType;
++ (id<CSAdViewFactory>) factoryWithAdType:(NSString *)adType;
 
-- (UIView *)adViewFromDictionary:(NSMutableDictionary*)dictionary;
+- (id<CSAdViewFactory>)adViewFromBannerResponse:(CSBannerResponse*)bannerResponse;
 
 @end
