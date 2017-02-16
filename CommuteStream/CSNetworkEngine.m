@@ -1,68 +1,73 @@
-//
-//  CSNetworkEngine.m
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
-
 #import "CSNetworkEngine.h"
 
-@implementation CSNetworkEngine
+@implementation CSNetworkEngine {
+    MKNetworkHost *_client;
+}
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams {
-    
-    MKNetworkOperation *op = [self operationWithPath:@"v2/banner" params:callParams httpMethod:@"GET" ssl:YES];
-    
-    [op addCompletionHandler:^(MKNetworkOperation *operation){
-        NSLog(@"CS_SDK: Call to banner server successful");
-        
-    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        if([[operation readonlyResponse] statusCode] != 404) {
-            NSLog(@"CS_SDK: Error from banner server - %@", error);
+- (instancetype) initWithHostName:(NSString *)host {
+    _client = [[MKNetworkHost alloc]initWithHostName:host];
+    return self;
+}
+
+- (void) getStopAds:(CSPStopAdRequest *)request handler:(void(^)(CSPStopAdResponse *response))callback {
+    NSData *body = [request data];
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/stop_ads" params:nil httpMethod:@"POST" body:body ssl:YES];
+    [_client startRequest:req];
+    [req addCompletionHandler:^(MKNetworkRequest *req) {
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Call to stop ad server successful");
+        } else {
+            NSLog(@"CS_SDK: Call to stop ad server error - %@", [req error]);
+        }
+        if([[req response] statusCode] == 200 && [req responseData]) {
+            //TODO wrap in try or check for errors somehow
+            callback([[CSPStopAdResponse alloc] initWithData:[req responseData] error:nil]);
+        } else {
+            callback(nil);
         }
     }];
-    
-    
-    [self enqueueOperation:op];
-    return op;
-    
+}
+
+- (MKNetworkRequest *) getBanner:(NSMutableDictionary *)callParams {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/banner" params:callParams httpMethod:@"GET" body:nil ssl:YES];
+    [req addCompletionHandler:^(MKNetworkRequest *req){
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Call to banner server successful");
+        } else {
+            NSLog(@"CS_SDK: Call to banner server error - %@", [req error]);
+        }
+    }];
+    [_client startRequest:req];
+    return req;
 }
 
 
-- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams {
-    
-    MKNetworkOperation *op = [self operationWithPath:@"v2/impression" params:callParams httpMethod:@"GET" ssl:YES];
-   
-    [op addCompletionHandler:^(MKNetworkOperation *operation){
-        NSLog(@"CS_SDK: Registered impression successfully.");
-        
-    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        NSLog(@"CS_SDK: Error registering impression - %@", error);
+- (MKNetworkRequest *) registerImpression:(NSMutableDictionary *)callParams {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/impression" params:callParams httpMethod:@"GET" body:nil ssl:YES];
+    [req addCompletionHandler:^(MKNetworkRequest *req){
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Registered impression successfully.");
+        } else {
+            NSLog(@"CS_SDK: Error registering impression - %@", [req error]);
+        }
     }];
-    
-    
-    [self enqueueOperation:op];
-    
-    return op;
-    
+    [_client startRequest:req];
+    return req;
 }
 
-- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams {
-    MKNetworkOperation *op = [self operationWithPath:@"v2/click" params:callParams httpMethod:@"GET" ssl:YES];
+- (MKNetworkRequest *) registerClick:(NSMutableDictionary *)callParams {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/click" params:callParams httpMethod:@"GET" body:nil ssl:YES];
     
     
-    [op addCompletionHandler:^(MKNetworkOperation *operation){
-        NSLog(@"CS_SDK: Registered click successfully.");
-        
-    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        NSLog(@"CS_SDK: Error registering click - %@", error);
+    [req addCompletionHandler:^(MKNetworkRequest *req){
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Registered click successfully.");
+        } else {
+            NSLog(@"CS_SDK: Error registering click - %@", [req error]);
+        }
     }];
-    
-    
-    [self enqueueOperation:op];
-    
-    return op;
+    [_client startRequest:req];
+    return req;
 }
 
 @end

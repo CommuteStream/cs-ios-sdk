@@ -1,20 +1,17 @@
-//
-//  CSNetworkEngine.h
-//  CommuteStream
-//
-//  Created by David Rogers on 5/3/14.
-//  Copyright (c) 2014 CommuteStream. All rights reserved.
-//
+#import "MKNetworkKit.h"
+#import "Csmessages.pbobjc.h"
 
-#import "MKNetworkEngine.h"
+@interface CSNetworkEngine : NSObject
 
-@interface CSNetworkEngine : MKNetworkEngine
+- (id) initWithHostName:(NSString *)host;
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams;
+- (void) getStopAds:(CSPStopAdRequest *)request handler:(void(^)(CSPStopAdResponse *response))callback;
 
-- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams;
+- (MKNetworkRequest *) getBanner:(NSMutableDictionary *)callParams;
 
-- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams;
+- (MKNetworkRequest *) registerImpression:(NSMutableDictionary *)callParams;
+
+- (MKNetworkRequest *) registerClick:(NSMutableDictionary *)callParams;
 
 
 @end

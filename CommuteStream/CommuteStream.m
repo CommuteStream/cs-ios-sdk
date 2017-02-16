@@ -180,9 +180,8 @@ char ifName[3] = "en0";
         NSString *tzName = [timeZone name];
         [[CommuteStream open] setTimeZone:tzName];
         
-        __weak MKNetworkOperation *request = [networkEngine getBanner:http_params];
-        
-        [request setCompletionBlock:^{
+        __weak MKNetworkRequest *request = [networkEngine getBanner:http_params];
+        [request addCompletionHandler:^(MKNetworkRequest *request){
             [self reportSuccessfulGet];
             [agency_interest removeAllObjects];
         }];
@@ -212,18 +211,18 @@ char ifName[3] = "en0";
 
 - (void)getAd:(NSObject *)banner{
     
-    __weak MKNetworkOperation *request = [networkEngine getBanner:[self httpParams]];
+    __weak MKNetworkRequest *request = [networkEngine getBanner:[self httpParams]];
     
 
-    [request setCompletionBlock:^{
+    [request addCompletionHandler:^(MKNetworkRequest *request){
         
         [self reportSuccessfulGet];
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         
-        if ([[request readonlyResponse] statusCode] == 200) {
+        if ([[request response] statusCode] == 200) {
             
             @try{
-                NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
+                NSDictionary *headerDict = [[request response] allHeaderFields];
                 
                 NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
                 NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
@@ -235,34 +234,34 @@ char ifName[3] = "en0";
                 [dict setObject:banner_width forKey: @"bannerWidth"];
                 [dict setObject: creative_width forKey:@"creativeWidth"];
                 [dict setObject: creative_height forKey:@"creativeHeight"];
-                [dict setObject:[request responseString] forKey:@"htmlbody"];
+                [dict setObject:[request responseAsString] forKey:@"htmlbody"];
                 
-                if ([request responseString]){
+                if ([request responseAsString]){
                     [self performSelectorOnMainThread:@selector(buildAd:) withObject:dict waitUntilDone:NO];
                 }else{
                     NSLog(@"CS_SDK: Ad request unfulfilled, deferring to AdMob");
-                    NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
+                    NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request response] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
                     NSDictionary *dictWithError = @{@"banner": [dict objectForKey:@"banner"], @"error": error};
                     [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
                 }
             }
             
             @catch (NSException *exception){
-                NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
+                NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request response] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
                 
                 NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
                 [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
             }
             
-        }else if([[request readonlyResponse] statusCode] == 400){
+        }else if([[request response] statusCode] == 400){
             NSLog(@"CS_SDK: Ad request failed with error 400, bad request");
-        }else if([[request readonlyResponse] statusCode] == 404) {
+        }else if([[request response] statusCode] == 404) {
             NSLog(@"CS_SDK: No banner returned");
-        }else if([[request readonlyResponse] statusCode] == 500){
+        }else if([[request response] statusCode] == 500){
             NSLog(@"CS_SDK: Ad request failed with error 500, server temporarily unavailable.");
         }else{
     
-            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
+            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request response] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
             NSLog(@"CS_SDK: Ad request failed with error %@, deferring to AdMob", error);
             NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
             [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
@@ -335,11 +334,11 @@ char ifName[3] = "en0";
     
     
     //api call
-    __weak MKNetworkOperation *request = [networkEngine registerImpression:impressionDict];
+    __weak MKNetworkRequest *request = [networkEngine registerImpression:impressionDict];
     
-    [request setCompletionBlock:^{
+    [request addCompletionHandler:^(MKNetworkRequest *request){
         
-        if ([[request readonlyResponse] statusCode] == 204 || [[request readonlyResponse] statusCode] == 303) {
+        if ([[request response] statusCode] == 204 || [[request response] statusCode] == 303) {
             
             NSLog(@"CS_SDK: Reported impression successfully");
         }else{
@@ -382,12 +381,12 @@ char ifName[3] = "en0";
     
     
     //api call
-    __weak MKNetworkOperation *request = [networkEngine registerClick:clickDict];
+    __weak MKNetworkRequest *request = [networkEngine registerClick:clickDict];
     
     
-    [request setCompletionBlock:^{
+    [request addCompletionHandler:^(MKNetworkRequest *request){
         
-        if ([[request readonlyResponse] statusCode] == 204 || [[request readonlyResponse] statusCode] == 303) {
+        if ([[request response] statusCode] == 204 || [[request response] statusCode] == 303) {
             
             NSLog(@"CS_SDK: Reported click successfully");
         }else{
