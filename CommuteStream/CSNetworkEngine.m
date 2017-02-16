@@ -18,7 +18,8 @@
 }
 
 - (void) getStopAds:(CSPStopAdRequest *)request handler:(void(^)(CSPStopAdResponse *response))callback {
-    MKNetworkRequest *req = [_client requestWithPath:@"v2/stop_ads" params:nil httpMethod:@"POST" body:nil ssl:YES];
+    NSData *body = [request data];
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/stop_ads" params:nil httpMethod:@"POST" body:body ssl:YES];
     [_client startRequest:req];
     [req addCompletionHandler:^(MKNetworkRequest *req) {
         if([req error] == nil) {
@@ -26,7 +27,12 @@
         } else {
             NSLog(@"CS_SDK: Call to stop ad server error - %@", [req error]);
         }
-        callback(nil);
+        if([[req response] statusCode] == 200 && [req responseData]) {
+            //TODO wrap in try or check for errors somehow
+            callback([[CSPStopAdResponse alloc] initWithData:[req responseData] error:nil]);
+        } else {
+            callback(nil);
+        }
     }];
 }
 
