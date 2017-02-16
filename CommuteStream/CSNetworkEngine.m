@@ -8,61 +8,61 @@
 
 #import "CSNetworkEngine.h"
 
-@implementation CSNetworkEngine
+@implementation CSNetworkEngine {
+    MKNetworkHost *_client;
+}
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams {
-    
-    MKNetworkOperation *op = [self operationWithPath:@"v2/banner" params:callParams httpMethod:@"GET" ssl:YES];
-    
-    [op addCompletionHandler:^(MKNetworkOperation *operation){
-        NSLog(@"CS_SDK: Call to banner server successful");
-        
-    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        if([[operation readonlyResponse] statusCode] != 404) {
-            NSLog(@"CS_SDK: Error from banner server - %@", error);
+- (instancetype) initWithHostName:(NSString *)host {
+    _client = [[MKNetworkHost alloc]initWithHostName:host];
+    return self;
+}
+
+- (MKNetworkRequest *) getStopAds:(CSPStopAdRequest *)request {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/stop_ads" params:nil httpMethod:@"POST" body:nil ssl:YES];
+    [_client startRequest:req];
+    return req;
+}
+
+- (MKNetworkRequest *) getBanner:(NSMutableDictionary *)callParams {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/banner" params:callParams httpMethod:@"GET" body:nil ssl:YES];
+    [req addCompletionHandler:^(MKNetworkRequest *req){
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Call to banner server successful");
+        } else {
+            NSLog(@"CS_SDK: Call to banner server error - %@", [req error]);
         }
     }];
-    
-    
-    [self enqueueOperation:op];
-    return op;
-    
+    [_client startRequest:req];
+    return req;
 }
 
 
-- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams {
-    
-    MKNetworkOperation *op = [self operationWithPath:@"v2/impression" params:callParams httpMethod:@"GET" ssl:YES];
-   
-    [op addCompletionHandler:^(MKNetworkOperation *operation){
-        NSLog(@"CS_SDK: Registered impression successfully.");
-        
-    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        NSLog(@"CS_SDK: Error registering impression - %@", error);
+- (MKNetworkRequest *) registerImpression:(NSMutableDictionary *)callParams {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/impression" params:callParams httpMethod:@"GET" body:nil ssl:YES];
+    [req addCompletionHandler:^(MKNetworkRequest *request){
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Registered impression successfully.");
+        } else {
+            NSLog(@"CS_SDK: Error registering impression - %@", [req error]);
+        }
     }];
-    
-    
-    [self enqueueOperation:op];
-    
-    return op;
-    
+    [_client startRequest:req];
+    return req;
 }
 
-- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams {
-    MKNetworkOperation *op = [self operationWithPath:@"v2/click" params:callParams httpMethod:@"GET" ssl:YES];
+- (MKNetworkRequest *) registerClick:(NSMutableDictionary *)callParams {
+    MKNetworkRequest *req = [_client requestWithPath:@"v2/click" params:callParams httpMethod:@"GET" body:nil ssl:YES];
     
     
-    [op addCompletionHandler:^(MKNetworkOperation *operation){
-        NSLog(@"CS_SDK: Registered click successfully.");
-        
-    }errorHandler:^(MKNetworkOperation *operation, NSError *error){
-        NSLog(@"CS_SDK: Error registering click - %@", error);
+    [req addCompletionHandler:^(MKNetworkRequest *request){
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Registered click successfully.");
+        } else {
+            NSLog(@"CS_SDK: Error registering click - %@", [req error]);
+        }
     }];
-    
-    
-    [self enqueueOperation:op];
-    
-    return op;
+    [_client startRequest:req];
+    return req;
 }
 
 @end

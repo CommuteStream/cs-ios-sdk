@@ -1,4 +1,4 @@
-//
+///Users/tburdick/src/ios-sdk/CommuteStream
 //  CSNetworkEngine.h
 //  CommuteStream
 //
@@ -6,15 +6,20 @@
 //  Copyright (c) 2014 CommuteStream. All rights reserved.
 //
 
-#import "MKNetworkEngine.h"
+#import "MKNetworkKit.h"
+#import "Csmessages.pbobjc.h"
 
-@interface CSNetworkEngine : MKNetworkEngine
+@interface CSNetworkEngine : NSObject
 
-- (MKNetworkOperation *) getBanner:(NSMutableDictionary *)callParams;
+- (id) initWithHostName:(NSString *)host;
 
-- (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams;
+- (MKNetworkRequest *) getStopAds:(CSPStopAdRequest *)request;
 
-- (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams;
+- (MKNetworkRequest *) getBanner:(NSMutableDictionary *)callParams;
+
+- (MKNetworkRequest *) registerImpression:(NSMutableDictionary *)callParams;
+
+- (MKNetworkRequest *) registerClick:(NSMutableDictionary *)callParams;
 
 
 @end
