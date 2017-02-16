@@ -39,7 +39,7 @@
 
 - (MKNetworkRequest *) registerImpression:(NSMutableDictionary *)callParams {
     MKNetworkRequest *req = [_client requestWithPath:@"v2/impression" params:callParams httpMethod:@"GET" body:nil ssl:YES];
-    [req addCompletionHandler:^(MKNetworkRequest *request){
+    [req addCompletionHandler:^(MKNetworkRequest *req){
         if([req error] == nil) {
             NSLog(@"CS_SDK: Registered impression successfully.");
         } else {
@@ -54,7 +54,7 @@
     MKNetworkRequest *req = [_client requestWithPath:@"v2/click" params:callParams httpMethod:@"GET" body:nil ssl:YES];
     
     
-    [req addCompletionHandler:^(MKNetworkRequest *request){
+    [req addCompletionHandler:^(MKNetworkRequest *req){
         if([req error] == nil) {
             NSLog(@"CS_SDK: Registered click successfully.");
         } else {

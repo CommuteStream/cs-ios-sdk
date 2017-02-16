@@ -387,16 +387,12 @@
 		7F867A2D1E367A0200612231 /* MPGoogleAdMobInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F86789F1E367A0200612231 /* MPGoogleAdMobInterstitialCustomEvent.m */; };
 		7F867A2E1E367A0200612231 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8678A11E367A0200612231 /* GoogleMobileAds.framework */; };
 		7F867A2F1E367A0200612231 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8678A11E367A0200612231 /* GoogleMobileAds.framework */; };
-		7F867A301E367A0200612231 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678A21E367A0200612231 /* README.md */; };
-		7F867A311E367A0200612231 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678A21E367A0200612231 /* README.md */; };
 		7F867A341E367A0200612231 /* MillennialNativeAdAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678A51E367A0200612231 /* MillennialNativeAdAdapter.m */; };
 		7F867A371E367A0200612231 /* MillennialNativeCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678A71E367A0200612231 /* MillennialNativeCustomEvent.m */; };
 		7F867A3B1E367A0200612231 /* MPMillennialBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678AA1E367A0200612231 /* MPMillennialBannerCustomEvent.m */; };
 		7F867A3E1E367A0200612231 /* MPMillennialInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678AC1E367A0200612231 /* MPMillennialInterstitialCustomEvent.m */; };
 		7F867A3F1E367A0200612231 /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8678AE1E367A0200612231 /* MMAdSDK.framework */; };
 		7F867A401E367A0200612231 /* MMAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8678AE1E367A0200612231 /* MMAdSDK.framework */; };
-		7F867A411E367A0200612231 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678AF1E367A0200612231 /* README.md */; };
-		7F867A421E367A0200612231 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678AF1E367A0200612231 /* README.md */; };
 		7F867A451E367A0200612231 /* MPBannerAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678B31E367A0200612231 /* MPBannerAdManager.m */; };
 		7F867A491E367A0200612231 /* MPBannerCustomEventAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678B61E367A0200612231 /* MPBannerCustomEventAdapter.m */; };
 		7F867A4C1E367A0200612231 /* MPBaseBannerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678B81E367A0200612231 /* MPBaseBannerAdapter.m */; };
@@ -2921,9 +2917,7 @@
 				1B555F5E1E5572E900FE1C08 /* UIAlertView+MKNKAdditions.m in Sources */,
 				1B555EF11E54F25400FE1C08 /* GPBExtensionInternals.m in Sources */,
 				1B555F0A1E54F25400FE1C08 /* GPBWireFormat.m in Sources */,
-				7F867A411E367A0200612231 /* README.md in Sources */,
 				1B555F2D1E5572B800FE1C08 /* MKNetworkRequest.m in Sources */,
-				7F867A301E367A0200612231 /* README.md in Sources */,
 				1B555F271E5572B800FE1C08 /* MKNetworkHost.m in Sources */,
 				1B555EE21E54F25400FE1C08 /* GPBArray.m in Sources */,
 				1B555F231E5572B800FE1C08 /* MKCache.m in Sources */,
@@ -3049,7 +3043,6 @@
 				7F867A451E367A0200612231 /* MPBannerAdManager.m in Sources */,
 				7F867A9A1E367A0200612231 /* MPQRunLoopOperation.m in Sources */,
 				7F867AF01E367A0200612231 /* MRVideoPlayerManager.m in Sources */,
-				7F867A421E367A0200612231 /* README.md in Sources */,
 				7F867B561E367A0300612231 /* MPVASTStringUtilities.m in Sources */,
 				7F867B2C1E367A0200612231 /* MPUserInteractionGestureRecognizer.m in Sources */,
 				7F867C041E367A0300612231 /* MOPUBPlayerManager.m in Sources */,
@@ -3058,7 +3051,6 @@
 				7F867BB21E367A0300612231 /* MPCollectionViewAdPlacer.m in Sources */,
 				7F867BC01E367A0300612231 /* MPNativeAdError.m in Sources */,
 				7F867B781E367A0300612231 /* MPAdPlacerInvocation.m in Sources */,
-				7F867A311E367A0200612231 /* README.md in Sources */,
 				7F867BFE1E367A0300612231 /* MOPUBNativeVideoCustomEvent.m in Sources */,
 				7F867A6C1E367A0200612231 /* MPAPIEndpoints.m in Sources */,
 				7F867B911E367A0300612231 /* MPNativeAdSourceQueue.m in Sources */,
