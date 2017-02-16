@@ -13,7 +13,7 @@
 
 - (id) initWithHostName:(NSString *)host;
 
-- (MKNetworkRequest *) getStopAds:(CSPStopAdRequest *)request;
+- (void) getStopAds:(CSPStopAdRequest *)request handler:(void(^)(CSPStopAdResponse *response))callback;
 
 - (MKNetworkRequest *) getBanner:(NSMutableDictionary *)callParams;
 

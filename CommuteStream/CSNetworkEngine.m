@@ -17,10 +17,17 @@
     return self;
 }
 
-- (MKNetworkRequest *) getStopAds:(CSPStopAdRequest *)request {
+- (void) getStopAds:(CSPStopAdRequest *)request handler:(void(^)(CSPStopAdResponse *response))callback {
     MKNetworkRequest *req = [_client requestWithPath:@"v2/stop_ads" params:nil httpMethod:@"POST" body:nil ssl:YES];
     [_client startRequest:req];
-    return req;
+    [req addCompletionHandler:^(MKNetworkRequest *req) {
+        if([req error] == nil) {
+            NSLog(@"CS_SDK: Call to stop ad server successful");
+        } else {
+            NSLog(@"CS_SDK: Call to stop ad server error - %@", [req error]);
+        }
+        callback(nil);
+    }];
 }
 
 - (MKNetworkRequest *) getBanner:(NSMutableDictionary *)callParams {
