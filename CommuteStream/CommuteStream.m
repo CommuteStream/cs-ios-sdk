@@ -16,7 +16,12 @@
 
 #define SDK_VERSION @"0.8.0"
 
+
+
+
 @implementation CommuteStream {
+    
+    
 
     NSString *ad_unit_uuid;
     NSString *banner_height;
@@ -66,6 +71,8 @@
     NSString *registerImpressionID;
 }
 
+
+
 char macAddress[32];
 char ifName[3] = "en0";
 
@@ -80,6 +87,9 @@ char ifName[3] = "en0";
     
 }
 
+NSMutableDictionary *nativeAdDictionary;
+CSNativeInterstitial *interstitialView;
+
 //force create singleton
 + (id)allocWithZone:(NSZone *)zone {
     return [self open];
@@ -92,6 +102,7 @@ char ifName[3] = "en0";
         NSLog(@"CS_SDK: Initialized CS");
         
         http_params = [[NSMutableDictionary alloc] init];
+        nativeAdDictionary = [[NSMutableDictionary alloc] init];
         
         agency_interest = [[NSMutableArray alloc] init];
         
@@ -370,6 +381,51 @@ char ifName[3] = "en0";
 }
 
 
++ (CSNativeAdIcon *)getNativeAdIconForStopID:(NSString *)stopID {
+    
+    CSNativeAdIcon *icon = [[CSNativeAdIcon alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 70.0, 7.0, 30.0, 30.0) andTapHandler:^(void){
+    
+        NSLog(@"tapped stop ID - %@", stopID);
+        
+        CGRect bounds = [[UIScreen mainScreen] bounds];
+        CSNativeInterstitial *interstitial = [[CSNativeInterstitial alloc] initWithFrame:bounds];
+        interstitial.windowLevel = UIWindowLevelAlert;
+        interstitialView = interstitial;
+        [interstitial makeKeyAndVisible];
+        
+            
+    }];
+    
+    
+    [icon setImage:[UIImage imageNamed:[[[nativeAdDictionary objectForKey:stopID] objectForKey:@"icon"] objectForKey:@"icon_name"]]];
+    
+    return icon;
+    
+}
+
++ (void)getNativeAdsForStops:(NSArray *)stopsArray onComplete:(void(^)(void))callback {
+    
+    //package up request as required by buffer protocols
+    NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+    for(NSString *stopID in stopsArray){
+        [tempDict setObject:@"" forKey:stopID];
+    }
+    
+    //make request with stops
+
+    //response
+    //add returned ads with the the stop id for the key and everything else for the value in local dictionary.
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"stop_list_icons" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:jsonPath]; NSError *error = nil;
+    id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+
+    nativeAdDictionary = json;
+
+    callback();
+    
+}
+
+
 - (void)callRegisterClickWithTimerParams:(NSMutableDictionary *)params {
     
     NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : [params objectForKey:@"requestID"]}];
@@ -489,6 +545,10 @@ char ifName[3] = "en0";
 
 - (NSMutableDictionary *)httpParams {
     return http_params;
+}
+
++ (NSMutableDictionary *)nativeAdDict {
+    return nativeAdDictionary;
 }
 
 -(NSDate *)lastServerRequestTime {
@@ -625,6 +685,10 @@ char ifName[3] = "en0";
 
 - (void)setHttpParams:(NSMutableDictionary *)httpParams {
     http_params = httpParams;
+}
+
++ (void)setNaviteAdDict:(NSMutableDictionary *)nativeAdDict {
+    nativeAdDictionary = nativeAdDict;
 }
 
 -(void)setLastServerRequestTime:(NSDate *)time {

@@ -1,8 +1,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CSNativeAdIcon.h"
+#import "CSNativeInterstitial.h"
 #import "CSLocationManager.h"
 
 @interface CommuteStream : NSObject
+
 
 + (CommuteStream *)open;
 
@@ -44,9 +47,14 @@
 
 - (CLLocation *)location;
 
++ (CSNativeAdIcon *)getNativeAdIconForStopID:(NSString *)stopID;
++ (void)getNativeAdsForStops:(NSArray *)stopsArray onComplete:(void(^)(void))callback;
+
 - (CSLocationManager *)locationManager;
 
 - (NSMutableDictionary *)httpParams;
+
++ (NSMutableDictionary *)nativeAdDict;
 
 - (NSDate *)lastServerRequestTime;
 
@@ -103,6 +111,8 @@
 - (void)setLocation:(CLLocation *)thisLocation;
 
 - (void)setHttpParams:(NSMutableDictionary *)httpParams;
+
++ (void)setNaviteAdDict:(NSMutableDictionary *)nativeAdDict;
 
 - (void)setLastServerRequestTime:(NSDate *)time;
 
