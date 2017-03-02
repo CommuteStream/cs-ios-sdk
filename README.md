@@ -19,10 +19,10 @@ Clone the repository or download the appropriate zip file:
 [https://github.com/CommuteStream/cs-ios-sdk](https://github.com/CommuteStream/cs-ios-sdk).
 
 **AdMob:**
-[CommuteStreamAdMob-iOS-0.8.0.zip](https://s3.amazonaws.com/download.commutestream.com/CommuteStreamAdMob-iOS-0.8.0.zip).
+[CommuteStreamAdMob-iOS-0.8.1.zip](https://s3.amazonaws.com/download.commutestream.com/CommuteStreamAdMob-iOS-0.8.1.zip).
 
 **MoPub:**
-[CommuteStreamMoPub-iOS-0.8.0.zip](https://s3.amazonaws.com/download.commutestream.com/CommuteStreamMoPub-iOS-0.8.0.zip).
+[CommuteStreamMoPub-iOS-0.8.1.zip](https://s3.amazonaws.com/download.commutestream.com/CommuteStreamMoPub-iOS-0.8.1.zip).
 
    
 ## Adding the SDK
