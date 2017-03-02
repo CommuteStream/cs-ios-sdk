@@ -16,7 +16,7 @@
 
 @implementation CSHTMLBanner{
     NSString *bannerUrl;
-    NSString *requestID;
+    NSString *clickURL;
     int touchCount;
     CSWebView *webView;
     BOOL userInteracted;
@@ -107,8 +107,8 @@ NSString *hostUrl = @"api.commutestream.com";
     
 }
 
-- (void)setRequestID:(NSString *)requestString {
-    requestID = requestString;
+- (void)setClickURL:(NSString *)urlString {
+    clickURL = urlString;
 }
 
 - (void)removeScrollAndBounce {
@@ -124,7 +124,7 @@ NSString *hostUrl = @"api.commutestream.com";
     
     if(touchCount == 1){
         
-        NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @5.0, @"count" : @7, @"requestID" : requestID}];
+        NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @5.0, @"count" : @7, @"clickURL" : clickURL}];
        
         [[CommuteStream open] callRegisterClickWithTimerParams:retryDict];
         

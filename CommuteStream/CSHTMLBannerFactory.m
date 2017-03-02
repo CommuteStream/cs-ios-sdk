@@ -24,7 +24,7 @@
     float creative_height = [[dictionary objectForKey:@"creativeHeight"] floatValue];
     
     NSString *htmlBody = [dictionary objectForKey:@"htmlbody"];
-    NSString *requestID = [dictionary objectForKey:@"request_id"];
+    NSString *clickURL = [dictionary objectForKey:@"click_url"];
 
     
     
@@ -36,7 +36,7 @@
     NSString *htmlPath = htmlBody;
     //NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"pan-gesture-banner" ofType:@"html"]];
     //NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
-    [webView setRequestID:requestID];
+    [webView setClickURL:clickURL];
     //htmlBannerUrl = [dictionary objectForKey:@"url"];
     [webView loadHTML:htmlPath];
 
