@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CSNativeAdIcon.h"
-#import "CSNativeInterstitial.h"
+#import "CSNativeAdModalWindow.h"
 #import "CSLocationManager.h"
 
 @interface CommuteStream : NSObject

@@ -88,7 +88,7 @@ char ifName[3] = "en0";
 }
 
 NSMutableDictionary *nativeAdDictionary;
-CSNativeInterstitial *interstitialView;
+CSNativeAdModalWindow *modalWindowView;
 
 //force create singleton
 + (id)allocWithZone:(NSZone *)zone {
@@ -388,10 +388,10 @@ CSNativeInterstitial *interstitialView;
         NSLog(@"tapped stop ID - %@", stopID);
         
         CGRect bounds = [[UIScreen mainScreen] bounds];
-        CSNativeInterstitial *interstitial = [[CSNativeInterstitial alloc] initWithFrame:bounds];
-        interstitial.windowLevel = UIWindowLevelAlert;
-        interstitialView = interstitial;
-        [interstitial makeKeyAndVisible];
+        CSNativeAdModalWindow *modalWindow = [[CSNativeAdModalWindow alloc] initWithFrame:bounds andStop:[nativeAdDictionary objectForKey:stopID]];
+        modalWindow.windowLevel = UIWindowLevelAlert;
+        modalWindowView = modalWindow;
+        [modalWindow makeKeyAndVisible];
         
             
     }];

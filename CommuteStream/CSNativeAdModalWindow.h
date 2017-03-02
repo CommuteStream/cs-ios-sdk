@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CSNativeInterstitial : UIWindow<UIGestureRecognizerDelegate>
+@interface CSNativeAdModalWindow : UIWindow<UIGestureRecognizerDelegate>
+
+
+- (id) initWithFrame:(CGRect)frame andStop:(NSDictionary *)stopObject;
 
 @end
