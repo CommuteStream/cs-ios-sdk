@@ -35,14 +35,10 @@
 
 /* Begin PBXBuildFile section */
 		1B2180B31E49023F000AB72C /* CSGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F38C4F41DD110EF002F9A02 /* CSGestureRecognizer.m */; };
-		1B2180B41E49023F000AB72C /* CSMRAIDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */; };
 		1B2180B51E49023F000AB72C /* CSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99B821DC2A0A200E33562 /* CSWebView.m */; };
 		1B2180B61E49023F000AB72C /* CSAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A181DB9497000E33562 /* CSAdFactory.m */; };
-		1B2180B71E49023F000AB72C /* CSMRAIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */; };
 		1B2180B81E49023F000AB72C /* CSBasicBannerAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A1C1DB9544E00E33562 /* CSBasicBannerAdFactory.m */; };
 		1B2180B91E49023F000AB72C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398F31915538600C8114E /* Reachability.m */; };
-		1B2180BA1E49023F000AB72C /* CSMRAIDSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */; };
-		1B2180BB1E49023F000AB72C /* CSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B311DAECF5400DBFD9B /* CSLogger.m */; };
 		1B2180BC1E49023F000AB72C /* CSHTMLBannerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */; };
 		1B2180BD1E49023F000AB72C /* NSURL+CSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3034901E2E8D3000134984 /* NSURL+CSURL.m */; };
 		1B2180BE1E49023F000AB72C /* CSBasicBannerAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A381DBE696600E33562 /* CSBasicBannerAd.m */; };
@@ -50,12 +46,8 @@
 		1B2180C01E49023F000AB72C /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398F01915538600C8114E /* MKNetworkOperation.m */; };
 		1B2180C11E49023F000AB72C /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398DF1915538600C8114E /* NSAlert+MKNetworkKitAdditions.m */; };
 		1B2180C21E49023F000AB72C /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398E11915538600C8114E /* NSData+MKBase64.m */; };
-		1B2180C31E49023F000AB72C /* CSMRAIDResizeProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */; };
 		1B2180C41E49023F000AB72C /* CSMoPubCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678961E36798300612231 /* CSMoPubCustomEvent.m */; };
-		1B2180C51E49023F000AB72C /* CSMRAIDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */; };
 		1B2180C61E49023F000AB72C /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398E31915538600C8114E /* NSDate+RFC1123.m */; };
-		1B2180C71E49023F000AB72C /* CSMRAIDViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */; };
-		1B2180C81E49023F000AB72C /* CSMRAIDOrientationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */; };
 		1B2180C91E49023F000AB72C /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398E51915538600C8114E /* NSDictionary+RequestEncoding.m */; };
 		1B2180CA1E49023F000AB72C /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398E71915538600C8114E /* NSString+MKNetworkKitAdditions.m */; };
 		1B2180CB1E49023F000AB72C /* CSLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4B701A1E3BBE27001B2F68 /* CSLocationManager.m */; };
@@ -64,7 +56,6 @@
 		1B2180CE1E49023F000AB72C /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398EB1915538600C8114E /* UIImageView+MKNetworkKitAdditions.m */; };
 		1B2180CF1E49023F000AB72C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F8678A21E367A0200612231 /* README.md */; };
 		1B2180D01E49023F000AB72C /* CSNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF398FF191553C300C8114E /* CSNetworkEngine.m */; };
-		1B2180D21E49023F000AB72C /* CSMRAIDModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */; };
 		1B2180D31E49023F000AB72C /* CSHTMLBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */; };
 		1B2180D51E49023F000AB72C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7395171C875EF200606647 /* ImageIO.framework */; };
 		1B2180D61E49023F000AB72C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3990F1915703400C8114E /* AdSupport.framework */; };
@@ -105,11 +96,9 @@
 		1B2180FE1E49023F000AB72C /* CSLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F4B70191E3BBE27001B2F68 /* CSLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2180FF1E49023F000AB72C /* MPInterstitialAdManagerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679081E367A0200612231 /* MPInterstitialAdManagerDelegate.h */; };
 		1B2181001E49023F000AB72C /* MPNativeAdRendererConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679C51E367A0200612231 /* MPNativeAdRendererConfiguration.h */; };
-		1B2181011E49023F000AB72C /* CSMRAIDViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */; };
 		1B2181021E49023F000AB72C /* MPInterstitialAdManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679061E367A0200612231 /* MPInterstitialAdManager.h */; };
 		1B2181031E49023F000AB72C /* MPMillennialBannerCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678A91E367A0200612231 /* MPMillennialBannerCustomEvent.h */; };
 		1B2181041E49023F000AB72C /* MRCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679211E367A0200612231 /* MRCommand.h */; };
-		1B2181051E49023F000AB72C /* CSMRAIDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181061E49023F000AB72C /* MPVASTTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679121E367A0200612231 /* MPVASTTracking.h */; };
 		1B2181071E49023F000AB72C /* MPStoreKitProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679551E367A0200612231 /* MPStoreKitProvider.h */; };
 		1B2181081E49023F000AB72C /* MPBannerCustomEventDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679851E367A0200612231 /* MPBannerCustomEventDelegate.h */; };
@@ -118,8 +107,6 @@
 		1B21810B1E49023F000AB72C /* FABKitProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678F51E367A0200612231 /* FABKitProtocol.h */; };
 		1B21810C1E49023F000AB72C /* MPVASTWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86797A1E367A0200612231 /* MPVASTWrapper.h */; };
 		1B21810D1E49023F000AB72C /* MPStaticNativeAdRendererSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679D91E367A0200612231 /* MPStaticNativeAdRendererSettings.h */; };
-		1B21810E1E49023F000AB72C /* CSMRAIDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B21810F1E49023F000AB72C /* CSMRAIDModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181101E49023F000AB72C /* MPNativeAdRenderingImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679C91E367A0200612231 /* MPNativeAdRenderingImageLoader.h */; };
 		1B2181111E49023F000AB72C /* MPImageDownloadQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679971E367A0200612231 /* MPImageDownloadQueue.h */; };
 		1B2181121E49023F000AB72C /* MPVASTResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679721E367A0200612231 /* MPVASTResource.h */; };
@@ -128,7 +115,6 @@
 		1B2181151E49023F000AB72C /* MPRewardedVideo+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F867A181E367A0200612231 /* MPRewardedVideo+Internal.h */; };
 		1B2181161E49023F000AB72C /* MPPrivateRewardedVideoCustomEventDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F867A171E367A0200612231 /* MPPrivateRewardedVideoCustomEventDelegate.h */; };
 		1B2181171E49023F000AB72C /* MPNativeAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679BA1E367A0200612231 /* MPNativeAd.h */; };
-		1B2181181E49023F000AB72C /* CSMRAIDOrientationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181191E49023F000AB72C /* MRBundleManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86791F1E367A0200612231 /* MRBundleManager.h */; };
 		1B21811A1E49023F000AB72C /* MPLogEventCommunicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678E91E367A0200612231 /* MPLogEventCommunicator.h */; };
 		1B21811B1E49023F000AB72C /* MRBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86791D1E367A0200612231 /* MRBridge.h */; };
@@ -140,7 +126,6 @@
 		1B2181211E49023F000AB72C /* MPNativeAdSourceQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679A21E367A0200612231 /* MPNativeAdSourceQueue.h */; };
 		1B2181221E49023F000AB72C /* CSHTMLBannerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */; };
 		1B2181231E49023F000AB72C /* MRController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679251E367A0200612231 /* MRController.h */; };
-		1B2181241E49023F000AB72C /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181251E49023F000AB72C /* MPBannerCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679831E367A0200612231 /* MPBannerCustomEvent.h */; };
 		1B2181261E49023F000AB72C /* MPHTMLBannerCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678FB1E367A0200612231 /* MPHTMLBannerCustomEvent.h */; };
 		1B2181271E49023F000AB72C /* NSURL+MPAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679371E367A0200612231 /* NSURL+MPAdditions.h */; };
@@ -158,7 +143,6 @@
 		1B2181331E49023F000AB72C /* MPHTMLInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678FF1E367A0200612231 /* MPHTMLInterstitialViewController.h */; };
 		1B2181341E49023F000AB72C /* MOPUBAVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679E51E367A0200612231 /* MOPUBAVPlayer.h */; };
 		1B2181351E49023F000AB72C /* MPNativeAdRendering.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679C81E367A0200612231 /* MPNativeAdRendering.h */; };
-		1B2181361E49023F000AB72C /* CSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B301DAECF5400DBFD9B /* CSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181371E49023F000AB72C /* MPIdentityProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679491E367A0200612231 /* MPIdentityProvider.h */; };
 		1B2181381E49023F000AB72C /* NSHTTPURLResponse+MPAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679331E367A0200612231 /* NSHTTPURLResponse+MPAdditions.h */; };
 		1B2181391E49023F000AB72C /* MPFacebookKeywordProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678D51E367A0200612231 /* MPFacebookKeywordProvider.h */; };
@@ -167,7 +151,6 @@
 		1B21813C1E49023F000AB72C /* MPInterstitialAdController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679881E367A0200612231 /* MPInterstitialAdController.h */; };
 		1B21813D1E49023F000AB72C /* UIButton+MPAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679391E367A0200612231 /* UIButton+MPAdditions.h */; };
 		1B21813E1E49023F000AB72C /* FABAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678F41E367A0200612231 /* FABAttributes.h */; };
-		1B21813F1E49023F000AB72C /* CSMRAIDUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181401E49023F000AB72C /* CSBasicBannerAdFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */; };
 		1B2181411E49023F000AB72C /* MPMRAIDInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86791B1E367A0200612231 /* MPMRAIDInterstitialViewController.h */; };
 		1B2181421E49023F000AB72C /* Fabric.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678F71E367A0200612231 /* Fabric.h */; };
@@ -191,7 +174,6 @@
 		1B2181541E49023F000AB72C /* UIWebView+MPAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86793F1E367A0200612231 /* UIWebView+MPAdditions.h */; };
 		1B2181551E49023F000AB72C /* MoPub.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86797D1E367A0200612231 /* MoPub.h */; };
 		1B2181561E49023F000AB72C /* MPMoPubRewardedVideoCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F867A151E367A0200612231 /* MPMoPubRewardedVideoCustomEvent.h */; };
-		1B2181571E49023F000AB72C /* CSMRAIDResizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181581E49023F000AB72C /* MPVASTInline.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679661E367A0200612231 /* MPVASTInline.h */; };
 		1B2181591E49023F000AB72C /* MRNativeCommandHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86792B1E367A0200612231 /* MRNativeCommandHandler.h */; };
 		1B21815A1E49023F000AB72C /* MPMRAIDInterstitialCustomEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679191E367A0200612231 /* MPMRAIDInterstitialCustomEvent.h */; };
@@ -201,7 +183,6 @@
 		1B21815E1E49023F000AB72C /* MRProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86792D1E367A0200612231 /* MRProperty.h */; };
 		1B21815F1E49023F000AB72C /* MPNativeAdRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679CB1E367A0200612231 /* MPNativeAdRequest.h */; };
 		1B2181611E49023F000AB72C /* MOPUBNativeVideoAdRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679FB1E367A0200612231 /* MOPUBNativeVideoAdRenderer.h */; };
-		1B2181621E49023F000AB72C /* CSMRAIDSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181631E49023F000AB72C /* MPStreamAdPlacementData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679DB1E367A0200612231 /* MPStreamAdPlacementData.h */; };
 		1B2181641E49023F000AB72C /* MPNativeAdRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679C41E367A0200612231 /* MPNativeAdRenderer.h */; };
 		1B2181651E49023F000AB72C /* MPClientAdPositioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679B61E367A0200612231 /* MPClientAdPositioning.h */; };
@@ -239,7 +220,6 @@
 		1B2181851E49023F000AB72C /* MPAdConversionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86797F1E367A0200612231 /* MPAdConversionTracker.h */; };
 		1B2181861E49023F000AB72C /* MOPUBNativeVideoAdConfigValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679ED1E367A0200612231 /* MOPUBNativeVideoAdConfigValues.h */; };
 		1B2181871E49023F000AB72C /* MPVASTMacroProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86796A1E367A0200612231 /* MPVASTMacroProcessor.h */; };
-		1B2181881E49023F000AB72C /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B2181891E49023F000AB72C /* MPVASTStringUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679761E367A0200612231 /* MPVASTStringUtilities.h */; };
 		1B21818A1E49023F000AB72C /* MPLogEvent+NativeVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8678E51E367A0200612231 /* MPLogEvent+NativeVideo.h */; };
 		1B21818B1E49023F000AB72C /* MPInstanceProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679101E367A0200612231 /* MPInstanceProvider.h */; };
@@ -301,7 +281,6 @@
 		1B2181C31E49023F000AB72C /* MPInternalUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F86794B1E367A0200612231 /* MPInternalUtils.h */; };
 		1B2181C41E49023F000AB72C /* MPTableViewAdPlacer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679DF1E367A0200612231 /* MPTableViewAdPlacer.h */; };
 		1B2181C51E49023F000AB72C /* MPStaticNativeAdImpressionTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8679AE1E367A0200612231 /* MPStaticNativeAdImpressionTimer.h */; };
-		1B2181C61E49023F000AB72C /* CSMRAIDServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF398BB191552D000C8114E /* CommuteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B7395181C875EF200606647 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7395171C875EF200606647 /* ImageIO.framework */; };
 		1BC3E1D31E49285E002C1F58 /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -512,30 +491,11 @@
 		7F867C3B1E367A0300612231 /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F867A231E367A0200612231 /* MPRewardedVideoCustomEvent.m */; };
 		7F867C3E1E367A0300612231 /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F867A251E367A0200612231 /* MPRewardedVideoError.m */; };
 		7F867C411E367A0300612231 /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F867A271E367A0200612231 /* MPRewardedVideoReward.m */; };
-		7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */; };
-		7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B251DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */; };
-		7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B2B1DAECE2600DBFD9B /* CSMRAIDResizeProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */; };
-		7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B2F1DAECEB100DBFD9B /* CSMRAIDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */; };
-		7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B301DAECF5400DBFD9B /* CSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B311DAECF5400DBFD9B /* CSLogger.m */; };
-		7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B371DAED0D900DBFD9B /* CSMRAIDModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */; };
-		7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B3C1DAED20700DBFD9B /* CSMRAIDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */; };
-		7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */; };
-		7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B421DAED47700DBFD9B /* mraidjs.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B441DAED48D00DBFD9B /* CloseButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FCA5F0E1E0B261500936E40 /* cs_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F091E0B261500936E40 /* cs_logo.png */; };
 		7FCA5F0F1E0B261500936E40 /* hammer-time.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F0B1E0B261500936E40 /* hammer-time.min.js */; };
 		7FCA5F101E0B261500936E40 /* hammer.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F0C1E0B261500936E40 /* hammer.min.js */; };
 		7FCA5F111E0B261500936E40 /* pan-gesture-banner.html in Resources */ = {isa = PBXBuildFile; fileRef = 7FCA5F0D1E0B261500936E40 /* pan-gesture-banner.html */; };
 		7FCFCB4E1DEF54E300ACFB7C /* CSCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF39901191554CB00C8114E /* CSCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FD99A191DB9497000E33562 /* CSAdFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A171DB9497000E33562 /* CSAdFactory.h */; };
 		7FD99A1A1DB9497000E33562 /* CSAdFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A181DB9497000E33562 /* CSAdFactory.m */; };
 		7FD99A1D1DB9544E00E33562 /* CSBasicBannerAdFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A1B1DB9544E00E33562 /* CSBasicBannerAdFactory.h */; };
@@ -546,8 +506,6 @@
 		7FD99A921DBE7FA900E33562 /* CSHTMLBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */; };
 		7FD99A951DBE822D00E33562 /* CSHTMLBannerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */; };
 		7FD99A961DBE822D00E33562 /* CSHTMLBannerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */; };
-		7FD99AB31DBFC9DE00E33562 /* CSMRAIDViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */; };
-		7FD99AB41DBFC9DE00E33562 /* CSMRAIDViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */; };
 		7FD99B831DC2A0A200E33562 /* CSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD99B811DC2A0A200E33562 /* CSWebView.h */; };
 		7FD99B841DC2A0A200E33562 /* CSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD99B821DC2A0A200E33562 /* CSWebView.m */; };
 		7FF398B7191552D000C8114E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF398B6191552D000C8114E /* Foundation.framework */; };
@@ -1110,26 +1068,6 @@
 		7F9BFD8C19225D3700DF667C /* GADCustomEventInterstitial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitial.h; sourceTree = "<group>"; };
 		7F9BFD8D19225D3700DF667C /* GADCustomEventInterstitialDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitialDelegate.h; sourceTree = "<group>"; };
 		7F9BFD8E19225D3700DF667C /* GADCustomEventRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADCustomEventRequest.h; sourceTree = "<group>"; };
-		7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDView.h; path = CommuteStream/CSMRAIDView.h; sourceTree = "<group>"; };
-		7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDView.m; path = CommuteStream/CSMRAIDView.m; sourceTree = "<group>"; };
-		7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDOrientationProperties.h; path = CommuteStream/CSMRAIDOrientationProperties.h; sourceTree = "<group>"; };
-		7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDOrientationProperties.m; path = CommuteStream/CSMRAIDOrientationProperties.m; sourceTree = "<group>"; };
-		7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDResizeProperties.h; path = CommuteStream/CSMRAIDResizeProperties.h; sourceTree = "<group>"; };
-		7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDResizeProperties.m; path = CommuteStream/CSMRAIDResizeProperties.m; sourceTree = "<group>"; };
-		7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDParser.h; path = CommuteStream/CSMRAIDParser.h; sourceTree = "<group>"; };
-		7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDParser.m; path = CommuteStream/CSMRAIDParser.m; sourceTree = "<group>"; };
-		7FC68B301DAECF5400DBFD9B /* CSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLogger.h; sourceTree = "<group>"; };
-		7FC68B311DAECF5400DBFD9B /* CSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLogger.m; sourceTree = "<group>"; };
-		7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDModalViewController.h; path = CommuteStream/CSMRAIDModalViewController.h; sourceTree = "<group>"; };
-		7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDModalViewController.m; path = CommuteStream/CSMRAIDModalViewController.m; sourceTree = "<group>"; };
-		7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CSMRAIDServiceDelegate.h; path = CommuteStream/CSMRAIDServiceDelegate.h; sourceTree = "<group>"; };
-		7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDUtil.h; path = CommuteStream/CSMRAIDUtil.h; sourceTree = "<group>"; };
-		7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDUtil.m; path = CommuteStream/CSMRAIDUtil.m; sourceTree = "<group>"; };
-		7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMRAIDSettings.h; path = CommuteStream/CSMRAIDSettings.h; sourceTree = "<group>"; };
-		7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMRAIDSettings.m; path = CommuteStream/CSMRAIDSettings.m; sourceTree = "<group>"; };
-		7FC68B411DAED47700DBFD9B /* mraid.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = mraid.js; path = CommuteStream/mraid.js; sourceTree = "<group>"; };
-		7FC68B421DAED47700DBFD9B /* mraidjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mraidjs.h; path = CommuteStream/mraidjs.h; sourceTree = "<group>"; };
-		7FC68B441DAED48D00DBFD9B /* CloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloseButton.h; path = CommuteStream/CloseButton.h; sourceTree = "<group>"; };
 		7FCA5F091E0B261500936E40 /* cs_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cs_logo.png; sourceTree = "<group>"; };
 		7FCA5F0B1E0B261500936E40 /* hammer-time.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "hammer-time.min.js"; sourceTree = "<group>"; };
 		7FCA5F0C1E0B261500936E40 /* hammer.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hammer.min.js; sourceTree = "<group>"; };
@@ -1220,8 +1158,6 @@
 		7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHTMLBanner.m; sourceTree = "<group>"; };
 		7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSHTMLBannerFactory.h; sourceTree = "<group>"; };
 		7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHTMLBannerFactory.m; sourceTree = "<group>"; };
-		7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMRAIDViewFactory.h; sourceTree = "<group>"; };
-		7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMRAIDViewFactory.m; sourceTree = "<group>"; };
 		7FD99B811DC2A0A200E33562 /* CSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSWebView.h; sourceTree = "<group>"; };
 		7FD99B821DC2A0A200E33562 /* CSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSWebView.m; sourceTree = "<group>"; };
 		7FF398B3191552D000C8114E /* libCommuteStreamAdMob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommuteStreamAdMob.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1939,40 +1875,6 @@
 			path = Internal;
 			sourceTree = "<group>";
 		};
-		7FC68B261DAECDD000DBFD9B /* MRAID */ = {
-			isa = PBXGroup;
-			children = (
-				7FC68B441DAED48D00DBFD9B /* CloseButton.h */,
-				7FC68B411DAED47700DBFD9B /* mraid.js */,
-				7FC68B421DAED47700DBFD9B /* mraidjs.h */,
-				7FC68B2C1DAECEB100DBFD9B /* CSMRAIDParser.h */,
-				7FC68B2D1DAECEB100DBFD9B /* CSMRAIDParser.m */,
-				7FC68B1E1DAECC9900DBFD9B /* CSMRAIDView.h */,
-				7FC68B1F1DAECC9900DBFD9B /* CSMRAIDView.m */,
-				7FC68B271DAECDF300DBFD9B /* properties */,
-				7FC68B341DAED0D800DBFD9B /* CSMRAIDModalViewController.h */,
-				7FC68B351DAED0D800DBFD9B /* CSMRAIDModalViewController.m */,
-				7FC68B381DAED1AF00DBFD9B /* CSMRAIDServiceDelegate.h */,
-				7FC68B391DAED20700DBFD9B /* CSMRAIDUtil.h */,
-				7FC68B3A1DAED20700DBFD9B /* CSMRAIDUtil.m */,
-				7FC68B3D1DAED2F600DBFD9B /* CSMRAIDSettings.h */,
-				7FC68B3E1DAED2F600DBFD9B /* CSMRAIDSettings.m */,
-			);
-			name = MRAID;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		7FC68B271DAECDF300DBFD9B /* properties */ = {
-			isa = PBXGroup;
-			children = (
-				7FC68B221DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h */,
-				7FC68B231DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m */,
-				7FC68B281DAECE2600DBFD9B /* CSMRAIDResizeProperties.h */,
-				7FC68B291DAECE2600DBFD9B /* CSMRAIDResizeProperties.m */,
-			);
-			name = properties;
-			sourceTree = "<group>";
-		};
 		7FCA5F071E0B261500936E40 /* pan-gesture-banner */ = {
 			isa = PBXGroup;
 			children = (
@@ -2131,9 +2033,6 @@
 			isa = PBXGroup;
 			children = (
 				7F30348E1E2E8CD700134984 /* Categories */,
-				7FC68B301DAECF5400DBFD9B /* CSLogger.h */,
-				7FC68B311DAECF5400DBFD9B /* CSLogger.m */,
-				7FC68B261DAECDD000DBFD9B /* MRAID */,
 				7F2367C31917F1D300E3B73C /* Google AdMob */,
 				7FF398DC1915538600C8114E /* MKNetworkKit */,
 				7FF398BB191552D000C8114E /* CommuteStream.h */,
@@ -2155,8 +2054,6 @@
 				7FD99A901DBE7FA900E33562 /* CSHTMLBanner.m */,
 				7FD99A931DBE822D00E33562 /* CSHTMLBannerFactory.h */,
 				7FD99A941DBE822D00E33562 /* CSHTMLBannerFactory.m */,
-				7FD99AB11DBFC9DE00E33562 /* CSMRAIDViewFactory.h */,
-				7FD99AB21DBFC9DE00E33562 /* CSMRAIDViewFactory.m */,
 				7FD99B811DC2A0A200E33562 /* CSWebView.h */,
 				7FD99B821DC2A0A200E33562 /* CSWebView.m */,
 				7F38C4F31DD110EF002F9A02 /* CSGestureRecognizer.h */,
@@ -2259,11 +2156,9 @@
 				1B2180FE1E49023F000AB72C /* CSLocationManager.h in Headers */,
 				1B2180FF1E49023F000AB72C /* MPInterstitialAdManagerDelegate.h in Headers */,
 				1B2181001E49023F000AB72C /* MPNativeAdRendererConfiguration.h in Headers */,
-				1B2181011E49023F000AB72C /* CSMRAIDViewFactory.h in Headers */,
 				1B2181021E49023F000AB72C /* MPInterstitialAdManager.h in Headers */,
 				1B2181031E49023F000AB72C /* MPMillennialBannerCustomEvent.h in Headers */,
 				1B2181041E49023F000AB72C /* MRCommand.h in Headers */,
-				1B2181051E49023F000AB72C /* CSMRAIDView.h in Headers */,
 				1B2181061E49023F000AB72C /* MPVASTTracking.h in Headers */,
 				1B2181071E49023F000AB72C /* MPStoreKitProvider.h in Headers */,
 				1B2181081E49023F000AB72C /* MPBannerCustomEventDelegate.h in Headers */,
@@ -2272,8 +2167,6 @@
 				1B21810B1E49023F000AB72C /* FABKitProtocol.h in Headers */,
 				1B21810C1E49023F000AB72C /* MPVASTWrapper.h in Headers */,
 				1B21810D1E49023F000AB72C /* MPStaticNativeAdRendererSettings.h in Headers */,
-				1B21810E1E49023F000AB72C /* CSMRAIDParser.h in Headers */,
-				1B21810F1E49023F000AB72C /* CSMRAIDModalViewController.h in Headers */,
 				1B2181101E49023F000AB72C /* MPNativeAdRenderingImageLoader.h in Headers */,
 				1B2181111E49023F000AB72C /* MPImageDownloadQueue.h in Headers */,
 				1B2181121E49023F000AB72C /* MPVASTResource.h in Headers */,
@@ -2282,7 +2175,6 @@
 				1B2181151E49023F000AB72C /* MPRewardedVideo+Internal.h in Headers */,
 				1B2181161E49023F000AB72C /* MPPrivateRewardedVideoCustomEventDelegate.h in Headers */,
 				1B2181171E49023F000AB72C /* MPNativeAd.h in Headers */,
-				1B2181181E49023F000AB72C /* CSMRAIDOrientationProperties.h in Headers */,
 				1B2181191E49023F000AB72C /* MRBundleManager.h in Headers */,
 				1B21811A1E49023F000AB72C /* MPLogEventCommunicator.h in Headers */,
 				1B21811B1E49023F000AB72C /* MRBridge.h in Headers */,
@@ -2294,7 +2186,6 @@
 				1B2181211E49023F000AB72C /* MPNativeAdSourceQueue.h in Headers */,
 				1B2181221E49023F000AB72C /* CSHTMLBannerFactory.h in Headers */,
 				1B2181231E49023F000AB72C /* MRController.h in Headers */,
-				1B2181241E49023F000AB72C /* mraidjs.h in Headers */,
 				1B2181251E49023F000AB72C /* MPBannerCustomEvent.h in Headers */,
 				1B2181261E49023F000AB72C /* MPHTMLBannerCustomEvent.h in Headers */,
 				1B2181271E49023F000AB72C /* NSURL+MPAdditions.h in Headers */,
@@ -2312,7 +2203,6 @@
 				1B2181331E49023F000AB72C /* MPHTMLInterstitialViewController.h in Headers */,
 				1B2181341E49023F000AB72C /* MOPUBAVPlayer.h in Headers */,
 				1B2181351E49023F000AB72C /* MPNativeAdRendering.h in Headers */,
-				1B2181361E49023F000AB72C /* CSLogger.h in Headers */,
 				1B2181371E49023F000AB72C /* MPIdentityProvider.h in Headers */,
 				1B2181381E49023F000AB72C /* NSHTTPURLResponse+MPAdditions.h in Headers */,
 				1B2181391E49023F000AB72C /* MPFacebookKeywordProvider.h in Headers */,
@@ -2321,7 +2211,6 @@
 				1B21813C1E49023F000AB72C /* MPInterstitialAdController.h in Headers */,
 				1B21813D1E49023F000AB72C /* UIButton+MPAdditions.h in Headers */,
 				1B21813E1E49023F000AB72C /* FABAttributes.h in Headers */,
-				1B21813F1E49023F000AB72C /* CSMRAIDUtil.h in Headers */,
 				1B2181401E49023F000AB72C /* CSBasicBannerAdFactory.h in Headers */,
 				1B2181411E49023F000AB72C /* MPMRAIDInterstitialViewController.h in Headers */,
 				1B2181421E49023F000AB72C /* Fabric.h in Headers */,
@@ -2345,7 +2234,6 @@
 				1B2181541E49023F000AB72C /* UIWebView+MPAdditions.h in Headers */,
 				1B2181551E49023F000AB72C /* MoPub.h in Headers */,
 				1B2181561E49023F000AB72C /* MPMoPubRewardedVideoCustomEvent.h in Headers */,
-				1B2181571E49023F000AB72C /* CSMRAIDResizeProperties.h in Headers */,
 				1B2181581E49023F000AB72C /* MPVASTInline.h in Headers */,
 				1B2181591E49023F000AB72C /* MRNativeCommandHandler.h in Headers */,
 				1B21815A1E49023F000AB72C /* MPMRAIDInterstitialCustomEvent.h in Headers */,
@@ -2355,7 +2243,6 @@
 				1B21815E1E49023F000AB72C /* MRProperty.h in Headers */,
 				1B21815F1E49023F000AB72C /* MPNativeAdRequest.h in Headers */,
 				1B2181611E49023F000AB72C /* MOPUBNativeVideoAdRenderer.h in Headers */,
-				1B2181621E49023F000AB72C /* CSMRAIDSettings.h in Headers */,
 				1B2181631E49023F000AB72C /* MPStreamAdPlacementData.h in Headers */,
 				1B2181641E49023F000AB72C /* MPNativeAdRenderer.h in Headers */,
 				1B2181651E49023F000AB72C /* MPClientAdPositioning.h in Headers */,
@@ -2394,7 +2281,6 @@
 				1B2181851E49023F000AB72C /* MPAdConversionTracker.h in Headers */,
 				1B2181861E49023F000AB72C /* MOPUBNativeVideoAdConfigValues.h in Headers */,
 				1B2181871E49023F000AB72C /* MPVASTMacroProcessor.h in Headers */,
-				1B2181881E49023F000AB72C /* CloseButton.h in Headers */,
 				1B2181891E49023F000AB72C /* MPVASTStringUtilities.h in Headers */,
 				1B21818A1E49023F000AB72C /* MPLogEvent+NativeVideo.h in Headers */,
 				1B21818B1E49023F000AB72C /* MPInstanceProvider.h in Headers */,
@@ -2456,7 +2342,6 @@
 				1B2181C31E49023F000AB72C /* MPInternalUtils.h in Headers */,
 				1B2181C41E49023F000AB72C /* MPTableViewAdPlacer.h in Headers */,
 				1B2181C51E49023F000AB72C /* MPStaticNativeAdImpressionTimer.h in Headers */,
-				1B2181C61E49023F000AB72C /* CSMRAIDServiceDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2465,28 +2350,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F4B701B1E3BBE27001B2F68 /* CSLocationManager.h in Headers */,
-				7FD99AB31DBFC9DE00E33562 /* CSMRAIDViewFactory.h in Headers */,
-				7FC68B201DAECC9900DBFD9B /* CSMRAIDView.h in Headers */,
-				7FC68B2E1DAECEB100DBFD9B /* CSMRAIDParser.h in Headers */,
-				7FC68B361DAED0D900DBFD9B /* CSMRAIDModalViewController.h in Headers */,
-				7FC68B241DAECD6900DBFD9B /* CSMRAIDOrientationProperties.h in Headers */,
 				7FD99A951DBE822D00E33562 /* CSHTMLBannerFactory.h in Headers */,
-				7FC68B431DAED47700DBFD9B /* mraidjs.h in Headers */,
-				7FC68B321DAECF5400DBFD9B /* CSLogger.h in Headers */,
-				7FC68B3B1DAED20700DBFD9B /* CSMRAIDUtil.h in Headers */,
 				7FD99A1D1DB9544E00E33562 /* CSBasicBannerAdFactory.h in Headers */,
-				7FC68B2A1DAECE2600DBFD9B /* CSMRAIDResizeProperties.h in Headers */,
 				7FD99A911DBE7FA900E33562 /* CSHTMLBanner.h in Headers */,
 				7F86788B1E32BB0000612231 /* CSCustomEventDelegate.h in Headers */,
 				7FCFCB4E1DEF54E300ACFB7C /* CSCustomBanner.h in Headers */,
-				7FC68B3F1DAED2F600DBFD9B /* CSMRAIDSettings.h in Headers */,
 				7FD99A391DBE696600E33562 /* CSBasicBannerAd.h in Headers */,
-				7FC68B451DAED48D00DBFD9B /* CloseButton.h in Headers */,
 				7FD99A191DB9497000E33562 /* CSAdFactory.h in Headers */,
 				7F38C4F51DD110EF002F9A02 /* CSGestureRecognizer.h in Headers */,
 				1B67178C1D0F38CB006D51F8 /* CommuteStream.h in Headers */,
 				7FD99B831DC2A0A200E33562 /* CSWebView.h in Headers */,
-				7FD999C81DAFE9BD00E33562 /* CSMRAIDServiceDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2689,14 +2562,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2180B31E49023F000AB72C /* CSGestureRecognizer.m in Sources */,
-				1B2180B41E49023F000AB72C /* CSMRAIDParser.m in Sources */,
 				1B2180B51E49023F000AB72C /* CSWebView.m in Sources */,
 				1B2180B61E49023F000AB72C /* CSAdFactory.m in Sources */,
-				1B2180B71E49023F000AB72C /* CSMRAIDView.m in Sources */,
 				1B2180B81E49023F000AB72C /* CSBasicBannerAdFactory.m in Sources */,
 				1B2180B91E49023F000AB72C /* Reachability.m in Sources */,
-				1B2180BA1E49023F000AB72C /* CSMRAIDSettings.m in Sources */,
-				1B2180BB1E49023F000AB72C /* CSLogger.m in Sources */,
 				1B2180BC1E49023F000AB72C /* CSHTMLBannerFactory.m in Sources */,
 				1B2180BD1E49023F000AB72C /* NSURL+CSURL.m in Sources */,
 				1B2180BE1E49023F000AB72C /* CSBasicBannerAd.m in Sources */,
@@ -2704,12 +2573,8 @@
 				1B2180C01E49023F000AB72C /* MKNetworkOperation.m in Sources */,
 				1B2180C11E49023F000AB72C /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				1B2180C21E49023F000AB72C /* NSData+MKBase64.m in Sources */,
-				1B2180C31E49023F000AB72C /* CSMRAIDResizeProperties.m in Sources */,
 				1B2180C41E49023F000AB72C /* CSMoPubCustomEvent.m in Sources */,
-				1B2180C51E49023F000AB72C /* CSMRAIDUtil.m in Sources */,
 				1B2180C61E49023F000AB72C /* NSDate+RFC1123.m in Sources */,
-				1B2180C71E49023F000AB72C /* CSMRAIDViewFactory.m in Sources */,
-				1B2180C81E49023F000AB72C /* CSMRAIDOrientationProperties.m in Sources */,
 				1BC3E1D41E492868002C1F58 /* CSCustomBanner.m in Sources */,
 				1B2180C91E49023F000AB72C /* NSDictionary+RequestEncoding.m in Sources */,
 				1B2180CA1E49023F000AB72C /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -2720,7 +2585,6 @@
 				1B2180CF1E49023F000AB72C /* README.md in Sources */,
 				1B2180D01E49023F000AB72C /* CSNetworkEngine.m in Sources */,
 				1BC3E1D61E492874002C1F58 /* CommuteStream.m in Sources */,
-				1B2180D21E49023F000AB72C /* CSMRAIDModalViewController.m in Sources */,
 				1B2180D31E49023F000AB72C /* CSHTMLBanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2730,14 +2594,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F38C4F61DD110EF002F9A02 /* CSGestureRecognizer.m in Sources */,
-				7FC68B2F1DAECEB100DBFD9B /* CSMRAIDParser.m in Sources */,
 				7FD99B841DC2A0A200E33562 /* CSWebView.m in Sources */,
 				7FD99A1A1DB9497000E33562 /* CSAdFactory.m in Sources */,
-				7FC68B211DAECC9900DBFD9B /* CSMRAIDView.m in Sources */,
 				7FD99A1E1DB9544E00E33562 /* CSBasicBannerAdFactory.m in Sources */,
 				7FF399C2191581A500C8114E /* Reachability.m in Sources */,
-				7FC68B401DAED2F600DBFD9B /* CSMRAIDSettings.m in Sources */,
-				7FC68B331DAECF5400DBFD9B /* CSLogger.m in Sources */,
 				7FD99A961DBE822D00E33562 /* CSHTMLBannerFactory.m in Sources */,
 				7F3034921E2E8D3000134984 /* NSURL+CSURL.m in Sources */,
 				7FD99A3A1DBE696600E33562 /* CSBasicBannerAd.m in Sources */,
@@ -2746,11 +2606,7 @@
 				7FF399B91915818500C8114E /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				1BC3E1D51E492874002C1F58 /* CommuteStream.m in Sources */,
 				7FF399BA1915818500C8114E /* NSData+MKBase64.m in Sources */,
-				7FC68B2B1DAECE2600DBFD9B /* CSMRAIDResizeProperties.m in Sources */,
-				7FC68B3C1DAED20700DBFD9B /* CSMRAIDUtil.m in Sources */,
 				7FF399BB1915818500C8114E /* NSDate+RFC1123.m in Sources */,
-				7FD99AB41DBFC9DE00E33562 /* CSMRAIDViewFactory.m in Sources */,
-				7FC68B251DAECD6900DBFD9B /* CSMRAIDOrientationProperties.m in Sources */,
 				7FF399BC1915818500C8114E /* NSDictionary+RequestEncoding.m in Sources */,
 				7FF399BD1915818500C8114E /* NSString+MKNetworkKitAdditions.m in Sources */,
 				7F4B701C1E3BBE27001B2F68 /* CSLocationManager.m in Sources */,
@@ -2760,7 +2616,6 @@
 				7F867A301E367A0200612231 /* README.md in Sources */,
 				7FF39900191553C300C8114E /* CSNetworkEngine.m in Sources */,
 				7FF39903191554CB00C8114E /* CSCustomBanner.m in Sources */,
-				7FC68B371DAED0D900DBFD9B /* CSMRAIDModalViewController.m in Sources */,
 				7FD99A921DBE7FA900E33562 /* CSHTMLBanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

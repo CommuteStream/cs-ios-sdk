@@ -32,7 +32,9 @@
 
 - (MKNetworkOperation *) registerImpression:(NSMutableDictionary *)callParams {
     
-    MKNetworkOperation *op = [self operationWithPath:@"v2/impression" params:callParams httpMethod:@"GET" ssl:YES];
+    //MKNetworkOperation *op = [self operationWithPath:@"v2/impression" params:callParams httpMethod:@"GET" ssl:YES];
+    
+    MKNetworkOperation *op = [self operationWithURLString:[callParams objectForKey:@"impression_url"]];
    
     [op addCompletionHandler:^(MKNetworkOperation *operation){
         NSLog(@"CS_SDK: Registered impression successfully.");
@@ -49,9 +51,11 @@
 }
 
 - (MKNetworkOperation *) registerClick:(NSMutableDictionary *)callParams {
-    MKNetworkOperation *op = [self operationWithPath:@"v2/click" params:callParams httpMethod:@"GET" ssl:YES];
     
+    //MKNetworkOperation *op = [self operationWithPath:@"v2/click" params:callParams httpMethod:@"GET" ssl:YES];
     
+    MKNetworkOperation *op = [self operationWithURLString:[callParams objectForKey:@"click_url"]];
+
     [op addCompletionHandler:^(MKNetworkOperation *operation){
         NSLog(@"CS_SDK: Registered click successfully.");
         

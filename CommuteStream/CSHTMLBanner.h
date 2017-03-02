@@ -22,7 +22,7 @@
  - (void)loadHTML:(NSString *)htmlString;
 - (void)loadURLRequest:(NSURLRequest *)request;
 - (id)initWithAdUnitFrame:(CGRect)adFrame andCreativeFrame:(CGRect)creativeFrame;
-- (void)setRequestID:(NSString *)requestString;
+- (void)setClickURL:(NSString *)urlString;
 
 @property (nonatomic, strong) CSNetworkEngine *csNetworkEngine;
 

@@ -14,7 +14,7 @@
 #import "CSAdFactory.h"
 
 
-#define SDK_VERSION @"0.8.0"
+#define SDK_VERSION @"0.8.1"
 
 @implementation CommuteStream {
 
@@ -63,7 +63,7 @@
 
     
     UIView *adView;
-    NSString *registerImpressionID;
+    NSString *impressionURL;
 }
 
 char macAddress[32];
@@ -225,11 +225,14 @@ char ifName[3] = "en0";
             @try{
                 NSDictionary *headerDict = [[request readonlyResponse] allHeaderFields];
                 
+                NSLog(@"Header Fields: =  %@", headerDict);
+                
                 NSString *creative_width = [headerDict objectForKey:@"X-CS-AD-WIDTH"];
                 NSString *creative_height = [headerDict objectForKey:@"X-CS-AD-HEIGHT"];
-                registerImpressionID = [headerDict objectForKey:@"X-CS-REQUEST-ID"];
+                impressionURL = [headerDict objectForKey:@"X-CS-IMPRESSION-URL"];
                 [dict setObject:[headerDict objectForKey:@"X-CS-AD-KIND"] forKey:@"kind"];
                 [dict setObject:[headerDict objectForKey:@"X-CS-REQUEST-ID"] forKey:@"request_id"];
+                [dict setObject:[headerDict objectForKey:@"X-CS-CLICK-URL"] forKey:@"click_url"];
                 [dict setObject:banner forKey:@"banner"];
                 [dict setObject:banner_height forKey: @"bannerHeight"];
                 [dict setObject:banner_width forKey: @"bannerWidth"];
@@ -326,7 +329,7 @@ char ifName[3] = "en0";
 
 - (void)callRegisterImpressionWithTimerParams:(NSMutableDictionary *)params {
     
-    NSMutableDictionary *impressionDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : registerImpressionID}];
+    NSMutableDictionary *impressionDict = [NSMutableDictionary dictionaryWithDictionary: @{@"impression_url" : impressionURL}];
     
     NSLog(@"Params = %@", params);
     
@@ -372,13 +375,13 @@ char ifName[3] = "en0";
 
 - (void)callRegisterClickWithTimerParams:(NSMutableDictionary *)params {
     
-    NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary: @{@"request_id" : [params objectForKey:@"requestID"]}];
+    NSMutableDictionary *clickDict = [NSMutableDictionary dictionaryWithDictionary: @{@"click_url" : [params objectForKey:@"clickURL"]}];
     
     NSLog(@"Params = %@", params);
     
     __block CGFloat clickResponseTimerDelay = [[params objectForKey:@"delay"] floatValue];
     __block NSInteger clickResponseTimerCount = [[params objectForKey:@"count"] integerValue];
-    __block NSString *clickResponseRequestID = [params objectForKey:@"requestID"];
+    __block NSString *clickURL = [params objectForKey:@"clickURL"];
     
     
     //api call
@@ -400,7 +403,7 @@ char ifName[3] = "en0";
                 NSLog(@"click timer delay = %f", clickResponseTimerDelay);
                 NSLog(@"click timer count = %ld", (long)clickResponseTimerCount);
                 
-                NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @(clickResponseTimerDelay), @"count" : @(clickResponseTimerCount), @"requestID" : clickResponseRequestID}];
+                NSMutableDictionary *retryDict = [NSMutableDictionary dictionaryWithDictionary:@{@"delay" : @(clickResponseTimerDelay), @"count" : @(clickResponseTimerCount), @"clickURL" : clickURL}];
                 
                 NSLog(@"Retry Dict = %@", retryDict);
                 dispatch_async(dispatch_get_main_queue(), ^{
