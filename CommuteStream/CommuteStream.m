@@ -259,10 +259,25 @@ char ifName[3] = "en0";
             
         }else if([[request readonlyResponse] statusCode] == 400){
             NSLog(@"CS_SDK: Ad request failed with error 400, bad request");
+            
+            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"400, bad request"}];
+            NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
+            [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
+            
         }else if([[request readonlyResponse] statusCode] == 404) {
             NSLog(@"CS_SDK: No banner returned");
+            
+            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"No banner returned."}];
+            NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
+            [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
         }else if([[request readonlyResponse] statusCode] == 500){
             NSLog(@"CS_SDK: Ad request failed with error 500, server temporarily unavailable.");
+            
+            NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"500, server temporarily unavailable."}];
+            NSDictionary *dictWithError = @{@"banner": banner, @"error": error};
+            [self performSelectorOnMainThread:@selector(getAdFailedWithBanner:) withObject:dictWithError waitUntilDone:NO];
+
+            
         }else{
     
             NSError *error = [NSError errorWithDomain:@"com.commutestream.sdk" code:[[request readonlyResponse] statusCode] userInfo:@{@"Error reason": @"Unknown"}];
